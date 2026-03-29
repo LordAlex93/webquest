@@ -1,20 +1,18 @@
 ---
 title: "Firma digital con RSA"
-lang: es
 toc: true
-#number-sections: true
-top-level-division: chapter
-execute:
-  echo: fenced
-  output: true
+lang: es
+mathjax: true
 format:
-  html:
-    title-block: false       # Oculta el bloque de título solo en HTML (evita duplicado)
+  live-html:
+    number-sections: true
+    toc: true
+    toc-location: right
+    toc-title: "Contenidos"
+    toc-depth: 3
     code-tools: false
-    code-wrap: true
-    code-fold: false
+    theme: cosmo
     css: ../styles.css
-  ipynb: default
   pdf:
     title-block: true        # Asegura que el PDF muestre la portada/título del YAML
     tinytex: true
@@ -183,7 +181,7 @@ que coincide con $H(m)$.
 
 ## Código Python
 
-```python
+```{pyodide}
 # Ejemplo didáctico de firma RSA con números pequeños.
 
 def egcd(a, b):

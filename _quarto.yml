@@ -49,7 +49,9 @@ format:
     toc-depth: 3
     code-fold: false
     code-tools: false
-
+  pdf:
+    title-block: true        # Asegura que el PDF muestre la portada/título del YAML
+    tinytex: true
 lang: es
 
 execute:

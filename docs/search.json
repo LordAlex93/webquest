@@ -668,50 +668,50 @@
     "objectID": "webquest-rsa/firma-digital-rsa.html#qué-problema-resuelve-una-firma-digital",
     "href": "webquest-rsa/firma-digital-rsa.html#qué-problema-resuelve-una-firma-digital",
     "title": "Firma digital con RSA",
-    "section": "¿Qué problema resuelve una firma digital?",
-    "text": "¿Qué problema resuelve una firma digital?\nUna firma digital permite comprobar que:\n\nEl autor es quien dice ser: autenticidad.\nEl mensaje no ha cambiado: integridad.\nEl autor no puede negar haber firmado: no repudio.\n\nEl autor aplica su clave privada para firmar y cualquiera puede verificar con su clave pública que el mensaje ha sido firmado por su autor.\n\n\n\n\n\n\nRecordatorio: aritmética modular\n\n\n\nTrabajaremos “módulo \\(n\\)”. Diremos que dos números son congruentes si dejan el mismo resto al dividir entre \\(n\\):\n\\[\na \\equiv b \\pmod{n} \\quad \\Longleftrightarrow \\quad n \\mid (a-b).\n\\]\n\n\n\n\n\n\nPotencias módulo \\(n\\)\n\n\n\nPara \\(a \\in \\mathbb{Z}\\) y exponente \\(k \\ge 0\\), calculamos \\(a^k \\bmod n\\), normalmente usando exponenciación rápida.\n\n\n\n\n\n\n\n\nInverso modular\n\n\n\nSi \\(\\text{mcd}(a,n)=1\\), existe \\(a^{-1}\\) (mód \\(n\\)) tal que:\n\\[\na \\cdot a^{-1} \\equiv 1 \\pmod{n}.\n\\]\nSe obtiene con el algoritmo extendido de Euclides.\n\n\n\\(\\quad\\)\n\n\n\n\n\n\n\n\nRepaso rápido de RSA\n\n\n\nGeneramos las claves:\n\nElegir dos primos grandes \\(p,q\\) y \\(n=pq\\).\n\\(\\varphi(n)=(p-1)(q-1)\\).\nElegir \\(e\\) con \\(1&lt;e&lt;\\varphi(n)\\) y \\(\\text{mcd}(e,\\varphi(n))=1\\).\nCalcular \\(d\\) como inverso de \\(e \\pmod{\\varphi(n)}\\):\n\n\\[\ne\\cdot d \\equiv 1 \\pmod{\\varphi(n)}.\n\\]\n\n\nClave pública: \\((n, e)\\)\nClave privada: \\((n, d)\\)\n\n\n\nCifrar un mensaje RSA: \\(M \\equiv m^e \\pmod{n}\\).\nDescifrar un mensaje: \\(m \\equiv M^d \\pmod{n}\\)."
+    "section": "1 ¿Qué problema resuelve una firma digital?",
+    "text": "1 ¿Qué problema resuelve una firma digital?\nUna firma digital permite comprobar que:\n\nEl autor es quien dice ser: autenticidad.\nEl mensaje no ha cambiado: integridad.\nEl autor no puede negar haber firmado: no repudio.\n\nEl autor aplica su clave privada para firmar y cualquiera puede verificar con su clave pública que el mensaje ha sido firmado por su autor.\n\n\n\n\n\n\nRecordatorio: aritmética modular\n\n\n\nTrabajaremos “módulo \\(n\\)”. Diremos que dos números son congruentes si dejan el mismo resto al dividir entre \\(n\\):\n\\[\na \\equiv b \\pmod{n} \\quad \\Longleftrightarrow \\quad n \\mid (a-b).\n\\]\n\n\n\n\n\n\nPotencias módulo \\(n\\)\n\n\n\nPara \\(a \\in \\mathbb{Z}\\) y exponente \\(k \\ge 0\\), calculamos \\(a^k \\bmod n\\), normalmente usando exponenciación rápida.\n\n\n\n\n\n\n\n\nInverso modular\n\n\n\nSi \\(\\text{mcd}(a,n)=1\\), existe \\(a^{-1}\\) (mód \\(n\\)) tal que:\n\\[\na \\cdot a^{-1} \\equiv 1 \\pmod{n}.\n\\]\nSe obtiene con el algoritmo extendido de Euclides.\n\n\n\\(\\quad\\)\n\n\n\n\n\n\n\n\nRepaso rápido de RSA\n\n\n\nGeneramos las claves:\n\nElegir dos primos grandes \\(p,q\\) y \\(n=pq\\).\n\\(\\varphi(n)=(p-1)(q-1)\\).\nElegir \\(e\\) con \\(1&lt;e&lt;\\varphi(n)\\) y \\(\\text{mcd}(e,\\varphi(n))=1\\).\nCalcular \\(d\\) como inverso de \\(e \\pmod{\\varphi(n)}\\):\n\n\\[\ne\\cdot d \\equiv 1 \\pmod{\\varphi(n)}.\n\\]\n\n\nClave pública: \\((n, e)\\)\nClave privada: \\((n, d)\\)\n\n\n\nCifrar un mensaje RSA: \\(M \\equiv m^e \\pmod{n}\\).\nDescifrar un mensaje: \\(m \\equiv M^d \\pmod{n}\\)."
   },
   {
     "objectID": "webquest-rsa/firma-digital-rsa.html#hash-huella-digital-del-mensaje",
     "href": "webquest-rsa/firma-digital-rsa.html#hash-huella-digital-del-mensaje",
     "title": "Firma digital con RSA",
-    "section": "Hash (huella digital) del mensaje",
-    "text": "Hash (huella digital) del mensaje\nNo firmamos el texto entero directamente, sino su huella (hash) \\(H(m)\\). Un buen hash es determinista, rápido y sensible a cambios: con un cambio mínimo en el mensaje, la huella cambia por completo.\nEn la práctica se usan funciones como SHA-256. Aquí usaremos una huella didáctica para el ejemplo."
+    "section": "2 Hash (huella digital) del mensaje",
+    "text": "2 Hash (huella digital) del mensaje\nNo firmamos el texto entero directamente, sino su huella (hash) \\(H(m)\\). Un buen hash es determinista, rápido y sensible a cambios: con un cambio mínimo en el mensaje, la huella cambia por completo.\nEn la práctica se usan funciones como SHA-256. Aquí usaremos una huella didáctica para el ejemplo."
   },
   {
     "objectID": "webquest-rsa/firma-digital-rsa.html#definición-matemática-de-la-firma-rsa",
     "href": "webquest-rsa/firma-digital-rsa.html#definición-matemática-de-la-firma-rsa",
     "title": "Firma digital con RSA",
-    "section": "Definición matemática de la firma RSA",
-    "text": "Definición matemática de la firma RSA\nSea \\(m\\) el mensaje y \\(H(m)\\) su huella (un entero \\(0 \\le H(m) &lt; n\\)).\n\nFirma con la clave privada \\((n,d)\\):\n\n\\[\ns \\equiv H(m)^d \\pmod{n}.\n\\]\n\nVerificación con la clave pública \\((n,e)\\):\n\n\\[\nv \\equiv s^e \\pmod{n}.\n\\]\nAceptamos la firma si\n\\[\nv \\equiv H(m) \\pmod{n}.\n\\]\nIdea clave: elevar con \\(d\\) y luego con \\(e\\) “revierte” gracias a \\[e\\cdot d \\equiv 1 \\pmod{\\varphi(n)}\\]\ny al teorema de Euler.\nEn la práctica se añade un relleno (padding) seguro (por ejemplo, RSA-PSS) antes de elevar, para evitar ataques. Aquí lo omitimos por ser introducción."
+    "section": "3 Definición matemática de la firma RSA",
+    "text": "3 Definición matemática de la firma RSA\nSea \\(m\\) el mensaje y \\(H(m)\\) su huella (un entero \\(0 \\le H(m) &lt; n\\)).\n\nFirma con la clave privada \\((n,d)\\):\n\n\\[\ns \\equiv H(m)^d \\pmod{n}.\n\\]\n\nVerificación con la clave pública \\((n,e)\\):\n\n\\[\nv \\equiv s^e \\pmod{n}.\n\\]\nAceptamos la firma si\n\\[\nv \\equiv H(m) \\pmod{n}.\n\\]\nIdea clave: elevar con \\(d\\) y luego con \\(e\\) “revierte” gracias a \\[e\\cdot d \\equiv 1 \\pmod{\\varphi(n)}\\]\ny al teorema de Euler.\nEn la práctica se añade un relleno (padding) seguro (por ejemplo, RSA-PSS) antes de elevar, para evitar ataques. Aquí lo omitimos por ser introducción."
   },
   {
     "objectID": "webquest-rsa/firma-digital-rsa.html#ejemplo",
     "href": "webquest-rsa/firma-digital-rsa.html#ejemplo",
     "title": "Firma digital con RSA",
-    "section": "Ejemplo",
-    "text": "Ejemplo\n\n\n\n\n\n\nImportante\n\n\n\nEn clase usaremos números pequeños para entender el proceso. En la realidad \\(p\\) y \\(q\\) deben ser muy grandes (la longitud de \\(n\\) debe ser al menos de 2048 bits).\n\n\n\nElegimos \\(p=61\\), \\(q=53\\) \\(\\Rightarrow\\) \\(n=pq=3233\\).\n\\(\\varphi(n)=(61-1)(53-1)=3120\\).\nElegimos \\(e=17\\) con \\(\\text{mcd}(17,3120)=1\\).\nHallamos \\(d\\) tal que \\(17\\cdot d \\equiv 1 \\pmod{3120}\\). Se obtiene \\(d=2753\\).\n\nClaves:\n\nPública \\((n,e)=(3233,17)\\)\nPrivada \\((n,d)=(3233,2753)\\)\n\n\nDefinimos un hash didáctico\nSea\n\\[\nH(m)=\\Big(\\sum \\text{códigos ASCII de los caracteres de } m\\Big)\\bmod n.\n\\]\nPara el mensaje \\(m=\\text{\"OK\"}\\): ASCII \\(\\text{‘O’}=79\\), \\(\\text{‘K’}=75\\). Luego \\(H(m)=(79+75)\\bmod 3233 = 154\\).\n\n\nFirmar\n\\[\ns \\equiv H(m)^d \\equiv 154^{2753} \\pmod{3233}.\n\\]\n(Se calcula por exponenciación modular rápida.)\n\n\nVerificar\n\\[\nv \\equiv s^e \\equiv \\big(154^{2753}\\big)^{17} \\equiv 154 \\pmod{3233},\n\\]\nque coincide con \\(H(m)\\)."
+    "section": "4 Ejemplo",
+    "text": "4 Ejemplo\n\n\n\n\n\n\nImportante\n\n\n\nEn clase usaremos números pequeños para entender el proceso. En la realidad \\(p\\) y \\(q\\) deben ser muy grandes (la longitud de \\(n\\) debe ser al menos de 2048 bits).\n\n\n\nElegimos \\(p=61\\), \\(q=53\\) \\(\\Rightarrow\\) \\(n=pq=3233\\).\n\\(\\varphi(n)=(61-1)(53-1)=3120\\).\nElegimos \\(e=17\\) con \\(\\text{mcd}(17,3120)=1\\).\nHallamos \\(d\\) tal que \\(17\\cdot d \\equiv 1 \\pmod{3120}\\). Se obtiene \\(d=2753\\).\n\nClaves:\n\nPública \\((n,e)=(3233,17)\\)\nPrivada \\((n,d)=(3233,2753)\\)\n\n\n4.1 Definimos un hash didáctico\nSea\n\\[\nH(m)=\\Big(\\sum \\text{códigos ASCII de los caracteres de } m\\Big)\\bmod n.\n\\]\nPara el mensaje \\(m=\\text{\"OK\"}\\): ASCII \\(\\text{‘O’}=79\\), \\(\\text{‘K’}=75\\). Luego \\(H(m)=(79+75)\\bmod 3233 = 154\\).\n\n\n4.2 Firmar\n\\[\ns \\equiv H(m)^d \\equiv 154^{2753} \\pmod{3233}.\n\\]\n(Se calcula por exponenciación modular rápida.)\n\n\n4.3 Verificar\n\\[\nv \\equiv s^e \\equiv \\big(154^{2753}\\big)^{17} \\equiv 154 \\pmod{3233},\n\\]\nque coincide con \\(H(m)\\)."
   },
   {
     "objectID": "webquest-rsa/firma-digital-rsa.html#código-python",
     "href": "webquest-rsa/firma-digital-rsa.html#código-python",
     "title": "Firma digital con RSA",
-    "section": "Código Python",
-    "text": "Código Python\n# Ejemplo didáctico de firma RSA con números pequeños.\n\ndef egcd(a, b):\n    \"\"\"Algoritmo extendido de Euclides: devuelve (g, x, y) tal que ax + by = g = gcd(a,b).\"\"\"\n    if b == 0:\n        return (a, 1, 0)\n    g, x1, y1 = egcd(b, a % b)\n    return (g, y1, x1 - (a // b) * y1)\n\ndef modinv(a, m):\n    \"\"\"Inverso modular de a mod m (si gcd(a,m)=1).\"\"\"\n    g, x, _ = egcd(a, m)\n    if g != 1:\n        raise ValueError(\"No existe inverso\")\n    return x % m\n\ndef hash(msg, n):\n    \"\"\"Hash didáctico: suma de códigos ASCII mod n (solo para clase).\"\"\"\n    return sum(ord(ch) for ch in msg) % n\n\n# Parámetros didácticos\np, q = 61, 53\nn = p * q           # 3233\nphi = (p-1)*(q-1)   # 3120\ne = 17\nd = modinv(e, phi)  # 2753\n\nm = \"OK\"\nh = hash(m, n)\n\n# Firma\ns = pow(h, d, n)\n\n# Verificación\nv = pow(s, e, n)\n\nprint(\"n =\", n, \"phi =\", phi, \"e =\", e, \"d =\", d)\nprint(\"Mensaje:\", m, \"Hash:\", h)\nprint(\"Firma s:\", s)\nprint(\"Verificación v:\", v, \"=&gt;\", \"válida\" if v == h else \"inválida\")"
+    "section": "5 Código Python",
+    "text": "5 Código Python"
   },
   {
     "objectID": "webquest-rsa/firma-digital-rsa.html#buenas-prácticas-idea-general",
     "href": "webquest-rsa/firma-digital-rsa.html#buenas-prácticas-idea-general",
     "title": "Firma digital con RSA",
-    "section": "Buenas prácticas (idea general)",
-    "text": "Buenas prácticas (idea general)\n\nPadding seguro: en la práctica se usa RSA-PSS (Probabilistic Signature Scheme) para firmar.\nHash criptográfico: SHA-256 o superior.\nTamaño de clave: \\(n\\) de 2048 bits o más.\nGestión de claves: proteger la clave privada; distribuir bien la clave pública."
+    "section": "6 Buenas prácticas (idea general)",
+    "text": "6 Buenas prácticas (idea general)\n\nPadding seguro: en la práctica se usa RSA-PSS (Probabilistic Signature Scheme) para firmar.\nHash criptográfico: SHA-256 o superior.\nTamaño de clave: \\(n\\) de 2048 bits o más.\nGestión de claves: proteger la clave privada; distribuir bien la clave pública."
   },
   {
     "objectID": "webquest-rsa/firma-digital-rsa.html#resumen",
     "href": "webquest-rsa/firma-digital-rsa.html#resumen",
     "title": "Firma digital con RSA",
-    "section": "Resumen",
-    "text": "Resumen\n\nUna firma RSA se define como: \\[\ns \\equiv H(m)^d \\pmod{n}.\n\\]\nSe verifica con: \\[v \\equiv s^e \\pmod{n}.\\]\nSi \\(v \\equiv H(m)\\pmod{n}\\), la firma es válida (mensaje íntegro y autor auténtico).\nEn la vida real, se añaden hash seguro y padding (RSA-PSS) para evitar ataques."
+    "section": "7 Resumen",
+    "text": "7 Resumen\n\nUna firma RSA se define como: \\[\ns \\equiv H(m)^d \\pmod{n}.\n\\]\nSe verifica con: \\[v \\equiv s^e \\pmod{n}.\\]\nSi \\(v \\equiv H(m)\\pmod{n}\\), la firma es válida (mensaje íntegro y autor auténtico).\nEn la vida real, se añaden hash seguro y padding (RSA-PSS) para evitar ataques."
   },
   {
     "objectID": "webquest-rsa/evaluacion.html",
