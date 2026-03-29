@@ -10,6 +10,7 @@ format:
     toc-location: right
     toc-title: "Contenidos"
     toc-depth: 3
+    theme: cosmo
     css: ../styles.css
 ---
 
