@@ -28,13 +28,14 @@ La WebQuest invita al alumnado a investigar, experimentar, resolver problemas y 
 La propuesta parte de una idea esencial: muchas tecnologías cotidianas se apoyan en las matemáticas. Mostrar esta conexión ayuda a mejorar la motivación del alumnado y a dar sentido a aprendizajes que a veces se perciben como abstractos.
 
 A través de esta WebQuest, el alumnado trabaja con:
+
 - relaciones numéricas,
 - restos y patrones,
 - estrategias de resolución de problemas,
 - comprobación de resultados,
 - secuenciación de procedimientos,
 - explicación de procesos matemáticos,
-- y uso responsable de herramientas digitales.
+- uso responsable de herramientas digitales.
 
 El contexto de la “caja fuerte digital” permite integrar el aprendizaje matemático con el trabajo cooperativo, la competencia digital y la educación en ciudadanía responsable. Además, la propuesta favorece un enfoque activo, manipulativo y gradual, adecuado para 2.º de ESO.
 
