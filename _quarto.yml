@@ -51,7 +51,7 @@ format:
     code-tools: false
   pdf:
     title-block: true        # Asegura que el PDF muestre la portada/título del YAML
-    tinytex: true
+    latex-tinytex: true
 lang: es
 
 execute:
