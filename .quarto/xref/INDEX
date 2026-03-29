@@ -39,7 +39,8 @@
     "firma-digital-rsa.tex": "2da3a814"
   },
   "webquest-rsa/teoria.qmd": {
-    "teoria.html": "57eae623"
+    "teoria.html": "57eae623",
+    "teoria.tex": "54992f5b"
   },
   "webquest-rsa/primos.qmd": {
     "primos.html": "7808eae8"
