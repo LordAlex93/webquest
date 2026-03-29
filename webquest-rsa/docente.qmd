@@ -343,6 +343,7 @@ Esta combinación busca favorecer la participación, el apoyo entre iguales y la
 La propuesta incorpora medidas de inclusión coherentes con el enfoque DUA y con la normativa andaluza sobre atención a la diversidad. La Orden de 30 de mayo de 2023 regula expresamente estos aspectos, y el Decreto 102/2023 sitúa la atención personalizada, la inclusión educativa y el DUA como principios de la etapa.
 
 ### Medidas previstas
+
 - actividades graduadas con diferentes niveles de apoyo;
 - ejemplos resueltos paso a paso;
 - apoyos visuales y organizadores gráficos;
@@ -354,6 +355,7 @@ La propuesta incorpora medidas de inclusión coherentes con el enfoque DUA y con
 - énfasis en la comprensión del proceso antes que en el formalismo.
 
 ### Medidas específicas de acceso y participación
+
 - lectura compartida de enunciados;
 - reformulación oral de instrucciones;
 - apoyo en vocabulario matemático clave;
@@ -368,6 +370,7 @@ La propuesta incorpora medidas de inclusión coherentes con el enfoque DUA y con
 La normativa andaluza recuerda la importancia de incorporar la lectura planificada en la práctica docente a lo largo de la etapa, y subraya su valor didáctico y pedagógico dentro del desarrollo competencial.
 
 En esta propuesta, la lectura y la comunicación se integran mediante:
+
 - lectura comprensiva de consignas y textos breves de contexto;
 - interpretación de instrucciones paso a paso;
 - explicación oral de procedimientos;

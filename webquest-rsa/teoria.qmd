@@ -3,6 +3,12 @@ title: "Criptografía"
 toc: true
 toc-location: right
 format:
+  html:
+    title-block: false       # Oculta el bloque de título solo en HTML (evita duplicado)
+    code-tools: false
+    code-wrap: true
+    code-fold: false
+    css: ../styles.css
   pdf:
     title-block: true        # Asegura que el PDF muestre la portada/título del YAML
     tinytex: true

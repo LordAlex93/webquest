@@ -31,7 +31,8 @@
     "playground.html": "3074dc9b"
   },
   "webquest-rsa/intro-python.qmd": {
-    "intro-python.html": "f2647435"
+    "intro-python.html": "f2647435",
+    "intro-python.tex": "86d16e63"
   },
   "webquest-rsa/firma-digital-rsa.qmd": {
     "firma-digital-rsa.html": "73c1137a",

@@ -12,7 +12,12 @@ format:
     code-tools: false
     theme: cosmo
     css: ../styles.css
-
+  pdf:
+    title-block: true        # Asegura que el PDF muestre la portada/título del YAML
+    tinytex: true
+format-links:
+  - html
+  - pdf
 ---
 
 ::: {.callout-note icon=false}
