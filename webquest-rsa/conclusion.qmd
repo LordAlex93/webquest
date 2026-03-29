@@ -1,0 +1,64 @@
+# Conclusión
+
+## Misión cumplida
+
+Habéis llegado al final de esta WebQuest y ya podéis mirar vuestra misión con otros ojos.
+
+Al comenzar, la idea de construir una **caja fuerte digital** podía parecer algo lejano o incluso misterioso. Ahora sabéis que, detrás de muchos sistemas que protegen mensajes y datos, hay **matemáticas, lógica, comprobación y trabajo en equipo**.
+
+A lo largo del proceso habéis investigado, probado, cometido errores, corregido pasos, utilizado recursos digitales y explicado vuestras propias conclusiones. Y eso es precisamente lo más importante de esta misión: no solo llegar al resultado, sino **entender cómo se construye**.
+
+---
+
+## Lo que habéis descubierto
+
+Gracias a esta WebQuest habéis podido comprobar que:
+
+- las matemáticas no sirven solo para resolver ejercicios, sino también para entender cómo funciona el mundo digital;
+- proteger información requiere **pensar, comprobar y seguir procedimientos con cuidado**;
+- un sistema como el mini‑RSA puede ayudar a comprender, de forma educativa, cómo se cifra y se descifra un mensaje;
+- y trabajar en equipo permite avanzar mejor cuando se comparten ideas, dudas y estrategias.
+
+---
+
+## Una idea importante para recordar
+
+El mini‑RSA que habéis utilizado en esta misión es una **simulación educativa**.  
+Os ha servido para aprender, experimentar y comprender un proceso, pero **no está pensado para proteger información real**.
+
+Por eso, una de las conclusiones más importantes de esta WebQuest es que aprender sobre tecnología también significa aprender a usarla con **responsabilidad, sentido crítico y respeto por la privacidad**.
+
+---
+
+## Lo que realmente habéis conseguido
+
+Al terminar esta misión, no solo habéis construido un pequeño criptosistema en la web. También habéis sido capaces de:
+
+- interpretar un reto matemático en un contexto real;
+- seguir un procedimiento paso a paso;
+- comprobar si un resultado era correcto;
+- utilizar herramientas digitales con una finalidad concreta;
+- explicar con claridad lo que habéis aprendido;
+- y reflexionar sobre la seguridad digital y el uso responsable de la información.
+
+---
+
+## Para seguir pensando…
+
+Antes de cerrar esta misión, podéis quedaros con esta pregunta:
+
+> **Si las matemáticas ayudan a proteger mensajes, ¿en qué otros aspectos de vuestra vida diaria creéis que están presentes sin que se vean a simple vista?**
+
+Porque muchas veces las matemáticas no están solo en los números: también están en las decisiones, en la tecnología, en la organización y en la forma en que resolvemos problemas.
+
+---
+
+## Enhorabuena, equipo
+
+Habéis superado la misión.  
+Habéis observado como personas espía, probado como personas hacker, organizado como responsables de seguridad y construido como personas programadoras.
+
+Ahora sabéis que una caja fuerte digital no se abre solo con una clave:  
+también se abre con **curiosidad, razonamiento, cooperación y ganas de aprender**.
+
+> **La misión termina aquí, pero la pregunta sigue abierta, ¿qué otras puertas podrán abriros las matemáticas a partir de ahora?**

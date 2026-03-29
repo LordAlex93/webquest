@@ -1,0 +1,283 @@
+---
+title: "Playground RSA (paso a paso)"
+
+lang: es
+mathjax: true
+format:
+  live-html:
+    number-sections: true
+    toc: true
+    toc-location: right
+    toc-title: "Contenidos"
+    toc-depth: 3
+    code-tools: false
+    css: ../styles.css
+
+---
+
+::: {.callout-warning}
+**Aviso ético.** Este mini‑RSA es **educativo**: usa primos pequeños y no es seguro fuera del aula.  
+No cifres datos personales reales.
+:::
+
+> Si el botón **Run** tarda, está cargando Python (Pyodide) en tu navegador.
+
+# Setup mínimo
+
+::: {.callout-note title="¿Qué hace este bloque?"}
+
+Carga utilidades mínimas: `gcd` (máximo común divisor), una función `assert_eq` para pequeñas comprobaciones y una lista de **primos pequeños** para inspirarte. No necesitas editarlo.
+:::
+
+```{pyodide}
+#| label: setup-minimo
+#| edit: false
+#| autorun: true
+from math import gcd
+
+# Para pruebas rápidas
+def assert_eq(a, b, msg=""):
+    if a != b:
+        raise AssertionError(msg or f"Esperado {a} == {b}")
+    print("OK")
+
+# Algunos primos pequeños por si quieres inspiración
+SMALL_PRIMES = [11, 13, 17, 19, 23, 29, 31, 37, 41]
+```
+
+# Criba de Eratóstenes → lista de primos hasta $n$
+
+::: {.callout-note title="Tu objetivo"}
+  
+Implementa `criba_eratostenes(n)` que **devuelva la lista de primos** $\le n$. Solo necesitas tachar múltiplos hasta $\lfloor \sqrt{n} \rfloor$. Después, verifica tu función con la prueba incluida.
+:::
+
+```{pyodide}
+# TODO: implementa la criba (puedes reciclar tu versión optimizada)
+# Debe devolver una lista con los primos <= n
+
+def criba_eratostenes(n):
+    if n < 2:
+        return []
+    primos = [True] * (n + 1)
+    primos[0] = primos[1] = False
+    for p in range(2, int(n**0.5) + 1):
+        if primos[p]:
+            for i in range(p*p, n + 1, p):
+                primos[i] = False
+    return [i for i, es in enumerate(primos) if es]
+
+# Comprobación mínima
+assert_eq(criba_eratostenes(30), [2, 3, 5, 7, 11, 13, 17, 19, 23, 29])
+```
+
+# Elige $p$ y $q$ y construye $n$ y $\varphi(n)$
+
+::: {.callout-note title="Tu objetivo"}
+ 
+1. Genera `lista_primos = criba_eratostenes(n_limite)` y **elige** $p$ y $q$ **distintos**.  
+2. Calcula $n = pq$ y $\varphi(n) = (p-1)(q-1)$.  
+3. Comenta por qué crees que **acertar con p y q** influye en los mensajes que caben (cifrado por caracteres).
+:::
+```{pyodide}
+# EDITA AQUÍ tus primos (puedes cambiar n_limite)
+n_limite = 200
+lista_primos = criba_eratostenes(n_limite)
+
+```
+
+```{pyodide}
+# Elige p y q (distintos). Por ejemplo:
+p, q = 17, 23   # <-- cámbialos por otros de tu lista anterior
+
+if p == q:
+    raise ValueError("p y q deben ser primos distintos")
+
+n = p * q
+phi = (p - 1) * (q - 1)
+
+print("p, q:", p, q)
+print("n:", n)
+print("φ(n):", phi)
+```
+
+# Euclides extendido → inverso $d$ de $e$ (mód $\varphi(n)$)
+
+::: {.callout-note title="Tu objetivo"}
+ 
+1. Implementa **`egcd(a,b)`** y **`modinv(a,m)`**.  
+2. **Elige** $e$ de tu lista de primos de forma que $\gcd(e,\varphi(n))=1$.  
+3. Calcula **$d$** como el **inverso de** $e$ **mód** $\varphi(n)$.  
+4. Comprueba con un ejemplo que $ed \equiv 1 \pmod{\varphi(n)}$.
+:::
+
+```{pyodide}
+# TODO: implementa egcd(a,b) y modinv(a,m)
+
+def egcd(a, b):
+    if b == 0:
+        return (a, 1, 0)
+    g, x1, y1 = egcd(b, a % b)
+    return (g, y1, x1 - (a // b) * y1)
+
+def modinv(a, m):
+    g, x, _ = egcd(a, m)
+    if g != 1:
+        raise ValueError("No existe inverso")
+    return x % m
+```
+```{pyodide}
+# Prueba clásica de inverso
+a, m = 11, 26
+assert_eq(modinv(a, m), 19, "El inverso de 11 mod 26 debería ser 19")
+
+# Elige e: primo y coprimo con φ(n)
+candidatos_e = [x for x in lista_primos if 1 < x < phi and gcd(x, phi) == 1]
+
+# Elige tú el e que prefieras de la lista
+print("Candidatos a e:", candidatos_e[:10], "...")
+e = candidatos_e[0]  # <-- cámbialo si quieres
+
+# Calcula d
+d = modinv(e, phi)
+
+print("e:", e)
+print("d:", d)
+```
+```{pyodide}
+# Comprobación
+assert_eq((e * d) % phi, 1, "Debe cumplirse e*d ≡ 1 (mod φ(n))")
+```
+# Cifrado **numérico**: $m \to c$ y $c \to m$
+
+::: {.callout-note title="Tu objetivo"}
+ 
+Escribir **`enc_int(m, pub)`** y **`dec_int(c, priv)`** usando `pow(base, exp, mod)`. Recuerda la restricción $0 \le m < n$. Verifica que **recuperas** $m$.
+:::
+
+```{pyodide}
+# TODO: define enc_int y dec_int
+
+def enc_int(m, pub):
+    n, e = pub
+    if not (0 <= m < n):
+        raise ValueError("El mensaje m debe cumplir 0 <= m < n")
+    return pow(m, e, n)
+
+def dec_int(c, priv):
+    n, d = priv
+    return pow(c, d, n)
+
+pub, priv = (n, e), (n, d)
+
+# Prueba rápida
+m = 123
+c = enc_int(m, pub)
+rec = dec_int(c, priv)
+
+print("m -> c -> m:", m, "->", c, "->", rec)
+assert_eq(rec, m, "Debe recuperarse m")
+```
+
+# Texto por caracteres: `t2i/i2t` y `enc_text/dec_text`
+
+::: {.callout-note title="Tu objetivo"}
+ 
+1. Crear **`t2i`** y **`i2t`** para convertir texto↔números (códigos Unicode).  
+2. Implementar **`enc_text`**/**`dec_text`** cifrando **carácter a carácter** con tus `enc_int/dec_int`.  
+3. Si aparece el error “**carácter ≥ n**”, reflexiona qué hacer: ¿**p, q** mayores? ¿mensajes más simples?
+:::
+
+```{pyodide}
+# TODO: funciones de conversión y cifrado de texto
+
+def t2i(s):
+    return [ord(ch) for ch in s]
+
+def i2t(lst):
+    return "".join(chr(x) for x in lst)
+
+def enc_text(s, pub):
+    nums = t2i(s)
+    n, _ = pub
+    if any(x >= n for x in nums):
+        raise ValueError("Algún carácter del mensaje es ≥ n. Usa primos algo mayores o mensaje más simple.")
+    return [enc_int(x, pub) for x in nums]
+
+def dec_text(lst, priv):
+    return i2t([dec_int(x, priv) for x in lst])
+```
+```{pyodide}
+mensaje = "Hola 2ESO!"   # cámbialo
+C = enc_text(mensaje, pub)
+R = dec_text(C, priv)
+
+print("Cifrado:", C)
+print("Descifrado:", R)
+```
+
+::: {.callout-warning}
+**Pista importante**  
+Si aparece el error “Algún carácter del mensaje es ≥ n”, eso significa que tu $n$ es demasiado pequeño para alguno de los códigos del texto. Tienes dos opciones:
+
+- Elegir $p$ y $q$ más grandes.
+- Usar un mensaje más simple (caracteres con códigos más pequeños).
+:::
+
+# Firma y verificación (didácticas)
+
+::: {.callout-note title="Tu objetivo"}
+ 
+Simular la **idea** de firma: calcula un “**resumen**” del mensaje con un **hash ingenuo** (suma de códigos) y:
+
+- **firma**: $\text{firma} = h^{d} \bmod n$
+- **verificación**: $h' = \text{firma}^{e} \bmod n$
+
+Comprueba que $h' = h$.
+
+> Esto es solo didáctico; en la vida real se usan funciones hash criptográficas y padding seguro.
+:::
+
+```{pyodide}
+# Hash didáctico: suma de códigos (NO para uso real)
+
+def hash(s, n):
+    return sum(ord(ch) for ch in s) % n
+
+h = hash(mensaje, n)
+firma = pow(h, d, n)      # firmar con d
+verif = pow(firma, e, n)  # verificar con e
+
+print("Resumen (toy):", h)
+print("Verificación:", verif, "->", "OK" if verif == h else "FALLO")
+```
+# Retos y casos límite
+
+::: {.callout-note title="Ideas para profundizar"}
+
+- Cambia **$p$**, **$q$** y **$e$** (mantén $\gcd(e,\varphi(n))=1$). Comprueba que **$d$** cambia y que todo sigue funcionando.
+  ```{pyodide}
+  # Prueba aquí
+  ```
+- Prueba con **mensajes** que contengan caracteres no ASCII básico y razona por qué **$n$** debe ser suficientemente grande para el cifrado por caracteres.
+  ```{pyodide}
+  # Prueba aquí
+  ```
+- Demuestra numéricamente que para varios **$m$** se verifica $m^{ed} \equiv m\,\bmod\; n$.
+    ```{pyodide}
+  # Prueba aquí
+  ```
+- (Avanzado) reescribe `enc_text/dec_text` por **bloques** de 2 caracteres (o más) y explica ventajas e inconvenientes.
+    ```{pyodide}
+  # Prueba aquí
+  ```
+:::
+
+::: {.callout-tip title="Resumen matemático"}
+
+1. **Criba** para primos → eliges $p, q$.  
+2. $n = pq$, $\varphi(n) = (p-1)(q-1)$.  
+3. Eliges $e$ con $\gcd(e,\varphi(n)) = 1$.  
+4. Hallas $d$ con **Euclides extendido**: $ed \equiv 1 \bmod \varphi(n)$.  
+5. Cifras/descifras con `pow(base, exp, mod)`.
+:::

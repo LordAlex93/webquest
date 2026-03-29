@@ -1,0 +1,821 @@
+[
+  {
+    "objectID": "webquest-rsa/playground.html",
+    "href": "webquest-rsa/playground.html",
+    "title": "Playground RSA (paso a paso)",
+    "section": "",
+    "text": "Advertencia\n\n\n\nAviso ético. Este mini‑RSA es educativo: usa primos pequeños y no es seguro fuera del aula.\nNo cifres datos personales reales.\n\n\n\nSi el botón Run tarda, está cargando Python (Pyodide) en tu navegador.\n\n\n1 Setup mínimo\n\n\n\n\n\n\n¿Qué hace este bloque?\n\n\n\nCarga utilidades mínimas: gcd (máximo común divisor), una función assert_eq para pequeñas comprobaciones y una lista de primos pequeños para inspirarte. No necesitas editarlo.\n\n\n\n\n\n\n\n\n\n\n2 Criba de Eratóstenes → lista de primos hasta \\(n\\)\n\n\n\n\n\n\nTu objetivo\n\n\n\nImplementa criba_eratostenes(n) que devuelva la lista de primos \\(\\le n\\). Solo necesitas tachar múltiplos hasta \\(\\lfloor \\sqrt{n} \\rfloor\\). Después, verifica tu función con la prueba incluida.\n\n\n\n\n\n\n\n\n\n\n3 Elige \\(p\\) y \\(q\\) y construye \\(n\\) y \\(\\varphi(n)\\)\n\n\n\n\n\n\nTu objetivo\n\n\n\n\nGenera lista_primos = criba_eratostenes(n_limite) y elige \\(p\\) y \\(q\\) distintos.\n\nCalcula \\(n = pq\\) y \\(\\varphi(n) = (p-1)(q-1)\\).\n\nComenta por qué crees que acertar con p y q influye en los mensajes que caben (cifrado por caracteres).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4 Euclides extendido → inverso \\(d\\) de \\(e\\) (mód \\(\\varphi(n)\\))\n\n\n\n\n\n\nTu objetivo\n\n\n\n\nImplementa egcd(a,b) y modinv(a,m).\n\nElige \\(e\\) de tu lista de primos de forma que \\(\\gcd(e,\\varphi(n))=1\\).\n\nCalcula \\(d\\) como el inverso de \\(e\\) mód \\(\\varphi(n)\\).\n\nComprueba con un ejemplo que \\(ed \\equiv 1 \\pmod{\\varphi(n)}\\).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n5 Cifrado numérico: \\(m \\to c\\) y \\(c \\to m\\)\n\n\n\n\n\n\nTu objetivo\n\n\n\nEscribir enc_int(m, pub) y dec_int(c, priv) usando pow(base, exp, mod). Recuerda la restricción \\(0 \\le m &lt; n\\). Verifica que recuperas \\(m\\).\n\n\n\n\n\n\n\n\n\n\n6 Texto por caracteres: t2i/i2t y enc_text/dec_text\n\n\n\n\n\n\nTu objetivo\n\n\n\n\nCrear t2i y i2t para convertir texto↔︎números (códigos Unicode).\n\nImplementar enc_text/dec_text cifrando carácter a carácter con tus enc_int/dec_int.\n\nSi aparece el error “carácter ≥ n”, reflexiona qué hacer: ¿p, q mayores? ¿mensajes más simples?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAdvertencia\n\n\n\nPista importante\nSi aparece el error “Algún carácter del mensaje es ≥ n”, eso significa que tu \\(n\\) es demasiado pequeño para alguno de los códigos del texto. Tienes dos opciones:\n\nElegir \\(p\\) y \\(q\\) más grandes.\nUsar un mensaje más simple (caracteres con códigos más pequeños).\n\n\n\n\n\n7 Firma y verificación (didácticas)\n\n\n\n\n\n\nTu objetivo\n\n\n\nSimular la idea de firma: calcula un “resumen” del mensaje con un hash ingenuo (suma de códigos) y:\n\nfirma: \\(\\text{firma} = h^{d} \\bmod n\\)\nverificación: \\(h' = \\text{firma}^{e} \\bmod n\\)\n\nComprueba que \\(h' = h\\).\n\nEsto es solo didáctico; en la vida real se usan funciones hash criptográficas y padding seguro.\n\n\n\n\n\n\n\n\n\n\n\n8 Retos y casos límite\n\n\n\n\n\n\nIdeas para profundizar\n\n\n\n\nCambia \\(p\\), \\(q\\) y \\(e\\) (mantén \\(\\gcd(e,\\varphi(n))=1\\)). Comprueba que \\(d\\) cambia y que todo sigue funcionando.\n\n\n\n\n\n\nPrueba con mensajes que contengan caracteres no ASCII básico y razona por qué \\(n\\) debe ser suficientemente grande para el cifrado por caracteres.\n\n\n\n\n\n\nDemuestra numéricamente que para varios \\(m\\) se verifica \\(m^{ed} \\equiv m\\,\\bmod\\; n\\).\n\n\n\n\n\n\n(Avanzado) reescribe enc_text/dec_text por bloques de 2 caracteres (o más) y explica ventajas e inconvenientes.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nResumen matemático\n\n\n\n\nCriba para primos → eliges \\(p, q\\).\n\n\\(n = pq\\), \\(\\varphi(n) = (p-1)(q-1)\\).\n\nEliges \\(e\\) con \\(\\gcd(e,\\varphi(n)) = 1\\).\n\nHallas \\(d\\) con Euclides extendido: \\(ed \\equiv 1 \\bmod \\varphi(n)\\).\n\nCifras/descifras con pow(base, exp, mod)."
+  },
+  {
+    "objectID": "webquest-rsa/creditos.html",
+    "href": "webquest-rsa/creditos.html",
+    "title": "Créditos y licencias",
+    "section": "",
+    "text": "La presente WebQuest ha sido diseñada, redactada, desarrollada y coordinada por:\nAlejandro Muñoz Azaustre   https://orcid.org/0009-0004-1843-5958 ."
+  },
+  {
+    "objectID": "webquest-rsa/creditos.html#autoría-y-coordinación",
+    "href": "webquest-rsa/creditos.html#autoría-y-coordinación",
+    "title": "Créditos y licencias",
+    "section": "",
+    "text": "La presente WebQuest ha sido diseñada, redactada, desarrollada y coordinada por:\nAlejandro Muñoz Azaustre   https://orcid.org/0009-0004-1843-5958 ."
+  },
+  {
+    "objectID": "webquest-rsa/creditos.html#elaboración-de-contenidos",
+    "href": "webquest-rsa/creditos.html#elaboración-de-contenidos",
+    "title": "Créditos y licencias",
+    "section": "Elaboración de contenidos",
+    "text": "Elaboración de contenidos\nLos textos, actividades, materiales didácticos, recursos de apoyo, estructura de navegación y propuestas de trabajo incluidas en este sitio han sido elaborados por el autor de la WebQuest, salvo aquellos recursos externos que se citan expresamente."
+  },
+  {
+    "objectID": "webquest-rsa/creditos.html#recursos-externos",
+    "href": "webquest-rsa/creditos.html#recursos-externos",
+    "title": "Créditos y licencias",
+    "section": "Recursos externos",
+    "text": "Recursos externos\nAlgunos de los materiales audiovisuales enlazados en esta WebQuest proceden de YouTube y pertenecen a sus respectivas autorías. Su inclusión responde exclusivamente a una finalidad educativa y de apoyo al aprendizaje.\nEn todos los casos, se reconoce la autoría de dichos recursos mediante la referencia o el enlace correspondiente a la fuente original."
+  },
+  {
+    "objectID": "webquest-rsa/creditos.html#licencia-de-los-contenidos-didácticos",
+    "href": "webquest-rsa/creditos.html#licencia-de-los-contenidos-didácticos",
+    "title": "Créditos y licencias",
+    "section": "Licencia de los contenidos didácticos",
+    "text": "Licencia de los contenidos didácticos\nSalvo indicación expresa en sentido contrario, los contenidos originales de esta WebQuest se comparten bajo la licencia:\nCreative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)\nEsta licencia permite compartir y adaptar los materiales con fines no comerciales, siempre que se reconozca adecuadamente la autoría, se indique si se han realizado modificaciones y las obras derivadas se distribuyan bajo la misma licencia."
+  },
+  {
+    "objectID": "webquest-rsa/creditos.html#licencia-del-código",
+    "href": "webquest-rsa/creditos.html#licencia-del-código",
+    "title": "Créditos y licencias",
+    "section": "Licencia del código",
+    "text": "Licencia del código\nEn caso de incluirse ejemplos, fragmentos o desarrollos de código, estos podrán quedar sujetos a una licencia específica de software libre, diferenciada de la licencia de los contenidos didácticos. A tal efecto, podrá adoptarse una licencia de tipo MIT o GPL-3.0, según se determine expresamente."
+  },
+  {
+    "objectID": "webquest-rsa/creditos.html#observación-sobre-materiales-de-terceros",
+    "href": "webquest-rsa/creditos.html#observación-sobre-materiales-de-terceros",
+    "title": "Créditos y licencias",
+    "section": "Observación sobre materiales de terceros",
+    "text": "Observación sobre materiales de terceros\nLos materiales de terceros enlazados o citados en esta WebQuest conservan su propia autoría y sus condiciones de uso. En consecuencia, no quedan comprendidos en la licencia aplicable a los contenidos originales del sitio, salvo que se indique expresamente lo contrario."
+  },
+  {
+    "objectID": "webquest-rsa/creditos.html#reconocimiento-de-autoría",
+    "href": "webquest-rsa/creditos.html#reconocimiento-de-autoría",
+    "title": "Créditos y licencias",
+    "section": "Reconocimiento de autoría",
+    "text": "Reconocimiento de autoría\nSe solicita a quienes reutilicen o adapten los materiales originales de esta WebQuest que citen adecuadamente la autoría y respeten las condiciones de uso y licencia aquí indicadas."
+  },
+  {
+    "objectID": "webquest-rsa/tarea.html",
+    "href": "webquest-rsa/tarea.html",
+    "title": "Vuestra misión final",
+    "section": "",
+    "text": "Ahora que ya sabéis cuál es el reto, toca pasar a la acción.\nTrabajaréis en equipo para construir, probar y explicar una pequeña caja fuerte digital utilizando un mini‑RSA educativo dentro de esta WebQuest. No se trata solo de hacer cálculos: vuestra misión será también comprender el proceso, comprobar que funciona y explicarlo con claridad.\n\n\n\nA lo largo de la WebQuest deberéis:\n\ninvestigar cómo pueden utilizarse las matemáticas para proteger un mensaje;\ntrabajar con ejemplos guiados para entender el procedimiento;\nprobar un sistema sencillo de cifrado y descifrado;\ncomprobar qué ocurre en cada paso;\ny preparar una explicación final para compartir lo aprendido.\n\n\n\n\n\nAl terminar, cada equipo elaborará un producto final breve en uno de estos formatos:\n\nuna presentación,\nuna infografía,\no un cartel digital.\n\nEn ese producto tendréis que demostrar que sois capaces de:\n\n\nContar con vuestras palabras qué problema intenta resolver la criptografía y por qué internet necesita proteger mensajes y datos.\n\n\n\nPresentar un ejemplo sencillo en el que se vea cómo se cifra y cómo se descifra un mensaje usando el mini‑RSA de la WebQuest.\n\n\n\nDescribir, paso a paso, qué habéis hecho y qué idea matemática hay detrás del proceso.\n\n\n\nExplicar de forma sencilla por qué el procedimiento permite recuperar el mensaje original en el ejemplo trabajado.\n\n\n\nDejar claro que este mini‑RSA es una simulación educativa y no un sistema de seguridad real, y añadir una breve reflexión sobre privacidad y uso responsable de la tecnología.\n\n\n\n\n\nVuestro trabajo final debe incluir:\n\nun título;\nuna explicación breve del reto;\nal menos un ejemplo completo;\nuna explicación ordenada del proceso;\nuna conclusión final;\ny una advertencia clara de que el mini‑RSA es solo para aprender.\n\n\n\n\n\nPara superar con éxito esta tarea, vuestro equipo deberá:\n\ntrabajar de forma cooperativa;\nrepartir responsabilidades;\ncuidar la presentación del trabajo;\nusar lenguaje claro y matemático cuando sea necesario;\nrevisar los resultados antes de entregarlos;\ny respetar siempre las normas de uso responsable de la información.\n\n\n\n\n\nOs ayudará mucho si vuestro producto final:\n\nestá bien organizado;\nusa ejemplos claros y sencillos;\nexplica cada paso con orden;\nevita copiar y pegar sin comprender;\ny demuestra que habéis entendido lo que hacéis, no solo que habéis seguido instrucciones.\n\n\n\n\n\nAntes de entregar vuestro trabajo, comprobad si podéis responder sí a estas preguntas:\n\n¿Hemos explicado cuál era la misión?\n¿Hemos incluido un ejemplo de cifrado y descifrado?\n¿Hemos explicado el proceso paso a paso?\n¿Hemos dicho por qué funciona nuestro ejemplo?\n¿Hemos dejado claro que es una simulación educativa?\n¿Nuestro trabajo está claro, ordenado y bien presentado?\n\n\n\n\n\nNo se trata de construir un sistema de seguridad real, sino de aprender cómo las matemáticas pueden ayudar a proteger información.\nLo importante no será solo llegar al resultado, sino también entender el proceso, comprobarlo y saber explicarlo.\n\nVuestra misión no termina cuando el mensaje se cifra. Termina cuando sois capaces de demostrar que entendéis cómo y por qué funciona."
+  },
+  {
+    "objectID": "webquest-rsa/tarea.html#qué-tendréis-que-hacer",
+    "href": "webquest-rsa/tarea.html#qué-tendréis-que-hacer",
+    "title": "Vuestra misión final",
+    "section": "",
+    "text": "A lo largo de la WebQuest deberéis:\n\ninvestigar cómo pueden utilizarse las matemáticas para proteger un mensaje;\ntrabajar con ejemplos guiados para entender el procedimiento;\nprobar un sistema sencillo de cifrado y descifrado;\ncomprobar qué ocurre en cada paso;\ny preparar una explicación final para compartir lo aprendido."
+  },
+  {
+    "objectID": "webquest-rsa/tarea.html#producto-final",
+    "href": "webquest-rsa/tarea.html#producto-final",
+    "title": "Vuestra misión final",
+    "section": "",
+    "text": "Al terminar, cada equipo elaborará un producto final breve en uno de estos formatos:\n\nuna presentación,\nuna infografía,\no un cartel digital.\n\nEn ese producto tendréis que demostrar que sois capaces de:\n\n\nContar con vuestras palabras qué problema intenta resolver la criptografía y por qué internet necesita proteger mensajes y datos.\n\n\n\nPresentar un ejemplo sencillo en el que se vea cómo se cifra y cómo se descifra un mensaje usando el mini‑RSA de la WebQuest.\n\n\n\nDescribir, paso a paso, qué habéis hecho y qué idea matemática hay detrás del proceso.\n\n\n\nExplicar de forma sencilla por qué el procedimiento permite recuperar el mensaje original en el ejemplo trabajado.\n\n\n\nDejar claro que este mini‑RSA es una simulación educativa y no un sistema de seguridad real, y añadir una breve reflexión sobre privacidad y uso responsable de la tecnología."
+  },
+  {
+    "objectID": "webquest-rsa/tarea.html#qué-debéis-incluir-obligatoriamente",
+    "href": "webquest-rsa/tarea.html#qué-debéis-incluir-obligatoriamente",
+    "title": "Vuestra misión final",
+    "section": "",
+    "text": "Vuestro trabajo final debe incluir:\n\nun título;\nuna explicación breve del reto;\nal menos un ejemplo completo;\nuna explicación ordenada del proceso;\nuna conclusión final;\ny una advertencia clara de que el mini‑RSA es solo para aprender."
+  },
+  {
+    "objectID": "webquest-rsa/tarea.html#condiciones-de-la-misión",
+    "href": "webquest-rsa/tarea.html#condiciones-de-la-misión",
+    "title": "Vuestra misión final",
+    "section": "",
+    "text": "Para superar con éxito esta tarea, vuestro equipo deberá:\n\ntrabajar de forma cooperativa;\nrepartir responsabilidades;\ncuidar la presentación del trabajo;\nusar lenguaje claro y matemático cuando sea necesario;\nrevisar los resultados antes de entregarlos;\ny respetar siempre las normas de uso responsable de la información."
+  },
+  {
+    "objectID": "webquest-rsa/tarea.html#pistas-para-hacerlo-bien",
+    "href": "webquest-rsa/tarea.html#pistas-para-hacerlo-bien",
+    "title": "Vuestra misión final",
+    "section": "",
+    "text": "Os ayudará mucho si vuestro producto final:\n\nestá bien organizado;\nusa ejemplos claros y sencillos;\nexplica cada paso con orden;\nevita copiar y pegar sin comprender;\ny demuestra que habéis entendido lo que hacéis, no solo que habéis seguido instrucciones."
+  },
+  {
+    "objectID": "webquest-rsa/tarea.html#checklist-final-del-equipo",
+    "href": "webquest-rsa/tarea.html#checklist-final-del-equipo",
+    "title": "Vuestra misión final",
+    "section": "",
+    "text": "Antes de entregar vuestro trabajo, comprobad si podéis responder sí a estas preguntas:\n\n¿Hemos explicado cuál era la misión?\n¿Hemos incluido un ejemplo de cifrado y descifrado?\n¿Hemos explicado el proceso paso a paso?\n¿Hemos dicho por qué funciona nuestro ejemplo?\n¿Hemos dejado claro que es una simulación educativa?\n¿Nuestro trabajo está claro, ordenado y bien presentado?"
+  },
+  {
+    "objectID": "webquest-rsa/tarea.html#consejo-final",
+    "href": "webquest-rsa/tarea.html#consejo-final",
+    "title": "Vuestra misión final",
+    "section": "",
+    "text": "No se trata de construir un sistema de seguridad real, sino de aprender cómo las matemáticas pueden ayudar a proteger información.\nLo importante no será solo llegar al resultado, sino también entender el proceso, comprobarlo y saber explicarlo.\n\nVuestra misión no termina cuando el mensaje se cifra. Termina cuando sois capaces de demostrar que entendéis cómo y por qué funciona."
+  },
+  {
+    "objectID": "webquest-rsa/intro-python.html",
+    "href": "webquest-rsa/intro-python.html",
+    "title": "Introducción a Python",
+    "section": "",
+    "text": "Objetivo\n\n\n\nEntender los conceptos básicos de Python y de aritmética modular necesarios para trabajar un criptosistema RSA."
+  },
+  {
+    "objectID": "webquest-rsa/intro-python.html#qué-vamos-a-aprender",
+    "href": "webquest-rsa/intro-python.html#qué-vamos-a-aprender",
+    "title": "Introducción a Python",
+    "section": "1 ¿Qué vamos a aprender?",
+    "text": "1 ¿Qué vamos a aprender?\n\n\n\n\n\n\nContenidos:\n\n\n\n\nMatemáticas mínimas: potencias, módulo e inverso modular.\n\nPython: variables y operadores básicos, operadores booleanos, funciones, listas y bucles."
+  },
+  {
+    "objectID": "webquest-rsa/intro-python.html#conceptos-matemáticos-básicos",
+    "href": "webquest-rsa/intro-python.html#conceptos-matemáticos-básicos",
+    "title": "Introducción a Python",
+    "section": "2 Conceptos matemáticos básicos",
+    "text": "2 Conceptos matemáticos básicos\n\n\n\n\n\n\nPotencias\n\n\n\nEn Python, las potencias se escriben de la forma a**b, que representa \\(a^b\\). Por ejemplo, \\(2^5\\) lo escribimos de la forma siguiente:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOperación módulo\n\n\n\nLa operación módulo devuelve el resto de dividir \\(a\\) entre \\(b\\). Por ejemplo, \\(17 \\bmod 5\\) en Python se escribe 17%5:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInverso modular\n\n\n\nx es inverso de a mod n si \\[a \\cdot x \\equiv 1 \\; (\\text{mód } n)\\] (existe si gcd(a, n) = 1)."
+  },
+  {
+    "objectID": "webquest-rsa/intro-python.html#python-básico",
+    "href": "webquest-rsa/intro-python.html#python-básico",
+    "title": "Introducción a Python",
+    "section": "3 Python básico",
+    "text": "3 Python básico\n\n\n\n\n\n\nVariables y tipos\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOperadores útiles\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nConvertir letras ↔︎ números\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFunciones\n\n\n\nEn Python, definimos funciones con def nombre(...):.\n\n\n\n\n\n\nEjemplo sin parámetro\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEjemplo con parámetro\n\n\n\n\n\n\n\n\n\n\n\nComo ves, si queremos devolver un valor usamos return.\n\n\n\n3.1 Herramientas útiles en Python: print, booleanos y bucles\n\n\n\n\n\n\nprint: mostrar resultados\n\n\n\nEn Python usamos print() para ver lo que está pasando.\n\n\n\n\n\n\n\nTrucos útiles:\n\nPuedes imprimir varias cosas separadas por comas: print(\"n =\", 391, \"e =\", 3).\nPuedes personalizar el separador (sep) y el final (end):\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVariables booleanas: True / False\n\n\n\nUna variable booleana solo puede valer:\n\nTrue (verdadero)\nFalse (falso)\n\n\nOjo: en Python se escriben con mayúscula: True y False.\n\n\n¿Cómo se obtienen?\nNormalmente salen de comparaciones:\n\n\n\n\n\n\n\n\nOperadores lógicos\nSirven para “juntar” condiciones:\n\n\n\n\n\n\n\n\n\n\n\n3.2 Listas en Python\n\n\n\n\n\n\n¿Qué es una lista?\n\n\n\nUna lista es una colección ordenada de elementos.\n\nPuede guardar números, texto, o incluso otras listas.\nEl orden importa.\nSe escribe con corchetes: [...].\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nÍndices: cómo acceder a un elemento\n\n\n\nEn Python, las posiciones empiezan en 0.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTrozos (slicing): coger una parte\n\n\n\nCon lista[inicio:fin] obtienes un “trozo”.\n\ninicio incluido\nfin NO incluido\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTamaño de una lista: len()\n\n\n\nlen(lista) devuelve cuántos elementos tiene.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAñadir y modificar elementos\n\n\n\n\nAñadir al final: append()\n\n\n\n\n\n\n\n\nAñadir varios: extend()\n\n\n\n\n\n\n\n\nInsertar en una posición: insert()\n\n\n\n\n\n\n\n\nModificar un elemento por índice:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBorrar elementos (con cuidado)\n\n\n\n\nBorrar por índice: pop()\n\n\n\n\n\n\n\n\nBorrar por valor: remove()\n\n\n\n\n\n\n\n\nVaciar la lista: clear()\n\n\n\n\n\n\n\nSi intentas borrar algo que no existe, Python da error.\n\n\n\n\n\n\n3.3 Bucles for y while\n\n\n\n\n\n\nBucle for: repetir un número de veces\n\n\n\nUn for repite algo un número de veces o recorre una lista.\nLa estructura general:\nfor i in range(inicio, fin, paso):\n    ...\n\nRepetir 5 veces:\n\n\n\n\n\n\nrange(5) genera: 0, 1, 2, 3, 4.\n\n\nRepetir de 1 a 5:\n\n\n\n\n\n\n\n\nRecorrer una lista\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBucle while: repetir mientras se cumpla una condición\n\n\n\nUn while repite mientras una condición sea True.\nLa estructura general:\nwhile condicion:\n    ...\nEjemplo: contar hasta 5\n\n\n\n\n\n\n\n¿Por qué es importante cambiar algo dentro?\nPorque si la condición nunca cambia… ¡bucle infinito!\n\n\n\n\n\n\n\n\n\n\n\n3.4 Construcción de listas\n\n\n\n\n\n\nA mano\n\n\n\nSe escribe directamente con corchetes:\n\n\n\n\n\n\nTambién puedes repetir valores con *:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nrange()\n\n\n\nrange() genera una secuencia de enteros. Para convertirla en lista usamos list(...).\n\n\n\n\n\n\n\nRecuerda: range(inicio, fin, paso) y el fin no se incluye.\n\n\n\n\n\n\n\n\n\nCon un bucle y append()\n\n\n\nConstruimos una lista poco a poco:\n\n\n\n\n\n\nEsta forma es muy clara para empezar.\n\n\n\n\n\n\n\n\nListas por comprensión\n\n\n\nHace lo mismo que un for + append, pero en una sola línea.\n\n\n\n\n\n\nEste método se parece mucho a las matemáticas cuando se define una función con su dominio.\n\n\n\n\n\n\n\n\nA partir de texto: split()\n\n\n\nsplit() separa un texto en partes y devuelve una lista.\n\n\n\n\n\n\nSi quieres convertir a números:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\narange() (NumPy)\n\n\n\narange() pertenece a la librería NumPy. Se usa mucho en ciencia de datos.\n\nnp.arange(...) devuelve un array de NumPy, no una lista.\nSi necesitas una lista, convierte con list(...).\n\n\n\n\n\n\n\n\nNota: la primera vez que se importa NumPy en el navegador puede tardar unos segundos en cargarse."
+  },
+  {
+    "objectID": "webquest-rsa/intro-python.html#retos",
+    "href": "webquest-rsa/intro-python.html#retos",
+    "title": "Introducción a Python",
+    "section": "4 Retos",
+    "text": "4 Retos\n\n\n\n\n\n\nComprueba lo que has aprendido\n\n\n\n\nCrea una función es_par que sea True si n es par, y False si es impar. Pista: n % 2 == 0.\n\n\n\n\n\n\nHaz un for que imprima los números del 1 al 10.\n\n\n\n\n\n\nHaz un while que vaya sumando 1 a un contador hasta llegar a 10.\n\n\n\n\n\n\nDada una lista [2, 4, 6, 8], crea otra con el doble de cada número recorriéndola con for.\n\n\n\n\n\n\nCambia el último elemento de una lista por otro (usando [-1])."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html",
+    "href": "webquest-rsa/proceso.html",
+    "title": "Proceso",
+    "section": "",
+    "text": "Durante esta misión trabajaréis en equipos de cuatro personas.\nCada integrante asumirá un rol importante para ayudar a construir la caja fuerte digital del equipo.\n\n\n\n\nSe encarga de observar, investigar y buscar pistas en los materiales de la WebQuest.\nSu tarea principal es ayudar al equipo a comprender la información clave y localizar las ideas más importantes.\n\n\n\nSe encarga de poner a prueba el sistema, comprobar ejemplos y detectar errores o fallos.\nSu tarea es revisar si el procedimiento funciona y avisar al equipo cuando algo no encaje.\n\n\n\nSe encarga de controlar que el proceso sea correcto y seguro.\nDebe comprobar que el equipo sigue bien los pasos, que entiende lo que hace y que recuerda siempre que este mini‑RSA es solo una simulación educativa.\n\n\n\nSe encarga de usar las herramientas digitales, explorar las actividades interactivas y ayudar al equipo en la parte práctica relacionada con Python o con el simulador de la web.\n\n\n\n\n\n\nImportante\n\n\n\nAunque cada integrante tenga una responsabilidad principal, todo el equipo debe participar en todas las tareas y entender el proceso completo.\n\n\n\n\n\n\n\n\nA lo largo de la misión consultaréis distintos apartados del menú “Construye tu criptosistema RSA”:\n\n¿Qué es la criptografía?\nIntroducción a Python\nPrimos y Python\nPrograma tu criptosistema\n\nCada recurso os ayudará en una parte distinta del proceso.\nNo hace falta memorizar todo, lo importante es leer, comprender, probar y sacar conclusiones en equipo."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#cómo-vais-a-trabajar",
+    "href": "webquest-rsa/proceso.html#cómo-vais-a-trabajar",
+    "title": "Proceso",
+    "section": "",
+    "text": "Durante esta misión trabajaréis en equipos de cuatro personas.\nCada integrante asumirá un rol importante para ayudar a construir la caja fuerte digital del equipo.\n\n\n\n\nSe encarga de observar, investigar y buscar pistas en los materiales de la WebQuest.\nSu tarea principal es ayudar al equipo a comprender la información clave y localizar las ideas más importantes.\n\n\n\nSe encarga de poner a prueba el sistema, comprobar ejemplos y detectar errores o fallos.\nSu tarea es revisar si el procedimiento funciona y avisar al equipo cuando algo no encaje.\n\n\n\nSe encarga de controlar que el proceso sea correcto y seguro.\nDebe comprobar que el equipo sigue bien los pasos, que entiende lo que hace y que recuerda siempre que este mini‑RSA es solo una simulación educativa.\n\n\n\nSe encarga de usar las herramientas digitales, explorar las actividades interactivas y ayudar al equipo en la parte práctica relacionada con Python o con el simulador de la web.\n\n\n\n\n\n\nImportante\n\n\n\nAunque cada integrante tenga una responsabilidad principal, todo el equipo debe participar en todas las tareas y entender el proceso completo."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#recursos-que-vais-a-utilizar",
+    "href": "webquest-rsa/proceso.html#recursos-que-vais-a-utilizar",
+    "title": "Proceso",
+    "section": "",
+    "text": "A lo largo de la misión consultaréis distintos apartados del menú “Construye tu criptosistema RSA”:\n\n¿Qué es la criptografía?\nIntroducción a Python\nPrimos y Python\nPrograma tu criptosistema\n\nCada recurso os ayudará en una parte distinta del proceso.\nNo hace falta memorizar todo, lo importante es leer, comprender, probar y sacar conclusiones en equipo."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#objetivo",
+    "href": "webquest-rsa/proceso.html#objetivo",
+    "title": "Proceso",
+    "section": "Objetivo",
+    "text": "Objetivo\nDescubrir qué problema intenta resolver la criptografía y por qué las matemáticas pueden ayudar a proteger mensajes."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#qué-tenéis-que-hacer",
+    "href": "webquest-rsa/proceso.html#qué-tenéis-que-hacer",
+    "title": "Proceso",
+    "section": "Qué tenéis que hacer",
+    "text": "Qué tenéis que hacer\n\nLeed la introducción de la WebQuest y comentad en equipo cuál es vuestra misión.\nEntrad en el apartado “¿Qué es la criptografía?”.\nBuscad respuestas a estas preguntas:\n\n¿Qué significa cifrar un mensaje?\n¿Por qué hace falta proteger información?\n¿Qué diferencia hay entre esconder un mensaje y protegerlo con un sistema?\n\nAnotad las ideas más importantes en vuestro cuaderno o en vuestra ficha de equipo.\nCompartid una conclusión breve con el resto de la clase o con otra pareja de trabajo."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#qué-debe-hacer-cada-rol",
+    "href": "webquest-rsa/proceso.html#qué-debe-hacer-cada-rol",
+    "title": "Proceso",
+    "section": "Qué debe hacer cada rol",
+    "text": "Qué debe hacer cada rol\n\nLa persona espía localiza la información clave.\nLa persona hacker plantea dudas y pone a prueba las explicaciones.\nLa persona jefa de seguridad comprueba que el equipo entiende la misión.\nLa persona programadora navega por el recurso y localiza el apartado correcto."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#antes-de-pasar-al-siguiente-paso-comprobad-que",
+    "href": "webquest-rsa/proceso.html#antes-de-pasar-al-siguiente-paso-comprobad-que",
+    "title": "Proceso",
+    "section": "Antes de pasar al siguiente paso, comprobad que…",
+    "text": "Antes de pasar al siguiente paso, comprobad que…\n\nSabéis explicar qué es la criptografía con vuestras palabras.\nEntendéis por qué internet necesita proteger mensajes y datos.\nHabéis anotado al menos tres ideas importantes."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#objetivo-1",
+    "href": "webquest-rsa/proceso.html#objetivo-1",
+    "title": "Proceso",
+    "section": "Objetivo",
+    "text": "Objetivo\nComprender las ideas matemáticas que necesitaréis para construir vuestro mini‑RSA."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#qué-tenéis-que-hacer-1",
+    "href": "webquest-rsa/proceso.html#qué-tenéis-que-hacer-1",
+    "title": "Proceso",
+    "section": "Qué tenéis que hacer",
+    "text": "Qué tenéis que hacer\n\nConsultad el apartado “Primos y Python”.\nRevisad los ejemplos y actividades relacionadas con:\n\nnúmeros primos,\nrelaciones numéricas,\npatrones,\ny comprobaciones sencillas.\n\nIdentificad qué papel pueden tener los números primos dentro de un sistema de cifrado.\nSi lo necesitáis, consultad también “Introducción a Python” para entender mejor el entorno de trabajo.\nCompletad una pequeña tabla o esquema con:\n\nqué habéis probado,\nqué habéis descubierto,\ny qué dudas os quedan."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#qué-debe-hacer-cada-rol-1",
+    "href": "webquest-rsa/proceso.html#qué-debe-hacer-cada-rol-1",
+    "title": "Proceso",
+    "section": "Qué debe hacer cada rol",
+    "text": "Qué debe hacer cada rol\n\nLa persona espía busca ejemplos útiles y pistas matemáticas.\nLa persona hacker prueba resultados y detecta posibles errores.\nLa persona jefa de seguridad ordena la información importante.\nLa persona programadora explora el entorno digital y ayuda al equipo a interpretar las actividades."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#pista",
+    "href": "webquest-rsa/proceso.html#pista",
+    "title": "Proceso",
+    "section": "Pista",
+    "text": "Pista\nNo hace falta entender todos los detalles técnicos desde el principio.\nEn esta fase lo importante es reconocer que hay ciertos números y ciertas operaciones que hacen posible el sistema."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#antes-de-pasar-al-siguiente-paso-comprobad-que-1",
+    "href": "webquest-rsa/proceso.html#antes-de-pasar-al-siguiente-paso-comprobad-que-1",
+    "title": "Proceso",
+    "section": "Antes de pasar al siguiente paso, comprobad que…",
+    "text": "Antes de pasar al siguiente paso, comprobad que…\n\nSabéis qué son los números primos y por qué aparecen en esta WebQuest.\nHabéis identificado ideas matemáticas importantes para el proceso.\nTenéis anotadas vuestras conclusiones en un esquema o una ficha."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#objetivo-2",
+    "href": "webquest-rsa/proceso.html#objetivo-2",
+    "title": "Proceso",
+    "section": "Objetivo",
+    "text": "Objetivo\nConstruir, probar y comprobar vuestro mini‑RSA educativo dentro de la web."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#qué-tenéis-que-hacer-2",
+    "href": "webquest-rsa/proceso.html#qué-tenéis-que-hacer-2",
+    "title": "Proceso",
+    "section": "Qué tenéis que hacer",
+    "text": "Qué tenéis que hacer\n\nEntrad en “Programa tu criptosistema”.\nSeguid el procedimiento guiado paso a paso.\nConstruid vuestro mini‑RSA con los datos que os proponga la actividad o con los valores sencillos que se indiquen.\nProbad a:\n\ncifrar un mensaje,\ndescifrarlo,\ncomprobar si recuperáis el original.\n\nSi el resultado no sale como esperabais, revisad el proceso y localizad el error.\nGuardad un ejemplo completo, porque os servirá para el producto final."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#qué-debe-hacer-cada-rol-2",
+    "href": "webquest-rsa/proceso.html#qué-debe-hacer-cada-rol-2",
+    "title": "Proceso",
+    "section": "Qué debe hacer cada rol",
+    "text": "Qué debe hacer cada rol\n\nLa persona espía observa cada paso y anota qué ocurre.\nLa persona hacker prueba el sistema y comprueba si funciona.\nLa persona jefa de seguridad verifica que el procedimiento esté bien hecho.\nLa persona programadora maneja la parte interactiva y ayuda a ejecutar el proceso."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#muy-importante",
+    "href": "webquest-rsa/proceso.html#muy-importante",
+    "title": "Proceso",
+    "section": "Muy importante",
+    "text": "Muy importante\nEste mini‑RSA es una simulación educativa.\nNo está pensado para proteger información real. Su objetivo es ayudaros a comprender cómo pueden combinarse matemáticas, lógica y tecnología en un sistema de cifrado."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#antes-de-pasar-al-siguiente-paso-comprobad-que-2",
+    "href": "webquest-rsa/proceso.html#antes-de-pasar-al-siguiente-paso-comprobad-que-2",
+    "title": "Proceso",
+    "section": "Antes de pasar al siguiente paso, comprobad que…",
+    "text": "Antes de pasar al siguiente paso, comprobad que…\n\nHabéis cifrado y descifrado al menos un ejemplo.\nSabéis explicar qué habéis hecho en cada fase.\nHabéis guardado un ejemplo claro para usarlo en vuestra presentación o infografía."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#objetivo-3",
+    "href": "webquest-rsa/proceso.html#objetivo-3",
+    "title": "Proceso",
+    "section": "Objetivo",
+    "text": "Objetivo\nExplicar con claridad lo aprendido y demostrar que entendéis cómo funciona vuestro mini‑RSA."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#qué-tenéis-que-hacer-3",
+    "href": "webquest-rsa/proceso.html#qué-tenéis-que-hacer-3",
+    "title": "Proceso",
+    "section": "Qué tenéis que hacer",
+    "text": "Qué tenéis que hacer\n\nPreparad vuestro producto final en uno de estos formatos:\n\npresentación,\ninfografía,\ncartel digital.\n\nIncluid obligatoriamente:\n\nun título,\nuna explicación breve del reto,\nun ejemplo de cifrado y descifrado,\nuna explicación del proceso,\nuna conclusión final,\ny una advertencia de que se trata de una simulación educativa.\n\nRevisad que vuestro trabajo sea claro, ordenado y comprensible.\nPreparad una exposición breve para compartirla con la clase."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#qué-debe-hacer-cada-rol-3",
+    "href": "webquest-rsa/proceso.html#qué-debe-hacer-cada-rol-3",
+    "title": "Proceso",
+    "section": "Qué debe hacer cada rol",
+    "text": "Qué debe hacer cada rol\n\nLa persona espía selecciona la información más importante.\nLa persona hacker revisa que el ejemplo esté bien comprobado.\nLa persona jefa de seguridad se asegura de que aparezca la advertencia sobre el uso exclusivamente educativo.\nLa persona programadora ayuda a montar el producto final con apoyo digital."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#antes-de-entregar-comprobad-que",
+    "href": "webquest-rsa/proceso.html#antes-de-entregar-comprobad-que",
+    "title": "Proceso",
+    "section": "Antes de entregar, comprobad que…",
+    "text": "Antes de entregar, comprobad que…\n\nHabéis explicado la misión con claridad.\nHabéis incluido un ejemplo completo.\nHabéis explicado cómo funciona vuestro mini‑RSA.\nHabéis dejado claro que no sirve para proteger datos reales.\nTodo el equipo entiende el trabajo que presenta."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#si-os-bloqueáis-durante-la-misión",
+    "href": "webquest-rsa/proceso.html#si-os-bloqueáis-durante-la-misión",
+    "title": "Proceso",
+    "section": "Si os bloqueáis durante la misión…",
+    "text": "Si os bloqueáis durante la misión…\nSi en algún momento vuestro equipo se queda atascado:\n\nvolved al recurso anterior;\nreleed el ejemplo guiado;\npreguntad a otra pareja qué estrategia ha seguido;\nrevisad los pasos uno a uno;\ny recordad que equivocarse forma parte del proceso de aprendizaje.\n\nNo se trata de hacerlo todo a la primera, sino de comprender, probar, corregir y mejorar."
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#checklist-final-del-equipo",
+    "href": "webquest-rsa/proceso.html#checklist-final-del-equipo",
+    "title": "Proceso",
+    "section": "Checklist final del equipo",
+    "text": "Checklist final del equipo\nAntes de dar la misión por terminada, comprobad si podéis responder sí a estas preguntas:\n\n¿Entendemos qué es la criptografía?\n¿Sabemos qué papel tienen los números primos y las operaciones del proceso?\n¿Hemos construido y probado nuestro mini‑RSA?\n¿Podemos explicar un ejemplo completo?\n¿Hemos trabajado en equipo y respetado los roles?\n¿Nuestro producto final está claro, bien presentado y completo?"
+  },
+  {
+    "objectID": "webquest-rsa/proceso.html#misión-cumplida",
+    "href": "webquest-rsa/proceso.html#misión-cumplida",
+    "title": "Proceso",
+    "section": "Misión cumplida",
+    "text": "Misión cumplida\nSi habéis llegado hasta aquí, ya no sois solo un equipo que ha seguido instrucciones.\nAhora sois un equipo capaz de usar las matemáticas para entender cómo se protege un mensaje, comprobar un procedimiento y explicarlo con claridad.\n\n\n\n\n\n\nFin de la misión\n\n\n\nLa misión termina cuando podéis demostrar no solo que el sistema funciona, sino también que entendéis por qué."
+  },
+  {
+    "objectID": "webquest-rsa/primos.html",
+    "href": "webquest-rsa/primos.html",
+    "title": "Primalidad y Python",
+    "section": "",
+    "text": "En esta sesión vamos a trabajar con números primos y Python (ejecución en la propia página).\n\n\n\nEn primer lugar, construimos una lista de números hasta donde queremos cribar.\n\n\n\n\n\n\n\n\nProcedemos a cribar los números tomando el primero y tachando sus múltiplos, luego el siguiente que no hayamos tachado y así hasta concluir la lista.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAtención\n\n\n\nEsta versión hace demasiadas iteraciones; podemos optimizarla.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEjercicio\n\n\n\nInvestiga por qué no es necesario cribar hasta el número \\(n\\) y nos basta con quedarnos en \\(\\lfloor\\sqrt n \\rfloor\\).\n\n\n\n\n\n\n\n\nSolución\n\n\n\n\n\nPorque si un número es compuesto, algún factor es \\(\\le \\sqrt{n}\\). Una vez descartados los múltiplos de los primos hasta \\(\\sqrt{n}\\), el resto ya son primos.\n\n\n\n\n\n\n\nSi una lista es “relativamente pequeña”, podemos usar la criba y consultar:\n\n\n\n\n\n\nCuando el rango es grande o hacemos muchas consultas, conviene usar SymPy:\n\n\n\n\n\n\nPodemos envolverlo:\n\n\n\n\n\n\n\n\n\nLa utilidad que requerimos de los números primos, en esta situación, es descomponer números en factores primos.\n\n\nPara saber si un número es factor de otro, la definición dice: la división es exacta si el resto es 0.\n\nOperador resto: %\nOperador cociente entero: //\n\n\n\n\n\n\n\nEjercicio\n\n\n\nCalcula el cociente y el resto de dividir 341 entre 7.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEjercicio\n\n\n\nComprueba ahora que los resultados son correctos.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPregunta\n\n\n\n¿Qué hemos obtenido en la celda anterior?\n\n\n\n\n\n\n\n\nEjercicio\n\n\n\nDeduce por qué no necesitamos buscar más divisores viendo la lista obtenida en fact1(n).\n\n\nPara quedarnos con factores primos, filtramos con sp.isprime:\n\n\n\n\n\n\n\n\n\n\n\n\nPregunta\n\n\n\nA la vista de este resultado, ¿qué no estamos teniendo en cuenta?\n\n\n\n\n\n\n\n\n\n\n\nFormateo bonito:\n\n\n\n\n\n\n\n\n\nSymPy ofrece la función factorint(n):\n\n\n\n\n\n\n\n\n\nCon SymPy:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEjercicio\n\n\n\nCalcula el MCD de varios pares y comenta patrones que observes."
+  },
+  {
+    "objectID": "webquest-rsa/primos.html#primalidad",
+    "href": "webquest-rsa/primos.html#primalidad",
+    "title": "Primalidad y Python",
+    "section": "",
+    "text": "En esta sesión vamos a trabajar con números primos y Python (ejecución en la propia página).\n\n\n\nEn primer lugar, construimos una lista de números hasta donde queremos cribar.\n\n\n\n\n\n\n\n\nProcedemos a cribar los números tomando el primero y tachando sus múltiplos, luego el siguiente que no hayamos tachado y así hasta concluir la lista.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAtención\n\n\n\nEsta versión hace demasiadas iteraciones; podemos optimizarla.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEjercicio\n\n\n\nInvestiga por qué no es necesario cribar hasta el número \\(n\\) y nos basta con quedarnos en \\(\\lfloor\\sqrt n \\rfloor\\).\n\n\n\n\n\n\n\n\nSolución\n\n\n\n\n\nPorque si un número es compuesto, algún factor es \\(\\le \\sqrt{n}\\). Una vez descartados los múltiplos de los primos hasta \\(\\sqrt{n}\\), el resto ya son primos."
+  },
+  {
+    "objectID": "webquest-rsa/primos.html#comprobar-si-un-número-es-primo",
+    "href": "webquest-rsa/primos.html#comprobar-si-un-número-es-primo",
+    "title": "Primalidad y Python",
+    "section": "",
+    "text": "Si una lista es “relativamente pequeña”, podemos usar la criba y consultar:\n\n\n\n\n\n\nCuando el rango es grande o hacemos muchas consultas, conviene usar SymPy:\n\n\n\n\n\n\nPodemos envolverlo:"
+  },
+  {
+    "objectID": "webquest-rsa/primos.html#factorización",
+    "href": "webquest-rsa/primos.html#factorización",
+    "title": "Primalidad y Python",
+    "section": "",
+    "text": "La utilidad que requerimos de los números primos, en esta situación, es descomponer números en factores primos.\n\n\nPara saber si un número es factor de otro, la definición dice: la división es exacta si el resto es 0.\n\nOperador resto: %\nOperador cociente entero: //\n\n\n\n\n\n\n\nEjercicio\n\n\n\nCalcula el cociente y el resto de dividir 341 entre 7.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEjercicio\n\n\n\nComprueba ahora que los resultados son correctos.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPregunta\n\n\n\n¿Qué hemos obtenido en la celda anterior?\n\n\n\n\n\n\n\n\nEjercicio\n\n\n\nDeduce por qué no necesitamos buscar más divisores viendo la lista obtenida en fact1(n).\n\n\nPara quedarnos con factores primos, filtramos con sp.isprime:\n\n\n\n\n\n\n\n\n\n\n\n\nPregunta\n\n\n\nA la vista de este resultado, ¿qué no estamos teniendo en cuenta?\n\n\n\n\n\n\n\n\n\n\n\nFormateo bonito:\n\n\n\n\n\n\n\n\n\nSymPy ofrece la función factorint(n):\n\n\n\n\n\n\n\n\n\nCon SymPy:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEjercicio\n\n\n\nCalcula el MCD de varios pares y comenta patrones que observes."
+  },
+  {
+    "objectID": "webquest-rsa/docente.html#identificación-de-la-propuesta",
+    "href": "webquest-rsa/docente.html#identificación-de-la-propuesta",
+    "title": "Guía docente",
+    "section": "1. Identificación de la propuesta",
+    "text": "1. Identificación de la propuesta\n\nEtapa: Educación Secundaria Obligatoria\n\nCurso: 2.º de ESO\n\nMateria: Matemáticas\n\nTemporalización: 4 sesiones\n\nTipo de propuesta: Situación de aprendizaje / WebQuest\n\nTítulo del reto: Misión: ¡Construid una caja fuerte digital!"
+  },
+  {
+    "objectID": "webquest-rsa/docente.html#contextualización",
+    "href": "webquest-rsa/docente.html#contextualización",
+    "title": "Guía docente",
+    "section": "2. Contextualización",
+    "text": "2. Contextualización\nEsta propuesta se dirige al alumnado de 2.º de ESO dentro de la materia de Matemáticas, y se plantea como una situación de aprendizaje breve, motivadora y contextualizada. El hilo conductor es la idea de que internet utiliza matemáticas para proteger mensajes, contraseñas y datos, lo que permite acercar al alumnado a conceptos matemáticos mediante un reto cercano, actual y significativo.\nLa WebQuest invita al alumnado a investigar, experimentar, resolver problemas y comunicar conclusiones a partir de una versión didáctica y simplificada de un sistema de cifrado. El interés no reside en un tratamiento técnico avanzado de la criptografía, sino en usar ese contexto como vehículo para desarrollar razonamiento matemático, pensamiento computacional y reflexión crítica sobre la seguridad digital."
+  },
+  {
+    "objectID": "webquest-rsa/docente.html#justificación-didáctica",
+    "href": "webquest-rsa/docente.html#justificación-didáctica",
+    "title": "Guía docente",
+    "section": "3. Justificación didáctica",
+    "text": "3. Justificación didáctica\nLa propuesta parte de una idea esencial: muchas tecnologías cotidianas se apoyan en las matemáticas. Mostrar esta conexión ayuda a mejorar la motivación del alumnado y a dar sentido a aprendizajes que a veces se perciben como abstractos.\nA través de esta WebQuest, el alumnado trabaja con: - relaciones numéricas, - restos y patrones, - estrategias de resolución de problemas, - comprobación de resultados, - secuenciación de procedimientos, - explicación de procesos matemáticos, - y uso responsable de herramientas digitales.\nEl contexto de la “caja fuerte digital” permite integrar el aprendizaje matemático con el trabajo cooperativo, la competencia digital y la educación en ciudadanía responsable. Además, la propuesta favorece un enfoque activo, manipulativo y gradual, adecuado para 2.º de ESO.\n\nNota de adecuación curricular: el mini‑RSA se aborda exclusivamente como una simulación educativa. Los elementos más avanzados se presentan de forma guiada, intuitiva y simplificada, priorizando la comprensión del proceso y su valor como aplicación contextualizada frente al formalismo matemático."
+  },
+  {
+    "objectID": "webquest-rsa/docente.html#marco-normativo-y-encaje-curricular",
+    "href": "webquest-rsa/docente.html#marco-normativo-y-encaje-curricular",
+    "title": "Guía docente",
+    "section": "4. Marco normativo y encaje curricular",
+    "text": "4. Marco normativo y encaje curricular\nEsta guía se diseña tomando como referencia la normativa vigente para la Educación Secundaria Obligatoria en Andalucía. El currículo andaluz de ESO se regula mediante el Decreto 102/2023, de 9 de mayo, y su desarrollo se concreta en la Orden de 30 de mayo de 2023, que establece, entre otros aspectos, la estructura curricular, la evaluación, la atención a la diversidad y el diseño de situaciones de aprendizaje.\nLa Orden indica expresamente que las programaciones didácticas deben concretar competencias específicas, criterios de evaluación, saberes básicos y situaciones de aprendizaje, integrando estos elementos en propuestas adaptadas al contexto del alumnado.\nLa normativa andaluza también subraya que la etapa debe desarrollarse desde un enfoque competencial, inclusivo y basado en los principios del Diseño Universal para el Aprendizaje (DUA), con atención a la diversidad, a las diferencias individuales y a la igualdad de oportunidades.\nAsimismo, el currículo andaluz incorpora el perfil competencial al término de 2.º de ESO, como referente para orientar el nivel de desempeño esperado en ese momento de la etapa."
+  },
+  {
+    "objectID": "webquest-rsa/docente.html#sentido-curricular-de-la-propuesta-en-2.º-eso",
+    "href": "webquest-rsa/docente.html#sentido-curricular-de-la-propuesta-en-2.º-eso",
+    "title": "Guía docente",
+    "section": "5. Sentido curricular de la propuesta en 2.º ESO",
+    "text": "5. Sentido curricular de la propuesta en 2.º ESO\nLa WebQuest se integra en Matemáticas de 2.º de ESO como una situación de aprendizaje contextualizada que moviliza saberes del curso a través de un reto significativo. El peso curricular no se sitúa en la criptografía como contenido especializado, sino en el desarrollo de capacidades matemáticas propias del nivel:\n\ninterpretar y resolver problemas,\nreconocer patrones y relaciones numéricas,\njustificar procedimientos,\nrepresentar y comunicar ideas matemáticas,\nsecuenciar pasos de forma lógica,\nutilizar herramientas digitales con finalidad educativa.\n\nEn este sentido, la propuesta conecta especialmente con las competencias específicas de Matemáticas de 2.º curso relacionadas con resolución de problemas, análisis de soluciones, formulación de conjeturas, pensamiento computacional, conexiones entre ideas matemáticas, representación, comunicación y destrezas personales y sociales."
+  },
+  {
+    "objectID": "webquest-rsa/docente.html#producto-final",
+    "href": "webquest-rsa/docente.html#producto-final",
+    "title": "Guía docente",
+    "section": "6. Producto final",
+    "text": "6. Producto final\nEl producto final consistirá en una presentación breve, cartel digital o infografía, elaborada en parejas o pequeños grupos, en la que el alumnado deberá:\n\nexplicar qué problema intentan resolver las matemáticas en el contexto de la seguridad digital;\nmostrar, con un ejemplo sencillo, cómo funciona un procedimiento básico de cifrado y descifrado en la WebQuest;\ndescribir qué papel juegan los restos, los patrones numéricos y la secuencia de pasos;\njustificar por qué el procedimiento utilizado “funciona” en el ejemplo trabajado;\nseñalar que el mini‑RSA empleado tiene una finalidad exclusivamente educativa;\nreflexionar sobre privacidad, uso responsable y seguridad digital."
+  },
+  {
+    "objectID": "webquest-rsa/docente.html#objetivos-didácticos",
+    "href": "webquest-rsa/docente.html#objetivos-didácticos",
+    "title": "Guía docente",
+    "section": "7. Objetivos didácticos",
+    "text": "7. Objetivos didácticos\nAl finalizar esta situación de aprendizaje, el alumnado será capaz de:\n\nComprender que las matemáticas tienen aplicaciones reales en la protección de la información digital.\nResolver problemas sencillos relacionados con restos, relaciones numéricas y patrones.\nAplicar estrategias de tanteo, comprobación, descomposición y búsqueda de regularidades.\nSeguir y explicar un procedimiento secuenciado paso a paso.\nUtilizar herramientas digitales sencillas para experimentar y verificar resultados.\nComunicar con claridad procesos, resultados y conclusiones matemáticas.\nParticipar activamente en tareas cooperativas, asumiendo responsabilidades dentro del grupo.\nReflexionar sobre el uso responsable de la tecnología y sobre la diferencia entre una simulación didáctica y una herramienta de seguridad real.\nValorar el error como parte del aprendizaje y mejorar progresivamente sus estrategias de resolución."
+  },
+  {
+    "objectID": "webquest-rsa/docente.html#competencias-clave-implicadas",
+    "href": "webquest-rsa/docente.html#competencias-clave-implicadas",
+    "title": "Guía docente",
+    "section": "8. Competencias clave implicadas",
+    "text": "8. Competencias clave implicadas\nLa propuesta contribuye especialmente al desarrollo de las siguientes competencias clave:\n\nCompetencia matemática y competencia en ciencia, tecnología e ingeniería (STEM), al trabajar la resolución de problemas, el razonamiento y la interpretación de relaciones numéricas.\nCompetencia digital (CD), al utilizar recursos interactivos y herramientas web con una finalidad educativa.\nCompetencia en comunicación lingüística (CCL), al explicar procedimientos, argumentar decisiones y presentar conclusiones.\nCompetencia personal, social y de aprender a aprender (CPSAA), al promover la autorregulación, la perseverancia y la revisión del error.\nCompetencia ciudadana (CC), al analizar la protección de datos, la privacidad y el uso responsable de la información.\nCompetencia emprendedora (CE), al afrontar un reto abierto y elaborar un producto final cooperativo.\n\nEl currículo básico de segundo curso y la concreción andaluza organizan la materia desde competencias específicas, criterios y saberes básicos, con un enfoque claramente competencial."
+  },
+  {
+    "objectID": "webquest-rsa/docente.html#competencias-específicas-de-matemáticas-más-vinculadas",
+    "href": "webquest-rsa/docente.html#competencias-específicas-de-matemáticas-más-vinculadas",
+    "title": "Guía docente",
+    "section": "9. Competencias específicas de Matemáticas más vinculadas",
+    "text": "9. Competencias específicas de Matemáticas más vinculadas\nSin perjuicio de la concreción que realice cada departamento didáctico, esta situación de aprendizaje se relaciona especialmente con competencias específicas de Matemáticas de 2.º de ESO asociadas a:\n\ninterpretar, modelizar y resolver problemas;\nanalizar y valorar estrategias y soluciones;\nformular y comprobar conjeturas sencillas;\nutilizar principios del pensamiento computacional;\nreconocer conexiones entre ideas matemáticas;\nrepresentar y comunicar procesos matemáticos;\ndesarrollar destrezas personales y sociales vinculadas al trabajo matemático.\n\nEstas líneas de competencia aparecen en la organización curricular de Matemáticas para segundo curso dentro del marco LOMLOE."
+  },
+  {
+    "objectID": "webquest-rsa/docente.html#saberes-básicos-implicados",
+    "href": "webquest-rsa/docente.html#saberes-básicos-implicados",
+    "title": "Guía docente",
+    "section": "10. Saberes básicos implicados",
+    "text": "10. Saberes básicos implicados\nLa propuesta moviliza principalmente saberes básicos vinculados a:\n\n10.1. Sentido numérico\n\ndivisibilidad y relaciones numéricas;\noperaciones con números enteros;\npatrones y regularidades;\ncálculo y comprobación de resultados;\nuso del resto en contextos matemáticos sencillos.\n\n\n\n10.2. Resolución de problemas\n\ninterpretación de enunciados;\nselección de datos relevantes;\nensayo y error;\nbúsqueda de estrategias;\nverificación de resultados.\n\n\n\n10.3. Pensamiento computacional\n\ndescomposición de procesos en pasos;\nidentificación de patrones;\nsecuenciación lógica;\ntraducción de una idea matemática a un procedimiento.\n\n\n\n10.4. Representación y comunicación\n\nexplicación oral y escrita de procesos;\nuso de esquemas, tablas o ejemplos;\ncomunicación del razonamiento seguido.\n\n\n\n10.5. Sentido socioafectivo\n\nperseverancia;\naceptación del error;\ntrabajo cooperativo;\nconfianza progresiva en la resolución de tareas matemáticas."
+  },
+  {
+    "objectID": "webquest-rsa/docente.html#metodología",
+    "href": "webquest-rsa/docente.html#metodología",
+    "title": "Guía docente",
+    "section": "11. Metodología",
+    "text": "11. Metodología\nLa metodología se basa en un enfoque:\n\nactivo, porque el alumnado investiga, prueba, resuelve y explica;\ncompetencial, porque integra saberes, procedimientos y actitudes;\ncontextualizado, porque parte de una situación cercana al mundo digital;\ncooperativo, porque combina momentos individuales con trabajo en parejas o grupos;\nguiado, porque el docente ofrece andamiaje, ejemplos y apoyo progresivo;\ninclusivo, porque contempla distintos ritmos, apoyos y niveles de complejidad.\n\nEl diseño de situaciones de aprendizaje forma parte del desarrollo curricular previsto por la normativa andaluza, que además insiste en atender a la diversidad, a las características personales del alumnado y a sus intereses.\nEl papel del docente será el de guía y mediador, proporcionando orientaciones, reformulando preguntas, ofreciendo ejemplos, acompañando la comprobación de resultados y facilitando la reflexión final."
+  },
+  {
+    "objectID": "webquest-rsa/docente.html#principios-pedagógicos-que-orientan-la-propuesta",
+    "href": "webquest-rsa/docente.html#principios-pedagógicos-que-orientan-la-propuesta",
+    "title": "Guía docente",
+    "section": "12. Principios pedagógicos que orientan la propuesta",
+    "text": "12. Principios pedagógicos que orientan la propuesta\nLa situación de aprendizaje se apoya en los siguientes principios:\n\naprendizaje significativo a partir de un contexto reconocible;\nconexión entre matemáticas y realidad;\ntrabajo de la competencia digital con sentido educativo;\nprotagonismo del alumnado en el proceso;\nintegración de la comunicación oral y escrita;\npresencia de tareas escalonadas y accesibles;\nvisión positiva del error como oportunidad de mejora;\ninclusión y participación de todo el alumnado.\n\nLa normativa andaluza establece expresamente que la etapa debe desarrollarse desde principios de inclusión, equidad, atención personalizada y DUA."
+  },
+  {
+    "objectID": "webquest-rsa/docente.html#organización-temporal-4-sesiones",
+    "href": "webquest-rsa/docente.html#organización-temporal-4-sesiones",
+    "title": "Guía docente",
+    "section": "13. Organización temporal (4 sesiones)",
+    "text": "13. Organización temporal (4 sesiones)\n\nSesión 1. Lanzamiento del reto y exploración inicial\nObjetivos de la sesión\n\nPresentar la misión.\nActivar conocimientos previos.\nRelacionar matemáticas y seguridad digital.\nIntroducir la idea de trabajar con restos, relaciones numéricas y patrones.\n\nDesarrollo\n\nPresentación de la WebQuest y del reto: “construir una caja fuerte digital”.\nConversación inicial sobre contraseñas, privacidad, mensajes y seguridad en internet.\nActividad diagnóstica breve sobre:\n\ndivisibilidad,\ncálculo con enteros,\nbúsqueda de patrones,\nresolución de pequeños retos numéricos.\n\nIntroducción guiada al uso de restos en ejemplos sencillos.\nPuesta en común de estrategias: cómo se ha pensado, cómo se ha comprobado y qué ha costado más.\n\nCierre\n\nElaboración de una primera idea de grupo: “¿cómo podrían ayudar las matemáticas a proteger un mensaje?”\n\n\n\n\nSesión 2. Estrategias matemáticas y procedimiento guiado\nObjetivos de la sesión\n\nTrabajar estrategias de resolución.\nComprender un procedimiento secuenciado.\nRelacionar cálculo, patrón y comprobación.\n\nDesarrollo\n\nRevisión breve de la sesión anterior.\nActividad guiada para seguir un procedimiento paso a paso con números pequeños.\nIdentificación de qué ocurre en cada fase:\n\nqué dato entra,\nqué operación se realiza,\nqué resultado se obtiene,\ncómo se comprueba.\n\nTrabajo por parejas con ejemplos similares.\nPuesta en común de errores frecuentes y estrategias útiles.\n\nCierre\n\nEsquema colectivo del procedimiento utilizado.\nRegistro en el cuaderno o ficha de trabajo.\n\n\n\n\nSesión 3. Mini‑RSA como simulación educativa\nObjetivos de la sesión\n\nAplicar un modelo simplificado de cifrado y descifrado.\nComprender la lógica del proceso de manera intuitiva.\nJustificar por qué el ejemplo funciona.\n\nDesarrollo\n\nPresentación del mini‑RSA como una simulación didáctica.\nResolución guiada de un ejemplo completo con números pequeños.\nTrabajo en parejas o grupos reducidos para repetir el proceso con nuevos ejemplos.\nComprobación de resultados:\n\n¿se recupera el mensaje?\n¿qué pasos son imprescindibles?\n¿por qué el procedimiento parece funcionar en este caso?\n\nReflexión sobre límites del modelo:\n\nno es seguridad real,\nes una simplificación escolar,\nsirve para aprender, no para proteger datos reales.\n\n\nCierre\n\nPreparación del contenido que se incluirá en el producto final.\n\n\n\n\nSesión 4. Aplicación digital, presentación y reflexión final\nObjetivos de la sesión\n\nUtilizar la WebQuest para experimentar con el procedimiento.\nComunicar lo aprendido.\nReflexionar sobre seguridad digital y uso responsable.\n\nDesarrollo\n\nUso de la propia web para probar ejemplos interactivos.\nElaboración del producto final:\n\npresentación,\ncartel digital,\ninfografía.\n\nExposición breve de los grupos.\nAutoevaluación y coevaluación.\nCierre final con reflexión compartida:\n\nqué hemos aprendido,\nqué papel tienen las matemáticas,\npor qué este mini‑RSA solo vale como modelo educativo.\n\n\nCierre\n\nSíntesis final del proyecto y recogida de impresiones."
+  },
+  {
+    "objectID": "webquest-rsa/docente.html#recursos-y-materiales",
+    "href": "webquest-rsa/docente.html#recursos-y-materiales",
+    "title": "Guía docente",
+    "section": "14. Recursos y materiales",
+    "text": "14. Recursos y materiales\n\nOrdenador o tableta con acceso a internet.\nWebQuest diseñada por el docente.\nPizarra o proyector.\nCuaderno o ficha de seguimiento.\nCalculadora, si se considera conveniente.\nPlantillas o guiones para el producto final.\nRecursos visuales de apoyo (esquemas, ejemplos, pasos del procedimiento)."
+  },
+  {
+    "objectID": "webquest-rsa/docente.html#agrupamientos",
+    "href": "webquest-rsa/docente.html#agrupamientos",
+    "title": "Guía docente",
+    "section": "15. Agrupamientos",
+    "text": "15. Agrupamientos\nSe combinarán distintos agrupamientos en función de la tarea:\n\ngran grupo para presentación, explicación y cierre;\ntrabajo individual para momentos de reflexión o comprobación;\nparejas para actividades guiadas;\ngrupos pequeños para la elaboración del producto final.\n\nEsta combinación busca favorecer la participación, el apoyo entre iguales y la adaptación a ritmos diversos."
+  },
+  {
+    "objectID": "webquest-rsa/docente.html#atención-a-la-diversidad-y-a-las-diferencias-individuales",
+    "href": "webquest-rsa/docente.html#atención-a-la-diversidad-y-a-las-diferencias-individuales",
+    "title": "Guía docente",
+    "section": "16. Atención a la diversidad y a las diferencias individuales",
+    "text": "16. Atención a la diversidad y a las diferencias individuales\nLa propuesta incorpora medidas de inclusión coherentes con el enfoque DUA y con la normativa andaluza sobre atención a la diversidad. La Orden de 30 de mayo de 2023 regula expresamente estos aspectos, y el Decreto 102/2023 sitúa la atención personalizada, la inclusión educativa y el DUA como principios de la etapa.\n\nMedidas previstas\n\nactividades graduadas con diferentes niveles de apoyo;\nejemplos resueltos paso a paso;\napoyos visuales y organizadores gráficos;\ninstrucciones breves y secuenciadas;\nagrupamientos flexibles;\nreparto de roles dentro del grupo;\nposibilidad de adaptar el producto final;\nacompañamiento más cercano del docente cuando sea necesario;\nénfasis en la comprensión del proceso antes que en el formalismo.\n\n\n\nMedidas específicas de acceso y participación\n\nlectura compartida de enunciados;\nreformulación oral de instrucciones;\napoyo en vocabulario matemático clave;\nuso de ejemplos manipulativos o visuales;\nampliación o reducción de la carga de tarea según necesidad;\nposibilidad de demostrar el aprendizaje mediante distintos formatos."
+  },
+  {
+    "objectID": "webquest-rsa/docente.html#integración-de-la-lectura-y-la-comunicación",
+    "href": "webquest-rsa/docente.html#integración-de-la-lectura-y-la-comunicación",
+    "title": "Guía docente",
+    "section": "17. Integración de la lectura y la comunicación",
+    "text": "17. Integración de la lectura y la comunicación\nLa normativa andaluza recuerda la importancia de incorporar la lectura planificada en la práctica docente a lo largo de la etapa, y subraya su valor didáctico y pedagógico dentro del desarrollo competencial.\nEn esta propuesta, la lectura y la comunicación se integran mediante: - lectura comprensiva de consignas y textos breves de contexto; - interpretación de instrucciones paso a paso; - explicación oral de procedimientos; - elaboración de textos breves para el producto final; - uso del lenguaje matemático en contextos significativos."
+  },
+  {
+    "objectID": "webquest-rsa/docente.html#evaluación",
+    "href": "webquest-rsa/docente.html#evaluación",
+    "title": "Guía docente",
+    "section": "18. Evaluación",
+    "text": "18. Evaluación\nLa evaluación será continua, formativa, criterial e integradora, en coherencia con lo establecido por la Orden andaluza para la etapa. La normativa señala que la evaluación del aprendizaje debe tomar como referentes las competencias específicas y los criterios de evaluación de las materias.\n\n18.1. Qué se evaluará\nSe valorará si el alumnado:\n\ninterpreta correctamente situaciones problemáticas sencillas;\norganiza datos y aplica estrategias adecuadas;\nreconoce relaciones numéricas, patrones o regularidades;\nsigue y explica procedimientos de forma ordenada;\ncomprueba resultados y detecta errores;\nusa de forma adecuada las herramientas digitales propuestas;\ncomunica con claridad el proceso seguido;\nparticipa activamente en el trabajo cooperativo;\nreflexiona sobre el carácter educativo del mini‑RSA y sobre el uso responsable de la tecnología.\n\n\n\n18.2. Instrumentos de evaluación\n\nobservación directa;\ntareas y ejercicios resueltos;\nficha o cuaderno de trabajo;\nproducto final;\nexposición oral;\nautoevaluación;\ncoevaluación.\n\n\n\n18.3. Momentos de evaluación\n\ninicial, para detectar ideas previas;\nprocesual, durante las actividades;\nfinal, a través del producto y la exposición."
+  },
+  {
+    "objectID": "webquest-rsa/docente.html#rúbrica-de-evaluación",
+    "href": "webquest-rsa/docente.html#rúbrica-de-evaluación",
+    "title": "Guía docente",
+    "section": "19. Rúbrica de evaluación",
+    "text": "19. Rúbrica de evaluación\nLa siguiente rúbrica permitirá valorar el grado de adquisición de los aprendizajes previstos en esta situación de aprendizaje, atendiendo tanto al proceso como al producto final. Su finalidad es orientar la evaluación de forma clara, continua y coherente con los objetivos didácticos de la propuesta.\n\n\n\n\n\n\n\n\n\n\nÁmbito de evaluación\nExcelente\nAdecuado\nEn proceso\nInicial\n\n\n\n\nA. Comprensión del problema y estrategia\nInterpreta con claridad la situación planteada, selecciona de forma adecuada los datos relevantes y aplica estrategias eficaces para avanzar en la resolución.\nComprende la mayor parte del problema y aplica estrategias apropiadas con apoyo puntual.\nComprende parcialmente la tarea y necesita bastante ayuda para organizar la información y avanzar en la resolución.\nPresenta dificultades importantes para entender la situación y elegir una estrategia adecuada.\n\n\nB. Procedimiento matemático\nSigue el proceso con orden, justifica los pasos realizados y comprueba correctamente los resultados obtenidos.\nRealiza el procedimiento de forma general correcta, aunque comete pequeños errores no determinantes.\nEjecuta algunos pasos del proceso, pero pierde coherencia o comete errores frecuentes que dificultan la resolución.\nNo logra seguir el procedimiento de forma funcional ni comprobar los resultados de manera adecuada.\n\n\nC. Comunicación matemática\nExplica con claridad, precisión y orden qué hace, cómo lo hace y por qué lo hace, utilizando un lenguaje comprensible y adecuado.\nComunica la idea general y los pasos principales de manera comprensible, aunque con menor precisión o profundidad.\nLa explicación resulta parcial, confusa o incompleta, y necesita apoyo para comunicar el proceso seguido.\nApenas consigue expresar el proceso realizado o sus explicaciones resultan muy limitadas.\n\n\nD. Uso de herramientas digitales\nUtiliza la WebQuest y los recursos digitales con autonomía, sentido y aprovechamiento adecuado de las herramientas disponibles.\nUsa correctamente los recursos digitales con poca ayuda y participa de forma funcional en las tareas propuestas.\nNecesita apoyo frecuente para manejar las herramientas y utilizar los recursos de forma eficaz.\nPresenta dificultades continuas para utilizar los recursos propuestos, incluso con ayuda.\n\n\nE. Trabajo cooperativo y actitud\nParticipa activamente, escucha, colabora con responsabilidad y asume de forma adecuada las tareas asignadas dentro del grupo.\nColabora de forma regular, mantiene una actitud adecuada y cumple con su parte del trabajo.\nSu participación es irregular o poco constante, y necesita apoyo para implicarse de manera sostenida en la tarea común.\nMuestra escasa implicación en el trabajo del grupo y presenta dificultades para colaborar de forma efectiva.\n\n\nF. Reflexión ética y seguridad digital\nDistingue claramente entre simulación educativa y seguridad real, y argumenta con criterio sobre privacidad, uso responsable y finalidad didáctica del mini‑RSA.\nReconoce el carácter educativo del mini‑RSA y la importancia del uso responsable de la tecnología.\nIdentifica algunos aspectos relacionados con la seguridad digital, pero con escasa profundidad o claridad.\nNo diferencia con claridad entre el modelo didáctico utilizado y un sistema real de seguridad."
+  },
+  {
+    "objectID": "webquest-rsa/docente.html#seguridad-y-uso-responsable",
+    "href": "webquest-rsa/docente.html#seguridad-y-uso-responsable",
+    "title": "Guía docente",
+    "section": "20. Seguridad y uso responsable",
+    "text": "20. Seguridad y uso responsable\nDurante el desarrollo de la WebQuest se seguirán estas normas:\n\nEl mini‑RSA utilizado tiene una finalidad exclusivamente educativa.\nNo se emplearán contraseñas reales, datos personales ni información sensible.\nLos ejemplos trabajarán con números pequeños y procedimientos simplificados.\nEl alumnado deberá respetar las fuentes, la autoría y las licencias de uso.\nSe fomentará una visión crítica sobre privacidad, ciberseguridad y tecnología."
+  },
+  {
+    "objectID": "webquest-rsa/docente.html#contribución-de-la-propuesta-al-currículo-de-2.º-de-eso",
+    "href": "webquest-rsa/docente.html#contribución-de-la-propuesta-al-currículo-de-2.º-de-eso",
+    "title": "Guía docente",
+    "section": "21. Contribución de la propuesta al currículo de 2.º de ESO",
+    "text": "21. Contribución de la propuesta al currículo de 2.º de ESO\nEsta situación de aprendizaje contribuye al desarrollo del currículo de Matemáticas de 2.º de ESO porque:\n\nactiva estrategias de resolución de problemas;\npromueve el razonamiento y la comprobación;\npermite reconocer patrones y conexiones;\nintroduce una secuenciación lógica cercana al pensamiento computacional;\nexige explicar y comunicar procesos;\ny favorece destrezas personales y sociales propias del aprendizaje matemático.\n\nEl enfoque resulta coherente con el marco LOMLOE y con la concreción curricular andaluza, que organiza el aprendizaje mediante competencias específicas, criterios de evaluación, saberes básicos y situaciones de aprendizaje."
+  },
+  {
+    "objectID": "webquest-rsa/docente.html#conclusión",
+    "href": "webquest-rsa/docente.html#conclusión",
+    "title": "Guía docente",
+    "section": "22. Conclusión",
+    "text": "22. Conclusión\nLa WebQuest Misión: ¡Construid una caja fuerte digital! ofrece una forma motivadora y contextualizada de trabajar Matemáticas en 2.º de ESO. A través de un reto cercano al mundo digital, el alumnado pone en juego estrategias matemáticas, razonamiento lógico, comunicación y pensamiento computacional, al tiempo que reflexiona sobre la privacidad y el uso responsable de la tecnología.\nLa propuesta no pretende convertir la criptografía en un contenido formal del curso, sino utilizarla como contexto didáctico para que las matemáticas se comprendan mejor, se vivan de forma más significativa y se conecten con problemas reales del mundo actual."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Misión: ¡Construid una caja fuerte digital!",
+    "section": "",
+    "text": "Cada día, internet protege mensajes, contraseñas y datos gracias a las matemáticas.\nEn esta WebQuest os convertiréis en un equipo de especialistas con una misión muy concreta:\n\nDescubrir cómo se puede cifrar un mensaje, construir un mini‑RSA y demostrar por qué funciona con ejemplos en la propia web.\n\nNo necesitaréis instalar nada.\nTrabajaréis con retos, ejemplos guiados, pruebas interactivas y explicaciones paso a paso hasta conseguir abrir y cerrar vuestra propia caja fuerte digital."
+  },
+  {
+    "objectID": "index.html#matemáticas-retos-y-seguridad-digital-en-una-webquest-interactiva",
+    "href": "index.html#matemáticas-retos-y-seguridad-digital-en-una-webquest-interactiva",
+    "title": "Misión: ¡Construid una caja fuerte digital!",
+    "section": "",
+    "text": "Cada día, internet protege mensajes, contraseñas y datos gracias a las matemáticas.\nEn esta WebQuest os convertiréis en un equipo de especialistas con una misión muy concreta:\n\nDescubrir cómo se puede cifrar un mensaje, construir un mini‑RSA y demostrar por qué funciona con ejemplos en la propia web.\n\nNo necesitaréis instalar nada.\nTrabajaréis con retos, ejemplos guiados, pruebas interactivas y explicaciones paso a paso hasta conseguir abrir y cerrar vuestra propia caja fuerte digital."
+  },
+  {
+    "objectID": "index.html#cuál-es-vuestra-misión",
+    "href": "index.html#cuál-es-vuestra-misión",
+    "title": "Misión: ¡Construid una caja fuerte digital!",
+    "section": "¿Cuál es vuestra misión?",
+    "text": "¿Cuál es vuestra misión?\nA lo largo de esta WebQuest tendréis que:\n\ninvestigar cómo pueden usarse las matemáticas para proteger información,\ntrabajar con restos, patrones y relaciones numéricas,\nseguir un procedimiento de cifrado y descifrado paso a paso,\nconstruir y probar un mini‑RSA en la web,\ny explicar con claridad cómo funciona y por qué."
+  },
+  {
+    "objectID": "index.html#reto-final",
+    "href": "index.html#reto-final",
+    "title": "Misión: ¡Construid una caja fuerte digital!",
+    "section": "Reto final",
+    "text": "Reto final\nAl terminar, vuestro equipo deberá presentar un pequeño producto final en el que demuestre que ha sido capaz de:\n\ncrear y probar un mini‑RSA educativo,\ncifrar y descifrar un mensaje sencillo,\nexplicar el proceso seguido,\ndistinguir entre una simulación escolar y un sistema real de seguridad."
+  },
+  {
+    "objectID": "index.html#qué-vais-a-aprender",
+    "href": "index.html#qué-vais-a-aprender",
+    "title": "Misión: ¡Construid una caja fuerte digital!",
+    "section": "¿Qué vais a aprender?",
+    "text": "¿Qué vais a aprender?\n\nA trabajar con congruencias y aritmética modular.\nA reconocer patrones y relaciones numéricas.\nA seguir un procedimiento matemático paso a paso.\nA experimentar con un mini‑RSA de forma guiada.\nA usar herramientas digitales para comprobar resultados.\nA comunicar ideas matemáticas con claridad y orden.\nA reflexionar sobre la privacidad y el uso responsable de la tecnología.\n\n\n\n\n\n\n\n\nRegla de oro\n\n\n\nEste mini‑RSA tiene una finalidad exclusivamente educativa.\nSirve para aprender cómo las matemáticas ayudan a proteger mensajes, pero no debe utilizarse para datos reales, contraseñas ni información personal."
+  },
+  {
+    "objectID": "index.html#antes-de-empezar",
+    "href": "index.html#antes-de-empezar",
+    "title": "Misión: ¡Construid una caja fuerte digital!",
+    "section": "Antes de empezar…",
+    "text": "Antes de empezar…\nPensad en esta pregunta:\n\nSi internet protege la información con matemáticas, ¿qué tipo de ideas numéricas creéis que hacen falta para conseguirlo?\n\nEsa será la primera pista para comenzar la misión."
+  },
+  {
+    "objectID": "index.html#preparados-para-abrir-la-caja-fuerte-digital",
+    "href": "index.html#preparados-para-abrir-la-caja-fuerte-digital",
+    "title": "Misión: ¡Construid una caja fuerte digital!",
+    "section": "¡Preparados para abrir la caja fuerte digital!",
+    "text": "¡Preparados para abrir la caja fuerte digital!\nVuestra misión comienza ahora.\nObservad, calculad, comprobad, explicad… y descubrid cómo las matemáticas pueden convertirse en una herramienta para proteger información."
+  },
+  {
+    "objectID": "webquest-rsa/intro.html",
+    "href": "webquest-rsa/intro.html",
+    "title": "Misión: ¡Construid una caja fuerte digital!",
+    "section": "",
+    "text": "Cada día, internet protege mensajes, contraseñas y datos gracias a las matemáticas.\nEn esta WebQuest os convertiréis en un equipo de especialistas con una misión muy concreta:\n\ndescubrir cómo se puede cifrar un mensaje, construir un mini‑RSA y demostrar por qué funciona con ejemplos en la propia web.\n\nNo necesitaréis instalar nada.\nTrabajaréis con retos, ejemplos guiados, pruebas interactivas y explicaciones paso a paso hasta conseguir abrir y cerrar vuestra propia caja fuerte digital."
+  },
+  {
+    "objectID": "webquest-rsa/intro.html#matemáticas-retos-y-seguridad-digital-en-una-webquest-interactiva",
+    "href": "webquest-rsa/intro.html#matemáticas-retos-y-seguridad-digital-en-una-webquest-interactiva",
+    "title": "Misión: ¡Construid una caja fuerte digital!",
+    "section": "",
+    "text": "Cada día, internet protege mensajes, contraseñas y datos gracias a las matemáticas.\nEn esta WebQuest os convertiréis en un equipo de especialistas con una misión muy concreta:\n\ndescubrir cómo se puede cifrar un mensaje, construir un mini‑RSA y demostrar por qué funciona con ejemplos en la propia web.\n\nNo necesitaréis instalar nada.\nTrabajaréis con retos, ejemplos guiados, pruebas interactivas y explicaciones paso a paso hasta conseguir abrir y cerrar vuestra propia caja fuerte digital."
+  },
+  {
+    "objectID": "webquest-rsa/intro.html#cuál-es-vuestra-misión",
+    "href": "webquest-rsa/intro.html#cuál-es-vuestra-misión",
+    "title": "Misión: ¡Construid una caja fuerte digital!",
+    "section": "¿Cuál es vuestra misión?",
+    "text": "¿Cuál es vuestra misión?\nA lo largo de esta WebQuest tendréis que:\n\ninvestigar cómo pueden usarse las matemáticas para proteger información,\ntrabajar con restos, patrones y relaciones numéricas,\nseguir un procedimiento de cifrado y descifrado paso a paso,\nconstruir y probar un mini‑RSA en la web,\ny explicar con claridad cómo funciona y por qué."
+  },
+  {
+    "objectID": "webquest-rsa/intro.html#reto-final",
+    "href": "webquest-rsa/intro.html#reto-final",
+    "title": "Misión: ¡Construid una caja fuerte digital!",
+    "section": "Reto final",
+    "text": "Reto final\nAl terminar, vuestro equipo deberá presentar un pequeño producto final en el que demuestre que ha sido capaz de:\n\ncrear y probar un mini‑RSA educativo,\ncifrar y descifrar un mensaje sencillo,\nexplicar el proceso seguido,\ny distinguir entre una simulación escolar y un sistema real de seguridad."
+  },
+  {
+    "objectID": "webquest-rsa/intro.html#qué-vais-a-aprender",
+    "href": "webquest-rsa/intro.html#qué-vais-a-aprender",
+    "title": "Misión: ¡Construid una caja fuerte digital!",
+    "section": "¿Qué vais a aprender?",
+    "text": "¿Qué vais a aprender?\n\nA trabajar con congruencias y aritmética modular.\nA reconocer patrones y relaciones numéricas.\nA seguir un procedimiento matemático paso a paso.\nA experimentar con un mini‑RSA de forma guiada.\nA usar herramientas digitales para comprobar resultados.\nA comunicar ideas matemáticas con claridad y orden.\nA reflexionar sobre la privacidad y el uso responsable de la tecnología.\n\n\n\n\n\n\n\n\nRegla de oro\n\n\n\nEste mini‑RSA tiene una finalidad exclusivamente educativa.\nSirve para aprender cómo las matemáticas ayudan a proteger mensajes, pero no debe utilizarse para datos reales, contraseñas ni información personal."
+  },
+  {
+    "objectID": "webquest-rsa/intro.html#antes-de-empezar",
+    "href": "webquest-rsa/intro.html#antes-de-empezar",
+    "title": "Misión: ¡Construid una caja fuerte digital!",
+    "section": "Antes de empezar…",
+    "text": "Antes de empezar…\nPensad en esta pregunta:\n\nSi internet protege la información con matemáticas, ¿qué tipo de ideas numéricas creéis que hacen falta para conseguirlo?\n\nEsa será la primera pista para comenzar la misión."
+  },
+  {
+    "objectID": "webquest-rsa/intro.html#preparados-para-abrir-la-caja-fuerte-digital",
+    "href": "webquest-rsa/intro.html#preparados-para-abrir-la-caja-fuerte-digital",
+    "title": "Misión: ¡Construid una caja fuerte digital!",
+    "section": "¡Preparados para abrir la caja fuerte digital!",
+    "text": "¡Preparados para abrir la caja fuerte digital!\nVuestra misión comienza ahora.\nObservad, calculad, comprobad, explicad… y descubrid cómo las matemáticas pueden convertirse en una herramienta para proteger información."
+  },
+  {
+    "objectID": "webquest-rsa/recursos.html",
+    "href": "webquest-rsa/recursos.html",
+    "title": "Recursos",
+    "section": "",
+    "text": "Recursos (curados)\n\nTus páginas de teoría de congruencias, Euclides extendido, potencias modulares.\nGuía mini‑RSA educativo y buenas prácticas.\nLicencias y atribuciones (Creative Commons, imágenes, código)."
+  },
+  {
+    "objectID": "webquest-rsa/conclusion.html",
+    "href": "webquest-rsa/conclusion.html",
+    "title": "Conclusión",
+    "section": "",
+    "text": "Habéis llegado al final de esta WebQuest y ya podéis mirar vuestra misión con otros ojos.\nAl comenzar, la idea de construir una caja fuerte digital podía parecer algo lejano o incluso misterioso. Ahora sabéis que, detrás de muchos sistemas que protegen mensajes y datos, hay matemáticas, lógica, comprobación y trabajo en equipo.\nA lo largo del proceso habéis investigado, probado, cometido errores, corregido pasos, utilizado recursos digitales y explicado vuestras propias conclusiones. Y eso es precisamente lo más importante de esta misión: no solo llegar al resultado, sino entender cómo se construye.\n\n\n\n\nGracias a esta WebQuest habéis podido comprobar que:\n\nlas matemáticas no sirven solo para resolver ejercicios, sino también para entender cómo funciona el mundo digital;\nproteger información requiere pensar, comprobar y seguir procedimientos con cuidado;\nun sistema como el mini‑RSA puede ayudar a comprender, de forma educativa, cómo se cifra y se descifra un mensaje;\ny trabajar en equipo permite avanzar mejor cuando se comparten ideas, dudas y estrategias.\n\n\n\n\n\nEl mini‑RSA que habéis utilizado en esta misión es una simulación educativa.\nOs ha servido para aprender, experimentar y comprender un proceso, pero no está pensado para proteger información real.\nPor eso, una de las conclusiones más importantes de esta WebQuest es que aprender sobre tecnología también significa aprender a usarla con responsabilidad, sentido crítico y respeto por la privacidad.\n\n\n\n\nAl terminar esta misión, no solo habéis construido un pequeño criptosistema en la web. También habéis sido capaces de:\n\ninterpretar un reto matemático en un contexto real;\nseguir un procedimiento paso a paso;\ncomprobar si un resultado era correcto;\nutilizar herramientas digitales con una finalidad concreta;\nexplicar con claridad lo que habéis aprendido;\ny reflexionar sobre la seguridad digital y el uso responsable de la información.\n\n\n\n\n\nAntes de cerrar esta misión, podéis quedaros con esta pregunta:\n\nSi las matemáticas ayudan a proteger mensajes, ¿en qué otros aspectos de vuestra vida diaria creéis que están presentes sin que se vean a simple vista?\n\nPorque muchas veces las matemáticas no están solo en los números: también están en las decisiones, en la tecnología, en la organización y en la forma en que resolvemos problemas.\n\n\n\n\nHabéis superado la misión.\nHabéis observado como personas espía, probado como personas hacker, organizado como responsables de seguridad y construido como personas programadoras.\nAhora sabéis que una caja fuerte digital no se abre solo con una clave:\ntambién se abre con curiosidad, razonamiento, cooperación y ganas de aprender.\n\nLa misión termina aquí, pero la pregunta sigue abierta, ¿qué otras puertas podrán abriros las matemáticas a partir de ahora?"
+  },
+  {
+    "objectID": "webquest-rsa/conclusion.html#misión-cumplida",
+    "href": "webquest-rsa/conclusion.html#misión-cumplida",
+    "title": "Conclusión",
+    "section": "",
+    "text": "Habéis llegado al final de esta WebQuest y ya podéis mirar vuestra misión con otros ojos.\nAl comenzar, la idea de construir una caja fuerte digital podía parecer algo lejano o incluso misterioso. Ahora sabéis que, detrás de muchos sistemas que protegen mensajes y datos, hay matemáticas, lógica, comprobación y trabajo en equipo.\nA lo largo del proceso habéis investigado, probado, cometido errores, corregido pasos, utilizado recursos digitales y explicado vuestras propias conclusiones. Y eso es precisamente lo más importante de esta misión: no solo llegar al resultado, sino entender cómo se construye."
+  },
+  {
+    "objectID": "webquest-rsa/conclusion.html#lo-que-habéis-descubierto",
+    "href": "webquest-rsa/conclusion.html#lo-que-habéis-descubierto",
+    "title": "Conclusión",
+    "section": "",
+    "text": "Gracias a esta WebQuest habéis podido comprobar que:\n\nlas matemáticas no sirven solo para resolver ejercicios, sino también para entender cómo funciona el mundo digital;\nproteger información requiere pensar, comprobar y seguir procedimientos con cuidado;\nun sistema como el mini‑RSA puede ayudar a comprender, de forma educativa, cómo se cifra y se descifra un mensaje;\ny trabajar en equipo permite avanzar mejor cuando se comparten ideas, dudas y estrategias."
+  },
+  {
+    "objectID": "webquest-rsa/conclusion.html#una-idea-importante-para-recordar",
+    "href": "webquest-rsa/conclusion.html#una-idea-importante-para-recordar",
+    "title": "Conclusión",
+    "section": "",
+    "text": "El mini‑RSA que habéis utilizado en esta misión es una simulación educativa.\nOs ha servido para aprender, experimentar y comprender un proceso, pero no está pensado para proteger información real.\nPor eso, una de las conclusiones más importantes de esta WebQuest es que aprender sobre tecnología también significa aprender a usarla con responsabilidad, sentido crítico y respeto por la privacidad."
+  },
+  {
+    "objectID": "webquest-rsa/conclusion.html#lo-que-realmente-habéis-conseguido",
+    "href": "webquest-rsa/conclusion.html#lo-que-realmente-habéis-conseguido",
+    "title": "Conclusión",
+    "section": "",
+    "text": "Al terminar esta misión, no solo habéis construido un pequeño criptosistema en la web. También habéis sido capaces de:\n\ninterpretar un reto matemático en un contexto real;\nseguir un procedimiento paso a paso;\ncomprobar si un resultado era correcto;\nutilizar herramientas digitales con una finalidad concreta;\nexplicar con claridad lo que habéis aprendido;\ny reflexionar sobre la seguridad digital y el uso responsable de la información."
+  },
+  {
+    "objectID": "webquest-rsa/conclusion.html#para-seguir-pensando",
+    "href": "webquest-rsa/conclusion.html#para-seguir-pensando",
+    "title": "Conclusión",
+    "section": "",
+    "text": "Antes de cerrar esta misión, podéis quedaros con esta pregunta:\n\nSi las matemáticas ayudan a proteger mensajes, ¿en qué otros aspectos de vuestra vida diaria creéis que están presentes sin que se vean a simple vista?\n\nPorque muchas veces las matemáticas no están solo en los números: también están en las decisiones, en la tecnología, en la organización y en la forma en que resolvemos problemas."
+  },
+  {
+    "objectID": "webquest-rsa/conclusion.html#enhorabuena-equipo",
+    "href": "webquest-rsa/conclusion.html#enhorabuena-equipo",
+    "title": "Conclusión",
+    "section": "",
+    "text": "Habéis superado la misión.\nHabéis observado como personas espía, probado como personas hacker, organizado como responsables de seguridad y construido como personas programadoras.\nAhora sabéis que una caja fuerte digital no se abre solo con una clave:\ntambién se abre con curiosidad, razonamiento, cooperación y ganas de aprender.\n\nLa misión termina aquí, pero la pregunta sigue abierta, ¿qué otras puertas podrán abriros las matemáticas a partir de ahora?"
+  },
+  {
+    "objectID": "webquest-rsa/firma-digital-rsa.html",
+    "href": "webquest-rsa/firma-digital-rsa.html",
+    "title": "Firma digital con RSA",
+    "section": "",
+    "text": "Objetivos\n\n\n\n\nEntender qué garantiza una firma digital: autoría, integridad y no repudio.\nConocer la idea de RSA y cómo se usa para firmar.\nRepasar conceptos de aritmética modular (potencias, inverso).\nVer la definición matemática de firmar y verificar con RSA.\nHacer un pequeño ejemplo numérico."
+  },
+  {
+    "objectID": "webquest-rsa/firma-digital-rsa.html#qué-problema-resuelve-una-firma-digital",
+    "href": "webquest-rsa/firma-digital-rsa.html#qué-problema-resuelve-una-firma-digital",
+    "title": "Firma digital con RSA",
+    "section": "¿Qué problema resuelve una firma digital?",
+    "text": "¿Qué problema resuelve una firma digital?\nUna firma digital permite comprobar que:\n\nEl autor es quien dice ser: autenticidad.\nEl mensaje no ha cambiado: integridad.\nEl autor no puede negar haber firmado: no repudio.\n\nEl autor aplica su clave privada para firmar y cualquiera puede verificar con su clave pública que el mensaje ha sido firmado por su autor.\n\n\n\n\n\n\nRecordatorio: aritmética modular\n\n\n\nTrabajaremos “módulo \\(n\\)”. Diremos que dos números son congruentes si dejan el mismo resto al dividir entre \\(n\\):\n\\[\na \\equiv b \\pmod{n} \\quad \\Longleftrightarrow \\quad n \\mid (a-b).\n\\]\n\n\n\n\n\n\nPotencias módulo \\(n\\)\n\n\n\nPara \\(a \\in \\mathbb{Z}\\) y exponente \\(k \\ge 0\\), calculamos \\(a^k \\bmod n\\), normalmente usando exponenciación rápida.\n\n\n\n\n\n\n\n\nInverso modular\n\n\n\nSi \\(\\text{mcd}(a,n)=1\\), existe \\(a^{-1}\\) (mód \\(n\\)) tal que:\n\\[\na \\cdot a^{-1} \\equiv 1 \\pmod{n}.\n\\]\nSe obtiene con el algoritmo extendido de Euclides.\n\n\n\\(\\quad\\)\n\n\n\n\n\n\n\n\nRepaso rápido de RSA\n\n\n\nGeneramos las claves:\n\nElegir dos primos grandes \\(p,q\\) y \\(n=pq\\).\n\\(\\varphi(n)=(p-1)(q-1)\\).\nElegir \\(e\\) con \\(1&lt;e&lt;\\varphi(n)\\) y \\(\\text{mcd}(e,\\varphi(n))=1\\).\nCalcular \\(d\\) como inverso de \\(e \\pmod{\\varphi(n)}\\):\n\n\\[\ne\\cdot d \\equiv 1 \\pmod{\\varphi(n)}.\n\\]\n\n\nClave pública: \\((n, e)\\)\nClave privada: \\((n, d)\\)\n\n\n\nCifrar un mensaje RSA: \\(M \\equiv m^e \\pmod{n}\\).\nDescifrar un mensaje: \\(m \\equiv M^d \\pmod{n}\\)."
+  },
+  {
+    "objectID": "webquest-rsa/firma-digital-rsa.html#hash-huella-digital-del-mensaje",
+    "href": "webquest-rsa/firma-digital-rsa.html#hash-huella-digital-del-mensaje",
+    "title": "Firma digital con RSA",
+    "section": "Hash (huella digital) del mensaje",
+    "text": "Hash (huella digital) del mensaje\nNo firmamos el texto entero directamente, sino su huella (hash) \\(H(m)\\). Un buen hash es determinista, rápido y sensible a cambios: con un cambio mínimo en el mensaje, la huella cambia por completo.\nEn la práctica se usan funciones como SHA-256. Aquí usaremos una huella didáctica para el ejemplo."
+  },
+  {
+    "objectID": "webquest-rsa/firma-digital-rsa.html#definición-matemática-de-la-firma-rsa",
+    "href": "webquest-rsa/firma-digital-rsa.html#definición-matemática-de-la-firma-rsa",
+    "title": "Firma digital con RSA",
+    "section": "Definición matemática de la firma RSA",
+    "text": "Definición matemática de la firma RSA\nSea \\(m\\) el mensaje y \\(H(m)\\) su huella (un entero \\(0 \\le H(m) &lt; n\\)).\n\nFirma con la clave privada \\((n,d)\\):\n\n\\[\ns \\equiv H(m)^d \\pmod{n}.\n\\]\n\nVerificación con la clave pública \\((n,e)\\):\n\n\\[\nv \\equiv s^e \\pmod{n}.\n\\]\nAceptamos la firma si\n\\[\nv \\equiv H(m) \\pmod{n}.\n\\]\nIdea clave: elevar con \\(d\\) y luego con \\(e\\) “revierte” gracias a \\[e\\cdot d \\equiv 1 \\pmod{\\varphi(n)}\\]\ny al teorema de Euler.\nEn la práctica se añade un relleno (padding) seguro (por ejemplo, RSA-PSS) antes de elevar, para evitar ataques. Aquí lo omitimos por ser introducción."
+  },
+  {
+    "objectID": "webquest-rsa/firma-digital-rsa.html#ejemplo",
+    "href": "webquest-rsa/firma-digital-rsa.html#ejemplo",
+    "title": "Firma digital con RSA",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n\n\n\n\n\n\nImportante\n\n\n\nEn clase usaremos números pequeños para entender el proceso. En la realidad \\(p\\) y \\(q\\) deben ser muy grandes (la longitud de \\(n\\) debe ser al menos de 2048 bits).\n\n\n\nElegimos \\(p=61\\), \\(q=53\\) \\(\\Rightarrow\\) \\(n=pq=3233\\).\n\\(\\varphi(n)=(61-1)(53-1)=3120\\).\nElegimos \\(e=17\\) con \\(\\text{mcd}(17,3120)=1\\).\nHallamos \\(d\\) tal que \\(17\\cdot d \\equiv 1 \\pmod{3120}\\). Se obtiene \\(d=2753\\).\n\nClaves:\n\nPública \\((n,e)=(3233,17)\\)\nPrivada \\((n,d)=(3233,2753)\\)\n\n\nDefinimos un hash didáctico\nSea\n\\[\nH(m)=\\Big(\\sum \\text{códigos ASCII de los caracteres de } m\\Big)\\bmod n.\n\\]\nPara el mensaje \\(m=\\text{\"OK\"}\\): ASCII \\(\\text{‘O’}=79\\), \\(\\text{‘K’}=75\\). Luego \\(H(m)=(79+75)\\bmod 3233 = 154\\).\n\n\nFirmar\n\\[\ns \\equiv H(m)^d \\equiv 154^{2753} \\pmod{3233}.\n\\]\n(Se calcula por exponenciación modular rápida.)\n\n\nVerificar\n\\[\nv \\equiv s^e \\equiv \\big(154^{2753}\\big)^{17} \\equiv 154 \\pmod{3233},\n\\]\nque coincide con \\(H(m)\\)."
+  },
+  {
+    "objectID": "webquest-rsa/firma-digital-rsa.html#código-python",
+    "href": "webquest-rsa/firma-digital-rsa.html#código-python",
+    "title": "Firma digital con RSA",
+    "section": "Código Python",
+    "text": "Código Python\n# Ejemplo didáctico de firma RSA con números pequeños.\n\ndef egcd(a, b):\n    \"\"\"Algoritmo extendido de Euclides: devuelve (g, x, y) tal que ax + by = g = gcd(a,b).\"\"\"\n    if b == 0:\n        return (a, 1, 0)\n    g, x1, y1 = egcd(b, a % b)\n    return (g, y1, x1 - (a // b) * y1)\n\ndef modinv(a, m):\n    \"\"\"Inverso modular de a mod m (si gcd(a,m)=1).\"\"\"\n    g, x, _ = egcd(a, m)\n    if g != 1:\n        raise ValueError(\"No existe inverso\")\n    return x % m\n\ndef hash(msg, n):\n    \"\"\"Hash didáctico: suma de códigos ASCII mod n (solo para clase).\"\"\"\n    return sum(ord(ch) for ch in msg) % n\n\n# Parámetros didácticos\np, q = 61, 53\nn = p * q           # 3233\nphi = (p-1)*(q-1)   # 3120\ne = 17\nd = modinv(e, phi)  # 2753\n\nm = \"OK\"\nh = hash(m, n)\n\n# Firma\ns = pow(h, d, n)\n\n# Verificación\nv = pow(s, e, n)\n\nprint(\"n =\", n, \"phi =\", phi, \"e =\", e, \"d =\", d)\nprint(\"Mensaje:\", m, \"Hash:\", h)\nprint(\"Firma s:\", s)\nprint(\"Verificación v:\", v, \"=&gt;\", \"válida\" if v == h else \"inválida\")"
+  },
+  {
+    "objectID": "webquest-rsa/firma-digital-rsa.html#buenas-prácticas-idea-general",
+    "href": "webquest-rsa/firma-digital-rsa.html#buenas-prácticas-idea-general",
+    "title": "Firma digital con RSA",
+    "section": "Buenas prácticas (idea general)",
+    "text": "Buenas prácticas (idea general)\n\nPadding seguro: en la práctica se usa RSA-PSS (Probabilistic Signature Scheme) para firmar.\nHash criptográfico: SHA-256 o superior.\nTamaño de clave: \\(n\\) de 2048 bits o más.\nGestión de claves: proteger la clave privada; distribuir bien la clave pública."
+  },
+  {
+    "objectID": "webquest-rsa/firma-digital-rsa.html#resumen",
+    "href": "webquest-rsa/firma-digital-rsa.html#resumen",
+    "title": "Firma digital con RSA",
+    "section": "Resumen",
+    "text": "Resumen\n\nUna firma RSA se define como: \\[\ns \\equiv H(m)^d \\pmod{n}.\n\\]\nSe verifica con: \\[v \\equiv s^e \\pmod{n}.\\]\nSi \\(v \\equiv H(m)\\pmod{n}\\), la firma es válida (mensaje íntegro y autor auténtico).\nEn la vida real, se añaden hash seguro y padding (RSA-PSS) para evitar ataques."
+  },
+  {
+    "objectID": "webquest-rsa/evaluacion.html",
+    "href": "webquest-rsa/evaluacion.html",
+    "title": "Evaluación",
+    "section": "",
+    "text": "En esta WebQuest, la evaluación no consistirá solo en llegar a un resultado final.\nTambién se tendrá en cuenta cómo investigáis, cómo resolvéis los retos, cómo comprobáis los resultados, cómo trabajáis en equipo y cómo explicáis lo aprendido.\nLa evaluación será:\n\ncontinua, porque se tendrá en cuenta todo el proceso;\nformativa, porque servirá para ayudaros a mejorar;\ncriterial, porque se valorará vuestro trabajo a partir de criterios claros;\ne integradora, porque importará tanto lo que sabéis como lo que sabéis hacer con ello.\n\n\nLo importante no será hacerlo todo perfecto a la primera, sino comprender, probar, corregir y explicar.\n\n\n\n\n\nSe valorará especialmente si vuestro equipo es capaz de:\n\ncomprender qué problema intenta resolver la criptografía;\nidentificar ideas matemáticas importantes del proceso;\nconstruir y probar un mini‑RSA educativo;\nexplicar un ejemplo de cifrado y descifrado con claridad;\njustificar, de forma sencilla, por qué el procedimiento funciona en vuestro ejemplo;\nutilizar correctamente los recursos digitales de la WebQuest;\ntrabajar de forma cooperativa y respetar los roles del equipo;\ny distinguir entre una simulación educativa y un sistema real de seguridad.\n\n\n\n\n\n\n\nSe valorará si entendéis el reto, si sabéis explicar qué es la criptografía y si comprendéis el sentido de la actividad.\n\n\n\nSe valorará si seguís los pasos con orden, si comprobáis los resultados y si podéis explicar qué ocurre en cada fase.\n\n\n\nSe valorará si utilizáis bien los recursos del menú, si exploráis los ejemplos y si aprovecháis las herramientas para comprobar y mejorar vuestro trabajo.\n\n\n\nSe valorará si vuestra presentación, infografía o cartel digital es claro, ordenado, completo y comprensible.\n\n\n\nSe valorará si participáis de forma activa, si respetáis los roles y si colaboráis de manera responsable.\n\n\n\nSe valorará si dejáis claro que este mini‑RSA es solo una simulación educativa y si hacéis una reflexión responsable sobre privacidad y uso de la tecnología.\n\n\n\n\n\nPara valorar vuestro trabajo se usarán distintos instrumentos:\n\nobservación del trabajo diario en clase;\nrevisión de las actividades y ejemplos realizados;\nseguimiento del proceso del equipo;\nproducto final;\nexposición oral;\nautoevaluación;\ny coevaluación.\n\nEsto significa que no se valorará solo lo que entregáis al final, sino también cómo habéis trabajado durante toda la misión.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCriterio\nPeso orientativo\nNivel 4 · Excelente\nNivel 3 · Adecuado\nNivel 2 · En proceso\nNivel 1 · Inicial\n\n\n\n\nComprensión del reto\n15%\nEl equipo comprende muy bien la misión, explica con claridad qué es la criptografía y relaciona el reto con la protección de mensajes y datos.\nEl equipo comprende bien la misión y explica las ideas principales de forma clara.\nEl equipo comprende solo una parte del reto o necesita ayuda frecuente para explicarlo.\nAl equipo le cuesta entender el sentido de la actividad y necesita mucho apoyo para explicarla.\n\n\nProcedimiento matemático y comprobación\n25%\nEl equipo sigue el procedimiento con orden, comprueba los resultados y explica con claridad qué ocurre en cada paso.\nEl equipo realiza el procedimiento de forma general correcta, aunque con alguna duda o pequeño error.\nEl equipo necesita bastante ayuda para seguir los pasos o para comprobar si el resultado es correcto.\nEl equipo tiene dificultades importantes para seguir el procedimiento y no logra comprobarlo de forma autónoma.\n\n\nUso de la WebQuest y de los recursos digitales\n10%\nEl equipo utiliza con autonomía los recursos del menú, localiza bien la información y aprovecha las herramientas digitales para mejorar su trabajo.\nEl equipo usa correctamente la mayoría de los recursos y sabe apoyarse en ellos con poca ayuda.\nEl equipo necesita apoyo frecuente para localizar o utilizar los recursos adecuados.\nEl equipo tiene muchas dificultades para usar los recursos de la WebQuest de forma funcional.\n\n\nProducto final y comunicación\n20%\nEl producto final está muy bien organizado, es claro, completo, visualmente cuidado y demuestra comprensión real del proceso. La exposición es clara y segura.\nEl producto final está bien presentado e incluye la información principal de forma comprensible. La explicación oral resulta adecuada.\nEl producto final está incompleto, desordenado o explica solo parcialmente lo aprendido. La exposición necesita más claridad.\nEl producto final no permite comprender bien la misión ni el procedimiento seguido. La explicación es muy limitada o confusa.\n\n\nTrabajo en equipo y desempeño de los roles\n20%\nTodas las personas del equipo participan activamente, respetan los roles, colaboran con responsabilidad y se ayudan mutuamente.\nEl equipo trabaja bien en general y cumple con su parte, aunque podría mejorar la coordinación.\nLa participación es irregular o la colaboración dentro del equipo necesita mejorar.\nHay poca implicación, escasa colaboración o dificultades importantes para trabajar en equipo.\n\n\nSeguridad digital y reflexión final\n10%\nEl equipo explica con claridad que el mini‑RSA es una simulación educativa y realiza una reflexión crítica y responsable sobre privacidad y seguridad digital.\nEl equipo reconoce correctamente que se trata de una simulación educativa y señala la importancia del uso responsable.\nEl equipo menciona la idea de seguridad digital, pero con poca claridad o profundidad.\nEl equipo no diferencia bien entre el uso educativo del mini‑RSA y un sistema real de seguridad.\n\n\n\n\n\n\nAntes de entregar vuestro trabajo, dedicad unos minutos a revisar estas preguntas:\n\n¿Entendemos cuál era la misión?\n¿Sabemos explicar qué es la criptografía?\n¿Hemos probado un ejemplo de cifrado y descifrado?\n¿Podemos explicar el proceso paso a paso?\n¿Hemos usado bien los recursos de la WebQuest?\n¿Nuestro producto final está claro y ordenado?\n¿Hemos trabajado de forma cooperativa?\n¿Hemos dejado claro que este mini‑RSA es solo educativo?\n\n\n\n\n\nEn esta WebQuest no se busca solo que lleguéis a una respuesta.\nSe busca que seáis capaces de:\n\npensar,\nprobar,\ncomprobar,\ntrabajar en equipo,\ny explicar con claridad lo que habéis aprendido.\n\n\nEvaluar no será solo mirar el resultado final, sino valorar cómo habéis construido vuestro aprendizaje durante toda la misión."
+  },
+  {
+    "objectID": "webquest-rsa/evaluacion.html#cómo-se-evaluará-esta-misión",
+    "href": "webquest-rsa/evaluacion.html#cómo-se-evaluará-esta-misión",
+    "title": "Evaluación",
+    "section": "",
+    "text": "En esta WebQuest, la evaluación no consistirá solo en llegar a un resultado final.\nTambién se tendrá en cuenta cómo investigáis, cómo resolvéis los retos, cómo comprobáis los resultados, cómo trabajáis en equipo y cómo explicáis lo aprendido.\nLa evaluación será:\n\ncontinua, porque se tendrá en cuenta todo el proceso;\nformativa, porque servirá para ayudaros a mejorar;\ncriterial, porque se valorará vuestro trabajo a partir de criterios claros;\ne integradora, porque importará tanto lo que sabéis como lo que sabéis hacer con ello.\n\n\nLo importante no será hacerlo todo perfecto a la primera, sino comprender, probar, corregir y explicar."
+  },
+  {
+    "objectID": "webquest-rsa/evaluacion.html#qué-se-tendrá-en-cuenta",
+    "href": "webquest-rsa/evaluacion.html#qué-se-tendrá-en-cuenta",
+    "title": "Evaluación",
+    "section": "",
+    "text": "Se valorará especialmente si vuestro equipo es capaz de:\n\ncomprender qué problema intenta resolver la criptografía;\nidentificar ideas matemáticas importantes del proceso;\nconstruir y probar un mini‑RSA educativo;\nexplicar un ejemplo de cifrado y descifrado con claridad;\njustificar, de forma sencilla, por qué el procedimiento funciona en vuestro ejemplo;\nutilizar correctamente los recursos digitales de la WebQuest;\ntrabajar de forma cooperativa y respetar los roles del equipo;\ny distinguir entre una simulación educativa y un sistema real de seguridad."
+  },
+  {
+    "objectID": "webquest-rsa/evaluacion.html#qué-partes-se-evaluarán",
+    "href": "webquest-rsa/evaluacion.html#qué-partes-se-evaluarán",
+    "title": "Evaluación",
+    "section": "",
+    "text": "Se valorará si entendéis el reto, si sabéis explicar qué es la criptografía y si comprendéis el sentido de la actividad.\n\n\n\nSe valorará si seguís los pasos con orden, si comprobáis los resultados y si podéis explicar qué ocurre en cada fase.\n\n\n\nSe valorará si utilizáis bien los recursos del menú, si exploráis los ejemplos y si aprovecháis las herramientas para comprobar y mejorar vuestro trabajo.\n\n\n\nSe valorará si vuestra presentación, infografía o cartel digital es claro, ordenado, completo y comprensible.\n\n\n\nSe valorará si participáis de forma activa, si respetáis los roles y si colaboráis de manera responsable.\n\n\n\nSe valorará si dejáis claro que este mini‑RSA es solo una simulación educativa y si hacéis una reflexión responsable sobre privacidad y uso de la tecnología."
+  },
+  {
+    "objectID": "webquest-rsa/evaluacion.html#con-qué-instrumentos-se-evaluará",
+    "href": "webquest-rsa/evaluacion.html#con-qué-instrumentos-se-evaluará",
+    "title": "Evaluación",
+    "section": "",
+    "text": "Para valorar vuestro trabajo se usarán distintos instrumentos:\n\nobservación del trabajo diario en clase;\nrevisión de las actividades y ejemplos realizados;\nseguimiento del proceso del equipo;\nproducto final;\nexposición oral;\nautoevaluación;\ny coevaluación.\n\nEsto significa que no se valorará solo lo que entregáis al final, sino también cómo habéis trabajado durante toda la misión."
+  },
+  {
+    "objectID": "webquest-rsa/evaluacion.html#rúbrica-de-evaluación",
+    "href": "webquest-rsa/evaluacion.html#rúbrica-de-evaluación",
+    "title": "Evaluación",
+    "section": "",
+    "text": "Criterio\nPeso orientativo\nNivel 4 · Excelente\nNivel 3 · Adecuado\nNivel 2 · En proceso\nNivel 1 · Inicial\n\n\n\n\nComprensión del reto\n15%\nEl equipo comprende muy bien la misión, explica con claridad qué es la criptografía y relaciona el reto con la protección de mensajes y datos.\nEl equipo comprende bien la misión y explica las ideas principales de forma clara.\nEl equipo comprende solo una parte del reto o necesita ayuda frecuente para explicarlo.\nAl equipo le cuesta entender el sentido de la actividad y necesita mucho apoyo para explicarla.\n\n\nProcedimiento matemático y comprobación\n25%\nEl equipo sigue el procedimiento con orden, comprueba los resultados y explica con claridad qué ocurre en cada paso.\nEl equipo realiza el procedimiento de forma general correcta, aunque con alguna duda o pequeño error.\nEl equipo necesita bastante ayuda para seguir los pasos o para comprobar si el resultado es correcto.\nEl equipo tiene dificultades importantes para seguir el procedimiento y no logra comprobarlo de forma autónoma.\n\n\nUso de la WebQuest y de los recursos digitales\n10%\nEl equipo utiliza con autonomía los recursos del menú, localiza bien la información y aprovecha las herramientas digitales para mejorar su trabajo.\nEl equipo usa correctamente la mayoría de los recursos y sabe apoyarse en ellos con poca ayuda.\nEl equipo necesita apoyo frecuente para localizar o utilizar los recursos adecuados.\nEl equipo tiene muchas dificultades para usar los recursos de la WebQuest de forma funcional.\n\n\nProducto final y comunicación\n20%\nEl producto final está muy bien organizado, es claro, completo, visualmente cuidado y demuestra comprensión real del proceso. La exposición es clara y segura.\nEl producto final está bien presentado e incluye la información principal de forma comprensible. La explicación oral resulta adecuada.\nEl producto final está incompleto, desordenado o explica solo parcialmente lo aprendido. La exposición necesita más claridad.\nEl producto final no permite comprender bien la misión ni el procedimiento seguido. La explicación es muy limitada o confusa.\n\n\nTrabajo en equipo y desempeño de los roles\n20%\nTodas las personas del equipo participan activamente, respetan los roles, colaboran con responsabilidad y se ayudan mutuamente.\nEl equipo trabaja bien en general y cumple con su parte, aunque podría mejorar la coordinación.\nLa participación es irregular o la colaboración dentro del equipo necesita mejorar.\nHay poca implicación, escasa colaboración o dificultades importantes para trabajar en equipo.\n\n\nSeguridad digital y reflexión final\n10%\nEl equipo explica con claridad que el mini‑RSA es una simulación educativa y realiza una reflexión crítica y responsable sobre privacidad y seguridad digital.\nEl equipo reconoce correctamente que se trata de una simulación educativa y señala la importancia del uso responsable.\nEl equipo menciona la idea de seguridad digital, pero con poca claridad o profundidad.\nEl equipo no diferencia bien entre el uso educativo del mini‑RSA y un sistema real de seguridad."
+  },
+  {
+    "objectID": "webquest-rsa/evaluacion.html#autoevaluación-del-equipo",
+    "href": "webquest-rsa/evaluacion.html#autoevaluación-del-equipo",
+    "title": "Evaluación",
+    "section": "",
+    "text": "Antes de entregar vuestro trabajo, dedicad unos minutos a revisar estas preguntas:\n\n¿Entendemos cuál era la misión?\n¿Sabemos explicar qué es la criptografía?\n¿Hemos probado un ejemplo de cifrado y descifrado?\n¿Podemos explicar el proceso paso a paso?\n¿Hemos usado bien los recursos de la WebQuest?\n¿Nuestro producto final está claro y ordenado?\n¿Hemos trabajado de forma cooperativa?\n¿Hemos dejado claro que este mini‑RSA es solo educativo?"
+  },
+  {
+    "objectID": "webquest-rsa/evaluacion.html#lo-más-importante",
+    "href": "webquest-rsa/evaluacion.html#lo-más-importante",
+    "title": "Evaluación",
+    "section": "",
+    "text": "En esta WebQuest no se busca solo que lleguéis a una respuesta.\nSe busca que seáis capaces de:\n\npensar,\nprobar,\ncomprobar,\ntrabajar en equipo,\ny explicar con claridad lo que habéis aprendido.\n\n\nEvaluar no será solo mirar el resultado final, sino valorar cómo habéis construido vuestro aprendizaje durante toda la misión."
+  },
+  {
+    "objectID": "webquest-rsa/teoria.html",
+    "href": "webquest-rsa/teoria.html",
+    "title": "Criptografía",
+    "section": "",
+    "text": "La criptografía es un conjunto de técnicas matemáticas que estudian aspectos relacionados con la seguridad de la información transmitida a través de un cierto canal; tales como:\n\nConfidencialidad: habilidad de restringir la información únicamente a los agentes autorizados.\nIntegridad de los datos: habilidad de proteger la información contra todo tipo de alteraciones no autorizadas (inserción, borrado, sustitución o manipulación).\nAutenticación: referida a los agentes, es la habilidad de identificarse inequívocamente; referida a la información, la habilidad de certificar el origen.\nNo repudio: habilidad de Alice de enseñar a Bob una prueba de que ciertos datos provienen de Alice, de forma que Bob no solo quede convencido sino que además pueda convencer a terceras partes (Charlie), incluso si Charlie no confía en Bob.\n\nAhora vamos a fijar los nombres de algunos elementos de la comunicación confidencial.\n\nEntidad: toda persona o agente que puede usar un canal para mandar, recibir o manipular información (persona, institución, terminal…). Habitualmente reciben el nombre de Alice y Bob.\nEmisor: entidad transmisora legítima de la información (Alice).\nReceptor: entidad que legítimamente debe tener acceso a la información (Bob).\nAdversario: cualquier entidad con acceso a parte o a la totalidad de la información transmitida y que no es el emisor ni el receptor (Eve, si se limita a acceder; Mallory, si además es maliciosa).\nCanal: medio físico de transmisión. Los canales pueden ser inseguros (es posible escribir, reordenar, borrar o insertar) o seguros (por medios físicos o criptográficos).\n\nEl problema clásico de la confidencialidad criptográfica es el siguiente: tenemos dos agentes, denotados A (Alice) y B (Bob), que quieren establecer una comunicación confidencial por un canal inseguro, y un tercer agente, E (Eve), que tiene la capacidad de interceptar y leer (pero no modificar) los mensajes que se intercambian por este canal.\nSi Bob quiere enviar un mensaje a Alice, y desea que sea confidencial, cifra ese mensaje con una función de cifrado \\(C\\) y lo transmite por el canal. Cuando Alice lo recibe, aplica una función de descifrado \\(D\\) para recuperar el mensaje original. Aunque Eve ha podido interceptar el mensaje, un buen protocolo criptográfico hace prácticamente imposible que pueda descifrarlo sin una clave particular."
+  },
+  {
+    "objectID": "webquest-rsa/teoria.html#introducción",
+    "href": "webquest-rsa/teoria.html#introducción",
+    "title": "Criptografía",
+    "section": "",
+    "text": "La criptografía es un conjunto de técnicas matemáticas que estudian aspectos relacionados con la seguridad de la información transmitida a través de un cierto canal; tales como:\n\nConfidencialidad: habilidad de restringir la información únicamente a los agentes autorizados.\nIntegridad de los datos: habilidad de proteger la información contra todo tipo de alteraciones no autorizadas (inserción, borrado, sustitución o manipulación).\nAutenticación: referida a los agentes, es la habilidad de identificarse inequívocamente; referida a la información, la habilidad de certificar el origen.\nNo repudio: habilidad de Alice de enseñar a Bob una prueba de que ciertos datos provienen de Alice, de forma que Bob no solo quede convencido sino que además pueda convencer a terceras partes (Charlie), incluso si Charlie no confía en Bob.\n\nAhora vamos a fijar los nombres de algunos elementos de la comunicación confidencial.\n\nEntidad: toda persona o agente que puede usar un canal para mandar, recibir o manipular información (persona, institución, terminal…). Habitualmente reciben el nombre de Alice y Bob.\nEmisor: entidad transmisora legítima de la información (Alice).\nReceptor: entidad que legítimamente debe tener acceso a la información (Bob).\nAdversario: cualquier entidad con acceso a parte o a la totalidad de la información transmitida y que no es el emisor ni el receptor (Eve, si se limita a acceder; Mallory, si además es maliciosa).\nCanal: medio físico de transmisión. Los canales pueden ser inseguros (es posible escribir, reordenar, borrar o insertar) o seguros (por medios físicos o criptográficos).\n\nEl problema clásico de la confidencialidad criptográfica es el siguiente: tenemos dos agentes, denotados A (Alice) y B (Bob), que quieren establecer una comunicación confidencial por un canal inseguro, y un tercer agente, E (Eve), que tiene la capacidad de interceptar y leer (pero no modificar) los mensajes que se intercambian por este canal.\nSi Bob quiere enviar un mensaje a Alice, y desea que sea confidencial, cifra ese mensaje con una función de cifrado \\(C\\) y lo transmite por el canal. Cuando Alice lo recibe, aplica una función de descifrado \\(D\\) para recuperar el mensaje original. Aunque Eve ha podido interceptar el mensaje, un buen protocolo criptográfico hace prácticamente imposible que pueda descifrarlo sin una clave particular."
+  },
+  {
+    "objectID": "webquest-rsa/teoria.html#codificación-de-mensajes",
+    "href": "webquest-rsa/teoria.html#codificación-de-mensajes",
+    "title": "Criptografía",
+    "section": "Codificación de mensajes",
+    "text": "Codificación de mensajes\n\nPara muchos criptosistemas supondremos que los mensajes que Alice y Bob quieren intercambiar son números enteros en una base previamente acordada (típicamente 2), y conocida por todos los agentes, o bien una congruencia módulo un cierto entero \\(N\\), también conocido por todos, incluida Eve. Eventualmente, necesitaremos mensajes más complicados y consideraremos vectores de enteros o congruencias.\nLa forma más simple de asignar enteros a un mensaje es considerar el alfabeto de las mayúsculas (quizá con el espacio en blanco, aunque no es usual), y asignar a cada letra su número, empezando por \\(0\\). Esto es, identificando cada letra con un entero módulo \\(26\\):\n\\[\nA \\to 0,\\; B \\to 1,\\; \\dots,\\; Y \\to 24,\\; Z \\to 25.\n\\]\nO en español, en \\(\\mathbb{Z}/27\\mathbb{Z}\\):\n\\[\nA \\to 0,\\; B \\to 1,\\; \\dots,\\; \\text{Ñ} \\to 14,\\; \\dots,\\; Z \\to 26.\n\\]\nAhora un mensaje no es más que un elemento de \\((\\mathbb{Z}/N\\mathbb{Z})^r\\), donde \\(N\\) y \\(r\\) varían en cada criptosistema.\nTípicamente, los criptosistemas más modernos operan sobre enteros o congruencias modulares muy grandes, del orden de \\(2^{2048}\\) o \\(2^{4096}\\); esto es, enteros de entre 600 y 1300 cifras decimales aproximadamente. Por tanto, necesitamos una forma de convertir mensajes de texto en enteros. No solo eso: algunos mensajes muy largos habrá que partirlos en bloques del tamaño adecuado antes de aplicar el criptosistema; y en otros casos habrá que alargar los mensajes excesivamente cortos hasta un tamaño suficiente; a esta técnica se le conoce como padding y, si se realiza de forma incorrecta, puede ser una debilidad del criptosistema.\nUna forma de asignar un entero a un mensaje es usar la tabla de caracteres para enumerar mensajes: cada carácter de un mensaje se sustituye por su código binario de uno o más bytes, los bytes se componen uno a continuación de otro, y el entero decimal resultante es el mensaje."
+  },
+  {
+    "objectID": "webquest-rsa/teoria.html#criptosistemas-de-clave-privada",
+    "href": "webquest-rsa/teoria.html#criptosistemas-de-clave-privada",
+    "title": "Criptografía",
+    "section": "Criptosistemas de clave privada",
+    "text": "Criptosistemas de clave privada\n\nEntendemos por criptosistemas de clave privada aquellos en los que solo Alice y Bob conocen una clave secreta \\(k\\) que suponemos han intercambiado de forma segura y Eve no la conoce.\nAdemás, suponemos:\n\nAlice dispone de una aplicación (conocida) de cifrado \\(C(\\cdot,\\cdot)\\) y puede calcular en tiempo polinomial \\(C(k,m)=M\\).\nBob dispone de una aplicación (conocida) de descifrado \\(D(\\cdot,\\cdot)\\) y puede calcular en tiempo polinomial \\(D(k,M)=m\\).\nEve conoce \\(C(\\cdot,\\cdot)\\), \\(D(\\cdot,\\cdot)\\) y \\(M\\), pero sin conocer \\(k\\) no puede calcular \\(m\\). En términos prácticos, esto quiere decir que sin conocer \\(k\\), el algoritmo para calcular \\(m\\) es al menos (sub)exponencial.\n\nEstos criptosistemas fueron los usados hasta la Segunda Guerra Mundial; con la llegada de los ordenadores, la seguridad se vio comprometida porque con ataques de fuerza bruta se consigue descifrar el mensaje sin conocer \\(k\\). Veremos algunos ejemplos de criptosistemas clásicos terminando con Enigma, que fue el último en ser usado en el ámbito militar, donde vivían las comunicaciones seguras en la era pre-digital.\nActualmente, se utilizan algunos como AES, DES, RC4… Aunque como veremos la clave privada tiene un uso más exclusivo en la actualidad que la clave pública, hemos de entender que ambas conviven dependiendo de nuestras necesidades.\n\n\n\n\n\n\nDefinición\n\n\n\nUn sistema criptográfico de clave privada es un par de funciones \\[ C: \\mathcal{K} \\times \\mathcal{P} \\to \\mathcal{C},\\quad D: \\mathcal{K} \\times \\mathcal{C} \\to \\mathcal{P},\\]\ndonde \\(\\mathcal{K}\\) es el conjunto de claves posibles, \\(\\mathcal{P}\\) el conjunto de mensajes en claro posibles, y \\(\\mathcal{C}\\) el conjunto de mensajes cifrados posibles, tales que para todo \\(k \\in \\mathcal{K}\\) y todo \\(m \\in \\mathcal{P}\\), si ponemos \\(C(k,m)=M\\), entonces \\(D(k,M)=m\\); es decir, \\[ C\\big(k,\\, D(k,m)\\big) = m. \\]\n\n\nSe podría razonar que supone una pérdida innecesaria de seguridad que Eve conozca \\(C\\) y \\(D\\). A priori puede parecer más seguro que Eve no sepa cómo se cifra y descifra, pero en la práctica no es así: muchos sistemas criptográficos han basado su seguridad en la opacidad del cifrado y, cuando éste ha sido desvelado (y, tarde o temprano, sucede), todo el sistema se ha visto comprometido. Una postura de cifrado abierto, donde todo el mundo es retado a derrotar al sistema, garantiza mucha más fiabilidad.\nFormalmente, estas son solo parte de las exigencias que debe cumplir un sistema. En la vida real, la implantación de un sistema criptográfico nunca es un problema teórico puro: hay que evaluar criterios prácticos tales como nivel de seguridad, funcionalidad, método de operación, eficiencia y facilidad de implementación.\nEn el siglo XIX, el criptógrafo Auguste Kerckhoffs estableció seis principios para el diseño de cifrados militares:\n\nDeben ser irrompibles en la práctica o incluso teóricamente.\nSu seguridad no debe depender de los datos del criptosistema, únicamente del desconocimiento de la clave.\nSus claves deben ser fáciles de recordar y de cambiar.\nSe deben poder aplicar a comunicaciones telegráficas.\nDeben ser portables y operados fácilmente por una sola persona.\nDeben ser fáciles de usar."
+  },
+  {
+    "objectID": "webquest-rsa/teoria.html#criptosistemas-de-clave-pública",
+    "href": "webquest-rsa/teoria.html#criptosistemas-de-clave-pública",
+    "title": "Criptografía",
+    "section": "Criptosistemas de clave pública",
+    "text": "Criptosistemas de clave pública\nA principios de los 70 nació un concepto que revolucionó completamente la criptografía moderna: la clave pública. Los primeros en plantearlo fueron Diffie y Hellman, motivados por el enorme desarrollo de las comunicaciones y tecnologías de la información desde los años 60, que llevó la criptografía más allá del ámbito militar hacia el mundo comercial.\nEl problema al que se enfrentaron Diffie y Hellman era el intercambio de claves en sistemas de clave privada: con el aumento exponencial de mensajes y usuarios, las claves bien usadas tienen una vida útil y se necesita un sistema flexible y sencillo de intercambio que se pueda usar con frecuencia.\nEn un protocolo formal de clave pública, la idea fundamental es abandonar conceptos tradicionales:\n\nDejamos de pensar en dos usuarios: pensamos en una comunidad de usuarios (Alice, Bob y, por qué no, Eve).\nDejamos de pensar que la clave de cifrado y la clave de descifrado son esencialmente lo mismo; en su lugar tenemos una función trampilla (trapdoor): conociendo la clave de cifrado es sencillo averiguar la de descifrado, pero el camino inverso no es factible computacionalmente.\nDejamos de pensar en cifrar para que solo emisor y receptor puedan descifrar: ciframos de forma que solo el destinatario pueda descifrar.\n\nAsí, Alice tiene una clave pública \\(K_A\\) que todo el mundo conoce (en la vida real se publican en listados). Bob tiene la suya \\(K_B\\) (Eve también, como usuaria). Lo importante es que \\(K_A\\) viene acompañada de una clave privada \\(k_A\\) (para descifrar). Teóricamente \\(k_A\\) se podría hallar a partir de \\(K_A\\), pero en la práctica no es posible: solo Alice conoce \\(k_A\\) (análogamente, solo Bob conoce \\(k_B\\)).\n\nTenemos una función de cifrado pública que depende de dos parámetros: la clave de cifrado pública y el mensaje a cifrar. Tenemos también una función de descifrado que verifica dos condiciones:\n\nEl cálculo del descifrado conociendo la clave privada es rápido.\nEl cálculo del descifrado sin conocer la clave privada es demasiado lento.\n\nSi Alice quiere enviar un mensaje \\(m\\) a Bob, realiza el cálculo de cifrar con la clave pública de Bob y obtiene el mensaje cifrado \\(M\\). Este mensaje ni siquiera la propia Alice podría descifrarlo (no lo necesita porque tiene el texto en claro). Envía \\(M\\) y entonces Eve, si quiere recuperar \\(m\\), debe descifrar \\(M\\) sin conocer \\(k_B\\), mientras que Bob puede realizar este cálculo sin problema.\nPor tanto, la idea subyacente es que se cifra pensando en que solo el receptor pueda leer el mensaje. Esta asimetría hace que estos códigos se denominen a veces asimétricos, por contraposición a los simétricos (clave privada), donde emisor y receptor comparten la misma información.\nQueda patente que el diseño de tal protocolo ha de ser muy cuidadoso para evitar un ataque alternativo al esperado que rompa la seguridad del sistema. Toda la seguridad del sistema recae en la función trampilla, ese sutil sacrificio de información que hace público un dato (la clave de cifrado) que, teóricamente, permite calcular otro dato (la clave de descifrado) el cual, sin embargo, hay que mantener en secreto.\nLas funciones trampilla (a veces confundidas con hash, cuidado: en criptografía moderna hash es otra cosa) no son sencillas de encontrar. En los últimos años, cada problema del que se sabe que es un buen candidato se ha probado como base de criptosistemas de clave pública. Hoy existen varias opciones interesantes, casi todas con aritmética modular:\n\nFactorización: dados dos primos grandes (del orden de \\(2^{512}\\), unas 155 cifras decimales), \\(p\\) y \\(q\\), cualquier ordenador multiplica enseguida \\(p\\cdot q = N\\). Sin embargo, dado \\(N\\), hallar \\(p\\) y \\(q\\) no es sencillo. Esta función trampilla se utiliza en RSA, el método más usado hoy.\nDLP (Discrete Logarithm Problem): dado un primo \\(p\\) y un natural \\(g &lt; p\\), hallar \\(h = g^a\\; (\\bmod\\; p)\\) para un \\(a\\) cualquiera es sencillo; pero dado \\(h\\), hallar el exponente \\(a\\) es impracticable (para \\(p\\) grande). Se usa en Diffie–Hellman (DHEP) y ElGamal, base de PGP y GPG.\nRaíces cuadradas módulo \\(n\\): dado un entero no primo \\(n\\) y \\(g\\; (\\bmod\\; n)\\), es sencillo hallar \\(x = g^2\\; (\\bmod\\; n)\\); pero, dado \\(a\\), hallar \\(g\\) (su raíz cuadrada módulo \\(n\\)) es impracticable. Base del método de Rabin.\n\nTodos estos problemas han sido útiles y lo siguen siendo, pero con las pruebas de los ordenadores cuánticos se está comprobando que ciertos problemas considerados NP pasan a ser resolubles en tiempo polinomial. La seguridad reside en el tiempo de computación y el coste: es fundamental que no sea rentable para un atacante. Como estos ordenadores (hoy no accesibles al público general) han conseguido reducir considerablemente el tiempo de computación, se ha logrado factorizar números que para un ordenador (o superordenador convencional) llevan muchísimo tiempo de cálculo. El NIST ha convocado un concurso para encontrar criptosistemas en una era postcuántica."
+  },
+  {
+    "objectID": "webquest-rsa/teoria.html#cifrado-rsa",
+    "href": "webquest-rsa/teoria.html#cifrado-rsa",
+    "title": "Criptografía",
+    "section": "Cifrado RSA",
+    "text": "Cifrado RSA\n\nEn el protocolo RSA no hay ningún dato compartido entre todos los usuarios. Cada uno de ellos, por ejemplo Alice, genera su clave así:\n\nEscoge dos primos grandes \\(p_A\\), \\(q_A\\) y calcula \\(N_A = p_A \\cdot q_A\\).\nCalcula \\(\\varphi(N_A) = (p_A - 1)(q_A - 1)\\), donde \\(\\varphi\\) denota la función de Euler.\nEscoge un número \\(E_A\\) coprimo con \\(\\varphi(N_A)\\).\nCalcula \\(d_A\\) verificando \\(E_A\\cdot d_A \\equiv 1 \\pmod{\\varphi(N_A)}\\).\n\nLa clave pública de Alice es el par \\((N_A, E_A)\\). El resto se mantiene privado.\nSupongamos que Bob quiere enviar un mensaje \\(m\\) a Alice y, sin perder generalidad, que \\(m &lt; N_A\\). Entonces Bob cifra haciendo\n\\[\nM = m^{E_A} \\bmod N_A.\n\\]\nUna vez recibido \\(M\\), Alice descifra haciendo\n\\[\nM^{d_A} = (m^{E_A})^{d_A} = m^{E_A d_A} = m^{1 + r\\,\\varphi(N_A)} \\equiv m \\pmod{N_A},\n\\]\npor el Teorema de Euler.\n\n\n\n\n\n\nDefinición\n\n\n\nSean \\(K_A = (N_A, E_A)\\) y \\(k_A = d_A\\) un par de claves pública y privada, respectivamente, calculadas según el procedimiento anterior. El criptosistema RSA queda definido por\n\\[\nC(K_A, m) = m^{E_A} \\bmod N_A, \\qquad D(k_A, M) = M^{d_A} \\bmod N_A,\n\\]\ndonde el conjunto de mensajes en claro es \\(\\mathcal{P} = \\mathbb{N}_{&lt; N_A}\\), y el de mensajes cifrados es \\(\\mathcal{C} = \\mathcal{P}\\).\n\n\n\n\n\n\n\n\nObservación\n\n\n\nLos parámetros de seguridad actuales son \\(N_A \\sim 2^{2048}\\). Además, la elección de \\(p_A\\) y \\(q_A\\) debe ser cuidadosa para evitar que la factorización de \\(N_A\\) sea factible por métodos específicos (no buenos en general, pero muy eficaces para determinados números). En particular, un error de principiante es escoger \\(p_A\\) y \\(q_A\\) demasiado próximos."
+  },
+  {
+    "objectID": "webquest-rsa/teoria.html#retos-actuales",
+    "href": "webquest-rsa/teoria.html#retos-actuales",
+    "title": "Criptografía",
+    "section": "Retos actuales",
+    "text": "Retos actuales\nLos criptosistemas actuales peligran con los ordenadores cuánticos, por ello se ha avanzado en técnicas y retos de mayor complejidad que plantear problemas de factorización de números. En este vídeo, Eduardo Sáenz de Cabezón nos explica de forma sencilla el por qué y qué reto afrontamos en la actualidad."
+  }
+]

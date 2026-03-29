@@ -1,0 +1,9 @@
+---
+title: "Recursos"
+---
+
+# Recursos (curados)
+
+- Tus páginas de teoría de **congruencias**, **Euclides extendido**, **potencias modulares**.
+- Guía mini‑RSA educativo y **buenas prácticas**.
+- Licencias y atribuciones (Creative Commons, imágenes, código).
