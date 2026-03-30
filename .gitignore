@@ -1,1 +1,29 @@
-/.quarto/
+# Archivos generados por Quarto
+.quarto/
+*_files/
+
+# Salidas compiladas
+_book/
+_site/
+docs/
+
+# PDFs y temporales LaTeX
+*.pdf
+*.aux
+*.log
+*.toc
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Entornos
+.venv/
+env/
