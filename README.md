@@ -44,13 +44,6 @@ El proyecto incluye, entre otras, las siguientes secciones y páginas:
 - **Guía docente**
 - **Créditos**
 
-### Secciones específicas del criptosistema RSA
-
-- `webquest-rsa/teoria.qmd`
-- `webquest-rsa/intro-python.qmd`
-- `webquest-rsa/primos.qmd`
-- `webquest-rsa/playground.qmd`
-
 ---
 
 ## Tecnologías utilizadas
