@@ -73,4 +73,3 @@ La WebQuest se publica mediante **GitHub Pages** a partir de la carpeta `docs/`,
 La WebQuest está disponible en el siguiente enlace:
 
 [Acceder a la WebQuest](https://lordalex93.github.io/webquest/)
->>>>>>> 6a17e6d (Mejora la presentación del README)
