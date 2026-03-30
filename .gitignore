@@ -6,6 +6,7 @@
 _book/
 _site/
 #docs/
+assets/
 *_files/
 
 # =========================
