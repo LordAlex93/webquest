@@ -4,7 +4,7 @@ title: "Guía docente"
  
 ## Misión: ¡Construid una caja fuerte digital!
 
-## 1. Identificación de la propuesta
+## Identificación de la propuesta
 
 - **Etapa:** Educación Secundaria Obligatoria  
 - **Curso:** 2.º de ESO  
@@ -15,7 +15,7 @@ title: "Guía docente"
 
 ---
 
-## 2. Contextualización
+## Contextualización
 
 Esta propuesta se dirige al alumnado de **2.º de ESO** dentro de la materia de **Matemáticas**, y se plantea como una situación de aprendizaje breve, motivadora y contextualizada. El hilo conductor es la idea de que internet utiliza matemáticas para proteger mensajes, contraseñas y datos, lo que permite acercar al alumnado a conceptos matemáticos mediante un reto cercano, actual y significativo.
 
@@ -23,7 +23,7 @@ La WebQuest invita al alumnado a investigar, experimentar, resolver problemas y 
 
 ---
 
-## 3. Justificación didáctica
+## Justificación didáctica
 
 La propuesta parte de una idea esencial: muchas tecnologías cotidianas se apoyan en las matemáticas. Mostrar esta conexión ayuda a mejorar la motivación del alumnado y a dar sentido a aprendizajes que a veces se perciben como abstractos.
 
@@ -39,11 +39,11 @@ A través de esta WebQuest, el alumnado trabaja con:
 
 El contexto de la “caja fuerte digital” permite integrar el aprendizaje matemático con el trabajo cooperativo, la competencia digital y la educación en ciudadanía responsable. Además, la propuesta favorece un enfoque activo, manipulativo y gradual, adecuado para 2.º de ESO.
 
-> **Nota de adecuación curricular:** el mini‑RSA se aborda exclusivamente como una **simulación educativa**. Los elementos más avanzados se presentan de forma guiada, intuitiva y simplificada, priorizando la comprensión del proceso y su valor como aplicación contextualizada frente al formalismo matemático.
+> **Nota de adecuación curricular:** el mini-RSA se aborda exclusivamente como una **simulación educativa**. Los elementos más avanzados se presentan de forma guiada, intuitiva y simplificada, priorizando la comprensión del proceso y su valor como aplicación contextualizada frente al formalismo matemático.
 
 ---
 
-## 4. Marco normativo y encaje curricular
+## Marco normativo y encaje curricular
 
 Esta guía se diseña tomando como referencia la normativa vigente para la Educación Secundaria Obligatoria en Andalucía. El currículo andaluz de ESO se regula mediante el **Decreto 102/2023, de 9 de mayo**, y su desarrollo se concreta en la **Orden de 30 de mayo de 2023**, que establece, entre otros aspectos, la estructura curricular, la evaluación, la atención a la diversidad y el diseño de situaciones de aprendizaje.
 
@@ -55,7 +55,7 @@ Asimismo, el currículo andaluz incorpora el **perfil competencial al término d
 
 ---
 
-## 5. Sentido curricular de la propuesta en 2.º ESO
+## Sentido curricular de la propuesta en 2.º ESO
 
 La WebQuest se integra en **Matemáticas de 2.º de ESO** como una situación de aprendizaje contextualizada que moviliza saberes del curso a través de un reto significativo. El peso curricular no se sitúa en la criptografía como contenido especializado, sino en el desarrollo de capacidades matemáticas propias del nivel:
 
@@ -70,7 +70,7 @@ En este sentido, la propuesta conecta especialmente con las competencias especí
 
 ---
 
-## 6. Producto final
+## Producto final
 
 El producto final consistirá en una **presentación breve, cartel digital o infografía**, elaborada en parejas o pequeños grupos, en la que el alumnado deberá:
 
@@ -78,12 +78,12 @@ El producto final consistirá en una **presentación breve, cartel digital o inf
 - mostrar, con un ejemplo sencillo, cómo funciona un procedimiento básico de cifrado y descifrado en la WebQuest;
 - describir qué papel juegan los restos, los patrones numéricos y la secuencia de pasos;
 - justificar por qué el procedimiento utilizado “funciona” en el ejemplo trabajado;
-- señalar que el mini‑RSA empleado tiene una **finalidad exclusivamente educativa**;
+- señalar que el mini-RSA empleado tiene una **finalidad exclusivamente educativa**;
 - reflexionar sobre privacidad, uso responsable y seguridad digital.
 
 ---
 
-## 7. Objetivos didácticos
+## Objetivos didácticos
 
 Al finalizar esta situación de aprendizaje, el alumnado será capaz de:
 
@@ -99,7 +99,7 @@ Al finalizar esta situación de aprendizaje, el alumnado será capaz de:
 
 ---
 
-## 8. Competencias clave implicadas
+## Competencias clave implicadas
 
 La propuesta contribuye especialmente al desarrollo de las siguientes competencias clave:
 
@@ -114,7 +114,7 @@ El currículo básico de segundo curso y la concreción andaluza organizan la ma
 
 ---
 
-## 9. Competencias específicas de Matemáticas más vinculadas
+## Competencias específicas de Matemáticas más vinculadas
 
 Sin perjuicio de la concreción que realice cada departamento didáctico, esta situación de aprendizaje se relaciona especialmente con competencias específicas de Matemáticas de 2.º de ESO asociadas a:
 
@@ -130,36 +130,36 @@ Estas líneas de competencia aparecen en la organización curricular de Matemát
 
 ---
 
-## 10. Saberes básicos implicados
+## Saberes básicos implicados
 
 La propuesta moviliza principalmente saberes básicos vinculados a:
 
-### 10.1. Sentido numérico
+### Sentido numérico
 - divisibilidad y relaciones numéricas;
 - operaciones con números enteros;
 - patrones y regularidades;
 - cálculo y comprobación de resultados;
 - uso del resto en contextos matemáticos sencillos.
 
-### 10.2. Resolución de problemas
+### Resolución de problemas
 - interpretación de enunciados;
 - selección de datos relevantes;
 - ensayo y error;
 - búsqueda de estrategias;
 - verificación de resultados.
 
-### 10.3. Pensamiento computacional
+### Pensamiento computacional
 - descomposición de procesos en pasos;
 - identificación de patrones;
 - secuenciación lógica;
 - traducción de una idea matemática a un procedimiento.
 
-### 10.4. Representación y comunicación
+### Representación y comunicación
 - explicación oral y escrita de procesos;
 - uso de esquemas, tablas o ejemplos;
 - comunicación del razonamiento seguido.
 
-### 10.5. Sentido socioafectivo
+### Sentido socioafectivo
 - perseverancia;
 - aceptación del error;
 - trabajo cooperativo;
@@ -167,7 +167,7 @@ La propuesta moviliza principalmente saberes básicos vinculados a:
 
 ---
 
-## 11. Metodología
+## Metodología
 
 La metodología se basa en un enfoque:
 
@@ -184,7 +184,7 @@ El papel del docente será el de **guía y mediador**, proporcionando orientacio
 
 ---
 
-## 12. Principios pedagógicos que orientan la propuesta
+## Principios pedagógicos que orientan la propuesta
 
 La situación de aprendizaje se apoya en los siguientes principios:
 
@@ -201,7 +201,7 @@ La normativa andaluza establece expresamente que la etapa debe desarrollarse des
 
 ---
 
-## 13. Organización temporal (4 sesiones)
+## Organización temporal (4 sesiones)
 
 ### Sesión 1. Lanzamiento del reto y exploración inicial
 
@@ -257,7 +257,7 @@ La normativa andaluza establece expresamente que la etapa debe desarrollarse des
 
 ---
 
-### Sesión 3. Mini‑RSA como simulación educativa
+### Sesión 3. Mini-RSA como simulación educativa
 
 **Objetivos de la sesión**
 
@@ -267,7 +267,7 @@ La normativa andaluza establece expresamente que la etapa debe desarrollarse des
 
 **Desarrollo**
 
-1. Presentación del mini‑RSA como una simulación didáctica.
+1. Presentación del mini-RSA como una simulación didáctica.
 2. Resolución guiada de un ejemplo completo con números pequeños.
 3. Trabajo en parejas o grupos reducidos para repetir el proceso con nuevos ejemplos.
 4. Comprobación de resultados:
@@ -305,7 +305,7 @@ La normativa andaluza establece expresamente que la etapa debe desarrollarse des
 5. Cierre final con reflexión compartida:
    - qué hemos aprendido,
    - qué papel tienen las matemáticas,
-   - por qué este mini‑RSA solo vale como modelo educativo.
+   - por qué este mini-RSA solo vale como modelo educativo.
 
 **Cierre**
 
@@ -313,7 +313,7 @@ La normativa andaluza establece expresamente que la etapa debe desarrollarse des
 
 ---
 
-## 14. Recursos y materiales
+## Recursos y materiales
 
 - Ordenador o tableta con acceso a internet.
 - WebQuest diseñada por el docente.
@@ -325,7 +325,7 @@ La normativa andaluza establece expresamente que la etapa debe desarrollarse des
 
 ---
 
-## 15. Agrupamientos
+## Agrupamientos
 
 Se combinarán distintos agrupamientos en función de la tarea:
 
@@ -338,7 +338,7 @@ Esta combinación busca favorecer la participación, el apoyo entre iguales y la
 
 ---
 
-## 16. Atención a la diversidad y a las diferencias individuales
+## Atención a la diversidad y a las diferencias individuales
 
 La propuesta incorpora medidas de inclusión coherentes con el enfoque DUA y con la normativa andaluza sobre atención a la diversidad. La Orden de 30 de mayo de 2023 regula expresamente estos aspectos, y el Decreto 102/2023 sitúa la atención personalizada, la inclusión educativa y el DUA como principios de la etapa.
 
@@ -365,7 +365,7 @@ La propuesta incorpora medidas de inclusión coherentes con el enfoque DUA y con
 
 ---
 
-## 17. Integración de la lectura y la comunicación
+## Integración de la lectura y la comunicación
 
 La normativa andaluza recuerda la importancia de incorporar la lectura planificada en la práctica docente a lo largo de la etapa, y subraya su valor didáctico y pedagógico dentro del desarrollo competencial.
 
@@ -379,11 +379,11 @@ En esta propuesta, la lectura y la comunicación se integran mediante:
 
 ---
 
-## 18. Evaluación
+## Evaluación
 
 La evaluación será **continua, formativa, criterial e integradora**, en coherencia con lo establecido por la Orden andaluza para la etapa. La normativa señala que la evaluación del aprendizaje debe tomar como referentes las competencias específicas y los criterios de evaluación de las materias.
 
-### 18.1. Qué se evaluará
+### Qué se evaluará
 Se valorará si el alumnado:
 
 1. interpreta correctamente situaciones problemáticas sencillas;
@@ -394,9 +394,9 @@ Se valorará si el alumnado:
 6. usa de forma adecuada las herramientas digitales propuestas;
 7. comunica con claridad el proceso seguido;
 8. participa activamente en el trabajo cooperativo;
-9. reflexiona sobre el carácter educativo del mini‑RSA y sobre el uso responsable de la tecnología.
+9. reflexiona sobre el carácter educativo del mini-RSA y sobre el uso responsable de la tecnología.
 
-### 18.2. Instrumentos de evaluación
+### Instrumentos de evaluación
 - observación directa;
 - tareas y ejercicios resueltos;
 - ficha o cuaderno de trabajo;
@@ -405,14 +405,14 @@ Se valorará si el alumnado:
 - autoevaluación;
 - coevaluación.
 
-### 18.3. Momentos de evaluación
+### Momentos de evaluación
 - **inicial**, para detectar ideas previas;
 - **procesual**, durante las actividades;
 - **final**, a través del producto y la exposición.
 
 ---
 
-## 19. Rúbrica de evaluación
+## Rúbrica de evaluación
 
 La siguiente rúbrica permitirá valorar el grado de adquisición de los aprendizajes previstos en esta situación de aprendizaje, atendiendo tanto al proceso como al producto final. Su finalidad es orientar la evaluación de forma clara, continua y coherente con los objetivos didácticos de la propuesta.
 
@@ -423,15 +423,15 @@ La siguiente rúbrica permitirá valorar el grado de adquisición de los aprendi
 | **C. Comunicación matemática** | Explica con claridad, precisión y orden qué hace, cómo lo hace y por qué lo hace, utilizando un lenguaje comprensible y adecuado. | Comunica la idea general y los pasos principales de manera comprensible, aunque con menor precisión o profundidad. | La explicación resulta parcial, confusa o incompleta, y necesita apoyo para comunicar el proceso seguido. | Apenas consigue expresar el proceso realizado o sus explicaciones resultan muy limitadas. |
 | **D. Uso de herramientas digitales** | Utiliza la WebQuest y los recursos digitales con autonomía, sentido y aprovechamiento adecuado de las herramientas disponibles. | Usa correctamente los recursos digitales con poca ayuda y participa de forma funcional en las tareas propuestas. | Necesita apoyo frecuente para manejar las herramientas y utilizar los recursos de forma eficaz. | Presenta dificultades continuas para utilizar los recursos propuestos, incluso con ayuda. |
 | **E. Trabajo cooperativo y actitud** | Participa activamente, escucha, colabora con responsabilidad y asume de forma adecuada las tareas asignadas dentro del grupo. | Colabora de forma regular, mantiene una actitud adecuada y cumple con su parte del trabajo. | Su participación es irregular o poco constante, y necesita apoyo para implicarse de manera sostenida en la tarea común. | Muestra escasa implicación en el trabajo del grupo y presenta dificultades para colaborar de forma efectiva. |
-| **F. Reflexión ética y seguridad digital** | Distingue claramente entre simulación educativa y seguridad real, y argumenta con criterio sobre privacidad, uso responsable y finalidad didáctica del mini‑RSA. | Reconoce el carácter educativo del mini‑RSA y la importancia del uso responsable de la tecnología. | Identifica algunos aspectos relacionados con la seguridad digital, pero con escasa profundidad o claridad. | No diferencia con claridad entre el modelo didáctico utilizado y un sistema real de seguridad. |
+| **F. Reflexión ética y seguridad digital** | Distingue claramente entre simulación educativa y seguridad real, y argumenta con criterio sobre privacidad, uso responsable y finalidad didáctica del mini-RSA. | Reconoce el carácter educativo del mini-RSA y la importancia del uso responsable de la tecnología. | Identifica algunos aspectos relacionados con la seguridad digital, pero con escasa profundidad o claridad. | No diferencia con claridad entre el modelo didáctico utilizado y un sistema real de seguridad. |
 
 ---
 
-## 20. Seguridad y uso responsable
+## Seguridad y uso responsable
 
 Durante el desarrollo de la WebQuest se seguirán estas normas:
 
-- El mini‑RSA utilizado tiene una **finalidad exclusivamente educativa**.
+- El mini-RSA utilizado tiene una **finalidad exclusivamente educativa**.
 - No se emplearán contraseñas reales, datos personales ni información sensible.
 - Los ejemplos trabajarán con números pequeños y procedimientos simplificados.
 - El alumnado deberá respetar las fuentes, la autoría y las licencias de uso.
@@ -439,7 +439,7 @@ Durante el desarrollo de la WebQuest se seguirán estas normas:
 
 ---
 
-## 21. Contribución de la propuesta al currículo de 2.º de ESO
+## Contribución de la propuesta al currículo de 2.º de ESO
 
 Esta situación de aprendizaje contribuye al desarrollo del currículo de Matemáticas de 2.º de ESO porque:
 
@@ -454,7 +454,7 @@ El enfoque resulta coherente con el marco LOMLOE y con la concreción curricular
 
 ---
 
-## 22. Conclusión
+## Conclusión
 
 La WebQuest *Misión: ¡Construid una caja fuerte digital!* ofrece una forma motivadora y contextualizada de trabajar Matemáticas en 2.º de ESO. A través de un reto cercano al mundo digital, el alumnado pone en juego estrategias matemáticas, razonamiento lógico, comunicación y pensamiento computacional, al tiempo que reflexiona sobre la privacidad y el uso responsable de la tecnología.
 

@@ -1,0 +1,26 @@
+% ------------------------------------------------
+% TABLAS E IMÁGENES (tu estilo)
+% ------------------------------------------------
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{ragged2e}
+
+% Colores
+\definecolor{umaBlue}{cmyk}{1.00, 0.70, 0.00, 0.10}
+\definecolor{umaCeleste}{cmyk}{0.80, 0.17, 0.00, 0.14}
+
+% Macros
+\providecommand{\ub}[1]{{\color{umaBlue}\bfseries{#1}}}
+\providecommand{\w}[1]{\textcolor{white}{#1}}
+\providecommand{\wb}[1]{\textbf{\textcolor{white}{#1}}}
+
+% Columnas tabularx
+\newcolumntype{L}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{C}{>{\Centering\arraybackslash}X}

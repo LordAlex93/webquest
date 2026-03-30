@@ -14,8 +14,6 @@ format:
     css: ../styles.css
 ---
 
-# Primalidad y factorización
-
 ```{pyodide}
 #| label: setup
 #| edit: false

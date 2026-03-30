@@ -17,13 +17,13 @@ format:
 ---
 
 ::: {.callout-warning}
-**Aviso ético.** Este mini‑RSA es **educativo**: usa primos pequeños y no es seguro fuera del aula.  
+**Aviso ético.** Este mini-RSA es **educativo**: usa primos pequeños y no es seguro fuera del aula.  
 No cifres datos personales reales.
 :::
 
 > Si el botón **Run** tarda, está cargando Python (Pyodide) en tu navegador.
 
-# Setup mínimo
+## Setup mínimo
 
 ::: {.callout-note title="¿Qué hace este bloque?"}
 
@@ -46,7 +46,7 @@ def assert_eq(a, b, msg=""):
 SMALL_PRIMES = [11, 13, 17, 19, 23, 29, 31, 37, 41]
 ```
 
-# Criba de Eratóstenes → lista de primos hasta $n$
+## Criba de Eratóstenes → lista de primos hasta $n$
 
 ::: {.callout-note title="Tu objetivo"}
   
@@ -72,7 +72,7 @@ def criba_eratostenes(n):
 assert_eq(criba_eratostenes(30), [2, 3, 5, 7, 11, 13, 17, 19, 23, 29])
 ```
 
-# Elige $p$ y $q$ y construye $n$ y $\varphi(n)$
+## Elige $p$ y $q$ y construye $n$ y $\varphi(n)$
 
 ::: {.callout-note title="Tu objetivo"}
  
@@ -102,7 +102,7 @@ print("n:", n)
 print("φ(n):", phi)
 ```
 
-# Euclides extendido → inverso $d$ de $e$ (mód $\varphi(n)$)
+## Euclides extendido
 
 ::: {.callout-note title="Tu objetivo"}
  
@@ -149,7 +149,7 @@ print("d:", d)
 # Comprobación
 assert_eq((e * d) % phi, 1, "Debe cumplirse e*d ≡ 1 (mod φ(n))")
 ```
-# Cifrado **numérico**: $m \to c$ y $c \to m$
+## Cifrado **numérico**
 
 ::: {.callout-note title="Tu objetivo"}
  
@@ -180,7 +180,7 @@ print("m -> c -> m:", m, "->", c, "->", rec)
 assert_eq(rec, m, "Debe recuperarse m")
 ```
 
-# Texto por caracteres: `t2i/i2t` y `enc_text/dec_text`
+## Texto por caracteres
 
 ::: {.callout-note title="Tu objetivo"}
  
@@ -225,7 +225,7 @@ Si aparece el error “Algún carácter del mensaje es ≥ n”, eso significa q
 - Usar un mensaje más simple (caracteres con códigos más pequeños).
 :::
 
-# Firma y verificación (didácticas)
+## Firma y verificación (didácticas)
 
 ::: {.callout-note title="Tu objetivo"}
  
@@ -252,7 +252,7 @@ verif = pow(firma, e, n)  # verificar con e
 print("Resumen (toy):", h)
 print("Verificación:", verif, "->", "OK" if verif == h else "FALLO")
 ```
-# Retos y casos límite
+## Retos y casos límite
 
 ::: {.callout-note title="Ideas para profundizar"}
 

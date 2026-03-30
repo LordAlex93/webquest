@@ -1,0 +1,219 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mathnotes}
+
+% ------------------------------------------------
+% PAQUETES FUNCIONALES (sin imponer estilo global)
+% ------------------------------------------------
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{xcolor}
+\RequirePackage[most]{tcolorbox}
+
+% ------------------------------------------------
+% Colores de las cajas
+% ------------------------------------------------
+\definecolor{defblue}{RGB}{30,60,120}
+\definecolor{theoremviolet}{RGB}{90,60,140}
+\definecolor{lemmagreen}{RGB}{50,120,90}
+\definecolor{corollaryteal}{RGB}{0,130,130}
+\definecolor{axiomgray}{RGB}{90,90,90}
+\definecolor{questorange}{RGB}{230,150,60}
+\definecolor{ansgreen}{RGB}{60,140,90}
+\definecolor{notered}{RGB}{200,70,70}
+\definecolor{examplegold}{RGB}{210,150,40}
+\definecolor{observationblue}{RGB}{70,110,160}
+
+% ------------------------------------------------
+% Contador global (automático: capítulo si existe, si no sección)
+% ------------------------------------------------
+\makeatletter
+\@ifundefined{chapter}{%
+  \newcounter{mathenv}[section]
+  \renewcommand{\themathenv}{\thesection.\arabic{mathenv}}
+}{%
+  \newcounter{mathenv}[chapter]
+  \renewcommand{\themathenv}{\thechapter.\arabic{mathenv}}
+}
+\makeatother
+
+% ------------------------------------------------
+% Estilo común de cajas
+% ------------------------------------------------
+\tcbset{
+  commonstyle/.style={
+    enhanced,
+    breakable,
+    fonttitle=\bfseries,
+    before skip=10pt,
+    after skip=10pt
+  }
+}
+
+\newtcolorbox{definitionbox}{
+  commonstyle,
+  colback=defblue!4,
+  colframe=defblue,
+  colbacktitle=defblue,
+  coltitle=white,
+  title={Definición \themathenv},
+  before title={\refstepcounter{mathenv}}
+}
+
+\newtcolorbox{theorembox}{
+  commonstyle,
+  colback=theoremviolet!7,
+  colframe=theoremviolet,
+  colbacktitle=theoremviolet,
+  coltitle=white,
+  title={Teorema \themathenv},
+  before title={\refstepcounter{mathenv}}
+}
+
+\newtcolorbox{lemmabox}{
+  commonstyle,
+  colback=lemmagreen!8,
+  colframe=lemmagreen,
+  colbacktitle=lemmagreen,
+  coltitle=white,
+  title={Lema \themathenv},
+  before title={\refstepcounter{mathenv}}
+}
+
+\newtcolorbox{corollarybox}{
+  commonstyle,
+  colback=corollaryteal!8,
+  colframe=corollaryteal,
+  colbacktitle=corollaryteal,
+  coltitle=white,
+  title={Corolario \themathenv},
+  before title={\refstepcounter{mathenv}}
+}
+
+\newtcolorbox{axiombox}{
+  commonstyle,
+  colback=axiomgray!10,
+  colframe=axiomgray,
+  colbacktitle=axiomgray,
+  coltitle=white,
+  title={Axioma \themathenv},
+  before title={\refstepcounter{mathenv}}
+}
+
+\newtcolorbox{questionbox}{
+  commonstyle,
+  colback=questorange!10,
+  colframe=questorange,
+  colbacktitle=questorange,
+  coltitle=white,
+  title={Pregunta \themathenv},
+  before title={\refstepcounter{mathenv}}
+}
+
+\newtcolorbox{answerbox}{
+  commonstyle,
+  colback=ansgreen!10,
+  colframe=ansgreen,
+  colbacktitle=ansgreen,
+  coltitle=white,
+  title={Respuesta \themathenv},
+  before title={\refstepcounter{mathenv}}
+}
+
+\newtcolorbox{notebox}{
+  commonstyle,
+  colback=notered!10,
+  colframe=notered,
+  colbacktitle=notered,
+  coltitle=white,
+  title={Nota importante \themathenv},
+  before title={\refstepcounter{mathenv}}
+}
+\newtcolorbox{examplebox}{
+  commonstyle,
+  colback=examplegold!5,
+  colframe=examplegold,
+  colbacktitle=examplegold,
+  coltitle=white,
+  title={Ejemplo \themathenv},
+  before title={\refstepcounter{mathenv}}
+}
+
+\newtcolorbox{observationbox}{
+  commonstyle,
+  colback=observationblue!8,
+  colframe=observationblue,
+  colbacktitle=observationblue,
+  coltitle=white,
+  title={Observación \themathenv},
+  before title={\refstepcounter{mathenv}}
+}
+% ------------------------------------------------
+% Comandos rápidos con referencias opcionales
+% ------------------------------------------------
+\newcommand{\Definition}[2][]{%
+  \begin{definitionbox}%
+  \if\relax\detokenize{#1}\relax\else\label{#1}\fi
+  #2%
+  \end{definitionbox}%
+}
+
+\newcommand{\Theorem}[2][]{%
+  \begin{theorembox}%
+  \if\relax\detokenize{#1}\relax\else\label{#1}\fi
+  #2%
+  \end{theorembox}%
+}
+
+\newcommand{\Lemma}[2][]{%
+  \begin{lemmabox}%
+  \if\relax\detokenize{#1}\relax\else\label{#1}\fi
+  #2%
+  \end{lemmabox}%
+}
+
+\newcommand{\Corollary}[2][]{%
+  \begin{corollarybox}%
+  \if\relax\detokenize{#1}\relax\else\label{#1}\fi
+  #2%
+  \end{corollarybox}%
+}
+
+\newcommand{\Axiom}[2][]{%
+  \begin{axiombox}%
+  \if\relax\detokenize{#1}\relax\else\label{#1}\fi
+  #2%
+  \end{axiombox}%
+}
+
+\newcommand{\Question}[2][]{%
+  \begin{questionbox}%
+  \if\relax\detokenize{#1}\relax\else\label{#1}\fi
+  #2%
+  \end{questionbox}%
+}
+
+\newcommand{\Answer}[2][]{%
+  \begin{answerbox}%
+  \if\relax\detokenize{#1}\relax\else\label{#1}\fi
+  #2%
+  \end{answerbox}%
+}
+
+\newcommand{\Important}[2][]{%
+  \begin{notebox}%
+  \if\relax\detokenize{#1}\relax\else\label{#1}\fi
+  #2%
+  \end{notebox}%
+}
+\newcommand{\Example}[2][]{%
+  \begin{examplebox}%
+  \if\relax\detokenize{#1}\relax\else\label{#1}\fi
+  #2%
+  \end{examplebox}%
+}
+
+\newcommand{\Observation}[2][]{%
+  \begin{observationbox}%
+  \if\relax\detokenize{#1}\relax\else\label{#1}\fi
+  #2%
+  \end{observationbox}%
+}

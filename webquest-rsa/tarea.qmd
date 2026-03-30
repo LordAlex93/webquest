@@ -2,7 +2,7 @@
 
 Ahora que ya sabéis cuál es el reto, toca pasar a la acción.
 
-Trabajaréis en equipo para **construir, probar y explicar una pequeña caja fuerte digital** utilizando un **mini‑RSA educativo** dentro de esta WebQuest. No se trata solo de hacer cálculos: vuestra misión será también **comprender el proceso**, **comprobar que funciona** y **explicarlo con claridad**.
+Trabajaréis en equipo para **construir, probar y explicar una pequeña caja fuerte digital** utilizando un **mini-RSA educativo** dentro de esta WebQuest. No se trata solo de hacer cálculos: vuestra misión será también **comprender el proceso**, **comprobar que funciona** y **explicarlo con claridad**.
 
 ---
 
@@ -28,20 +28,20 @@ Al terminar, cada equipo elaborará un **producto final breve** en uno de estos 
 
 En ese producto tendréis que demostrar que sois capaces de:
 
-### 1. Explicar el reto
+### Explicar el reto
 Contar con vuestras palabras qué problema intenta resolver la criptografía y por qué internet necesita proteger mensajes y datos.
 
-### 2. Mostrar un ejemplo
-Presentar un ejemplo sencillo en el que se vea cómo se **cifra** y cómo se **descifra** un mensaje usando el mini‑RSA de la WebQuest.
+### Mostrar un ejemplo
+Presentar un ejemplo sencillo en el que se vea cómo se **cifra** y cómo se **descifra** un mensaje usando el mini-RSA de la WebQuest.
 
-### 3. Explicar el procedimiento
+### Explicar el procedimiento
 Describir, paso a paso, qué habéis hecho y qué idea matemática hay detrás del proceso.
 
-### 4. Justificar por qué funciona
+### Justificar por qué funciona
 Explicar de forma sencilla por qué el procedimiento permite recuperar el mensaje original en el ejemplo trabajado.
 
-### 5. Reflexionar sobre seguridad digital
-Dejar claro que este mini‑RSA es una **simulación educativa** y no un sistema de seguridad real, y añadir una breve reflexión sobre privacidad y uso responsable de la tecnología.
+### Reflexionar sobre seguridad digital
+Dejar claro que este mini-RSA es una **simulación educativa** y no un sistema de seguridad real, y añadir una breve reflexión sobre privacidad y uso responsable de la tecnología.
 
 ---
 
@@ -54,7 +54,7 @@ Vuestro trabajo final debe incluir:
 - al menos **un ejemplo completo**;
 - una explicación ordenada del proceso;
 - una conclusión final;
-- y una advertencia clara de que el mini‑RSA es solo para **aprender**.
+- y una advertencia clara de que el mini-RSA es solo para **aprender**.
 
 ---
 

@@ -17,7 +17,7 @@ Su tarea es revisar si el procedimiento funciona y avisar al equipo cuando algo 
 
 #### 🛡️ La persona jefa de seguridad
 Se encarga de **controlar que el proceso sea correcto y seguro**.  
-Debe comprobar que el equipo sigue bien los pasos, que entiende lo que hace y que recuerda siempre que este mini‑RSA es solo una simulación educativa.
+Debe comprobar que el equipo sigue bien los pasos, que entiende lo que hace y que recuerda siempre que este mini-RSA es solo una simulación educativa.
 
 #### 👩‍💻 La persona programadora
 Se encarga de **usar las herramientas digitales**, explorar las actividades interactivas y ayudar al equipo en la parte práctica relacionada con Python o con el simulador de la web.
@@ -43,12 +43,12 @@ No hace falta memorizar todo, lo importante es **leer, comprender, probar y saca
 
 ---
 
-# Paso 1. Infiltración: entender la misión
+## Paso 1. Infiltración: entender la misión
 
-## Objetivo
+### Objetivo
 Descubrir qué problema intenta resolver la criptografía y por qué las matemáticas pueden ayudar a proteger mensajes.
 
-## Qué tenéis que hacer
+### Qué tenéis que hacer
 1. Leed la introducción de la WebQuest y comentad en equipo cuál es vuestra misión.
 2. Entrad en el apartado **“¿Qué es la criptografía?”**.
 3. Buscad respuestas a estas preguntas:
@@ -58,25 +58,25 @@ Descubrir qué problema intenta resolver la criptografía y por qué las matemá
 4. Anotad las ideas más importantes en vuestro cuaderno o en vuestra ficha de equipo.
 5. Compartid una conclusión breve con el resto de la clase o con otra pareja de trabajo.
 
-## Qué debe hacer cada rol
-- **La persona espía** localiza la información clave.
+### Qué debe hacer cada rol
+- **La persona espía** localiza la información clave, espía otros grupos.
 - **La persona hacker** plantea dudas y pone a prueba las explicaciones.
 - **La persona jefa de seguridad** comprueba que el equipo entiende la misión.
 - **La persona programadora** navega por el recurso y localiza el apartado correcto.
 
-## Antes de pasar al siguiente paso, comprobad que…
+### Antes de pasar al siguiente paso, comprobad que…
 - [ ] Sabéis explicar qué es la criptografía con vuestras palabras.
 - [ ] Entendéis por qué internet necesita proteger mensajes y datos.
 - [ ] Habéis anotado al menos tres ideas importantes.
 
 ---
 
-# Paso 2. Descifrar las pistas matemáticas
+## Paso 2. Descifrar las pistas matemáticas
 
-## Objetivo
-Comprender las ideas matemáticas que necesitaréis para construir vuestro mini‑RSA.
+### Objetivo
+Comprender las ideas matemáticas que necesitaréis para construir vuestro mini-RSA.
 
-## Qué tenéis que hacer
+### Qué tenéis que hacer
 1. Consultad el apartado **“Primos y Python”**.
 2. Revisad los ejemplos y actividades relacionadas con:
    - números primos,
@@ -90,32 +90,32 @@ Comprender las ideas matemáticas que necesitaréis para construir vuestro mini�
    - qué habéis descubierto,
    - y qué dudas os quedan.
 
-## Qué debe hacer cada rol
+### Qué debe hacer cada rol
 - **La persona espía** busca ejemplos útiles y pistas matemáticas.
 - **La persona hacker** prueba resultados y detecta posibles errores.
 - **La persona jefa de seguridad** ordena la información importante.
 - **La persona programadora** explora el entorno digital y ayuda al equipo a interpretar las actividades.
 
-## Pista
+### Pista
 No hace falta entender todos los detalles técnicos desde el principio.  
 En esta fase lo importante es reconocer que **hay ciertos números y ciertas operaciones que hacen posible el sistema**.
 
-## Antes de pasar al siguiente paso, comprobad que…
+### Antes de pasar al siguiente paso, comprobad que…
 - [ ] Sabéis qué son los números primos y por qué aparecen en esta WebQuest.
 - [ ] Habéis identificado ideas matemáticas importantes para el proceso.
 - [ ] Tenéis anotadas vuestras conclusiones en un esquema o una ficha.
 
 ---
 
-# Paso 3. Construir la caja fuerte digital
+## Paso 3. Construir la caja fuerte digital
 
-## Objetivo
-Construir, probar y comprobar vuestro mini‑RSA educativo dentro de la web.
+### Objetivo
+Construir, probar y comprobar vuestro mini-RSA educativo dentro de la web.
 
-## Qué tenéis que hacer
+### Qué tenéis que hacer
 1. Entrad en **“Programa tu criptosistema”**.
 2. Seguid el procedimiento guiado paso a paso.
-3. Construid vuestro mini‑RSA con los datos que os proponga la actividad o con los valores sencillos que se indiquen.
+3. Construid vuestro mini-RSA con los datos que os proponga la actividad o con los valores sencillos que se indiquen.
 4. Probad a:
    - cifrar un mensaje,
    - descifrarlo,
@@ -123,29 +123,29 @@ Construir, probar y comprobar vuestro mini‑RSA educativo dentro de la web.
 5. Si el resultado no sale como esperabais, revisad el proceso y localizad el error.
 6. Guardad un ejemplo completo, porque os servirá para el **producto final**.
 
-## Qué debe hacer cada rol
+### Qué debe hacer cada rol
 - **La persona espía** observa cada paso y anota qué ocurre.
 - **La persona hacker** prueba el sistema y comprueba si funciona.
 - **La persona jefa de seguridad** verifica que el procedimiento esté bien hecho.
 - **La persona programadora** maneja la parte interactiva y ayuda a ejecutar el proceso.
 
-## Muy importante
-Este mini‑RSA es una **simulación educativa**.  
+### Muy importante
+Este mini-RSA es una **simulación educativa**.  
 No está pensado para proteger información real. Su objetivo es ayudaros a comprender cómo pueden combinarse matemáticas, lógica y tecnología en un sistema de cifrado.
 
-## Antes de pasar al siguiente paso, comprobad que…
+### Antes de pasar al siguiente paso, comprobad que…
 - [ ] Habéis cifrado y descifrado al menos un ejemplo.
 - [ ] Sabéis explicar qué habéis hecho en cada fase.
 - [ ] Habéis guardado un ejemplo claro para usarlo en vuestra presentación o infografía.
 
 ---
 
-# Paso 4. Presentar la misión cumplida
+## Paso 4. Presentar la misión cumplida
 
-## Objetivo
-Explicar con claridad lo aprendido y demostrar que entendéis cómo funciona vuestro mini‑RSA.
+### Objetivo
+Explicar con claridad lo aprendido y demostrar que entendéis cómo funciona vuestro mini-RSA.
 
-## Qué tenéis que hacer
+### Qué tenéis que hacer
 1. Preparad vuestro **producto final** en uno de estos formatos:
    - presentación,
    - infografía,
@@ -160,16 +160,16 @@ Explicar con claridad lo aprendido y demostrar que entendéis cómo funciona vue
 3. Revisad que vuestro trabajo sea claro, ordenado y comprensible.
 4. Preparad una exposición breve para compartirla con la clase.
 
-## Qué debe hacer cada rol
+### Qué debe hacer cada rol
 - **La persona espía** selecciona la información más importante.
 - **La persona hacker** revisa que el ejemplo esté bien comprobado.
 - **La persona jefa de seguridad** se asegura de que aparezca la advertencia sobre el uso exclusivamente educativo.
 - **La persona programadora** ayuda a montar el producto final con apoyo digital.
 
-## Antes de entregar, comprobad que…
+### Antes de entregar, comprobad que…
 - [ ] Habéis explicado la misión con claridad.
 - [ ] Habéis incluido un ejemplo completo.
-- [ ] Habéis explicado cómo funciona vuestro mini‑RSA.
+- [ ] Habéis explicado cómo funciona vuestro mini-RSA.
 - [ ] Habéis dejado claro que no sirve para proteger datos reales.
 - [ ] Todo el equipo entiende el trabajo que presenta.
 
@@ -195,7 +195,7 @@ Antes de dar la misión por terminada, comprobad si podéis responder **sí** a 
 
 - [ ] ¿Entendemos qué es la criptografía?
 - [ ] ¿Sabemos qué papel tienen los números primos y las operaciones del proceso?
-- [ ] ¿Hemos construido y probado nuestro mini‑RSA?
+- [ ] ¿Hemos construido y probado nuestro mini-RSA?
 - [ ] ¿Podemos explicar un ejemplo completo?
 - [ ] ¿Hemos trabajado en equipo y respetado los roles?
 - [ ] ¿Nuestro producto final está claro, bien presentado y completo?

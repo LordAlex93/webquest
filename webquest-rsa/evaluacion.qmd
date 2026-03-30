@@ -22,7 +22,7 @@ Se valorará especialmente si vuestro equipo es capaz de:
 
 - comprender qué problema intenta resolver la criptografía;
 - identificar ideas matemáticas importantes del proceso;
-- construir y probar un mini‑RSA educativo;
+- construir y probar un mini-RSA educativo;
 - explicar un ejemplo de cifrado y descifrado con claridad;
 - justificar, de forma sencilla, por qué el procedimiento funciona en vuestro ejemplo;
 - utilizar correctamente los recursos digitales de la WebQuest;
@@ -49,7 +49,7 @@ Se valorará si vuestra presentación, infografía o cartel digital es claro, or
 Se valorará si participáis de forma activa, si respetáis los roles y si colaboráis de manera responsable.
 
 ### 6. Reflexión sobre seguridad digital
-Se valorará si dejáis claro que este mini‑RSA es solo una simulación educativa y si hacéis una reflexión responsable sobre privacidad y uso de la tecnología.
+Se valorará si dejáis claro que este mini-RSA es solo una simulación educativa y si hacéis una reflexión responsable sobre privacidad y uso de la tecnología.
 
 ---
 
@@ -76,7 +76,7 @@ Esto significa que no se valorará solo lo que entregáis al final, sino tambié
 | **Uso de la WebQuest y de los recursos digitales** | 10% | El equipo utiliza con autonomía los recursos del menú, localiza bien la información y aprovecha las herramientas digitales para mejorar su trabajo. | El equipo usa correctamente la mayoría de los recursos y sabe apoyarse en ellos con poca ayuda. | El equipo necesita apoyo frecuente para localizar o utilizar los recursos adecuados. | El equipo tiene muchas dificultades para usar los recursos de la WebQuest de forma funcional. |
 | **Producto final y comunicación** | 20% | El producto final está muy bien organizado, es claro, completo, visualmente cuidado y demuestra comprensión real del proceso. La exposición es clara y segura. | El producto final está bien presentado e incluye la información principal de forma comprensible. La explicación oral resulta adecuada. | El producto final está incompleto, desordenado o explica solo parcialmente lo aprendido. La exposición necesita más claridad. | El producto final no permite comprender bien la misión ni el procedimiento seguido. La explicación es muy limitada o confusa. |
 | **Trabajo en equipo y desempeño de los roles** | 20% | Todas las personas del equipo participan activamente, respetan los roles, colaboran con responsabilidad y se ayudan mutuamente. | El equipo trabaja bien en general y cumple con su parte, aunque podría mejorar la coordinación. | La participación es irregular o la colaboración dentro del equipo necesita mejorar. | Hay poca implicación, escasa colaboración o dificultades importantes para trabajar en equipo. |
-| **Seguridad digital y reflexión final** | 10% | El equipo explica con claridad que el mini‑RSA es una simulación educativa y realiza una reflexión crítica y responsable sobre privacidad y seguridad digital. | El equipo reconoce correctamente que se trata de una simulación educativa y señala la importancia del uso responsable. | El equipo menciona la idea de seguridad digital, pero con poca claridad o profundidad. | El equipo no diferencia bien entre el uso educativo del mini‑RSA y un sistema real de seguridad. |
+| **Seguridad digital y reflexión final** | 10% | El equipo explica con claridad que el mini-RSA es una simulación educativa y realiza una reflexión crítica y responsable sobre privacidad y seguridad digital. | El equipo reconoce correctamente que se trata de una simulación educativa y señala la importancia del uso responsable. | El equipo menciona la idea de seguridad digital, pero con poca claridad o profundidad. | El equipo no diferencia bien entre el uso educativo del mini-RSA y un sistema real de seguridad. |
 
 ## Autoevaluación del equipo
 
@@ -89,7 +89,7 @@ Antes de entregar vuestro trabajo, dedicad unos minutos a revisar estas pregunta
 - [ ] ¿Hemos usado bien los recursos de la WebQuest?
 - [ ] ¿Nuestro producto final está claro y ordenado?
 - [ ] ¿Hemos trabajado de forma cooperativa?
-- [ ] ¿Hemos dejado claro que este mini‑RSA es solo educativo?
+- [ ] ¿Hemos dejado claro que este mini-RSA es solo educativo?
 
 ---
 

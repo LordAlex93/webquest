@@ -1,0 +1,14 @@
+$if(has-frontmatter)$
+\frontmatter
+\pagenumbering{Roman}
+$endif$
+
+% --- TU PORTADA ---
+\input{assets/latex/portada.tex}
+
+\cleardoublepage
+\mainmatter
+
+
+% Si quieres que el TOC vaya después de la portada, déjalo a Quarto con toc: true
+% (Quarto/Pandoc insertará el TOC donde corresponda según el template)

@@ -198,9 +198,9 @@ window.Quarto = {
   <li><a href="#setup-mínimo" id="toc-setup-mínimo" class="nav-link active" data-scroll-target="#setup-mínimo"><span class="header-section-number">1</span> Setup mínimo</a></li>
   <li><a href="#criba-de-eratóstenes-lista-de-primos-hasta-n" id="toc-criba-de-eratóstenes-lista-de-primos-hasta-n" class="nav-link" data-scroll-target="#criba-de-eratóstenes-lista-de-primos-hasta-n"><span class="header-section-number">2</span> Criba de Eratóstenes → lista de primos hasta <span class="math inline">\(n\)</span></a></li>
   <li><a href="#elige-p-y-q-y-construye-n-y-varphin" id="toc-elige-p-y-q-y-construye-n-y-varphin" class="nav-link" data-scroll-target="#elige-p-y-q-y-construye-n-y-varphin"><span class="header-section-number">3</span> Elige <span class="math inline">\(p\)</span> y <span class="math inline">\(q\)</span> y construye <span class="math inline">\(n\)</span> y <span class="math inline">\(\varphi(n)\)</span></a></li>
-  <li><a href="#euclides-extendido-inverso-d-de-e-mód-varphin" id="toc-euclides-extendido-inverso-d-de-e-mód-varphin" class="nav-link" data-scroll-target="#euclides-extendido-inverso-d-de-e-mód-varphin"><span class="header-section-number">4</span> Euclides extendido → inverso <span class="math inline">\(d\)</span> de <span class="math inline">\(e\)</span> (mód <span class="math inline">\(\varphi(n)\)</span>)</a></li>
-  <li><a href="#cifrado-numérico-m-to-c-y-c-to-m" id="toc-cifrado-numérico-m-to-c-y-c-to-m" class="nav-link" data-scroll-target="#cifrado-numérico-m-to-c-y-c-to-m"><span class="header-section-number">5</span> Cifrado <strong>numérico</strong>: <span class="math inline">\(m \to c\)</span> y <span class="math inline">\(c \to m\)</span></a></li>
-  <li><a href="#texto-por-caracteres-t2ii2t-y-enc_textdec_text" id="toc-texto-por-caracteres-t2ii2t-y-enc_textdec_text" class="nav-link" data-scroll-target="#texto-por-caracteres-t2ii2t-y-enc_textdec_text"><span class="header-section-number">6</span> Texto por caracteres: <code>t2i/i2t</code> y <code>enc_text/dec_text</code></a></li>
+  <li><a href="#euclides-extendido" id="toc-euclides-extendido" class="nav-link" data-scroll-target="#euclides-extendido"><span class="header-section-number">4</span> Euclides extendido</a></li>
+  <li><a href="#cifrado-numérico" id="toc-cifrado-numérico" class="nav-link" data-scroll-target="#cifrado-numérico"><span class="header-section-number">5</span> Cifrado <strong>numérico</strong></a></li>
+  <li><a href="#texto-por-caracteres" id="toc-texto-por-caracteres" class="nav-link" data-scroll-target="#texto-por-caracteres"><span class="header-section-number">6</span> Texto por caracteres</a></li>
   <li><a href="#firma-y-verificación-didácticas" id="toc-firma-y-verificación-didácticas" class="nav-link" data-scroll-target="#firma-y-verificación-didácticas"><span class="header-section-number">7</span> Firma y verificación (didácticas)</a></li>
   <li><a href="#retos-y-casos-límite" id="toc-retos-y-casos-límite" class="nav-link" data-scroll-target="#retos-y-casos-límite"><span class="header-section-number">8</span> Retos y casos límite</a></li>
   </ul>
@@ -238,15 +238,15 @@ Advertencia
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Aviso ético.</strong> Este mini‑RSA es <strong>educativo</strong>: usa primos pequeños y no es seguro fuera del aula.<br>
+<p><strong>Aviso ético.</strong> Este mini-RSA es <strong>educativo</strong>: usa primos pequeños y no es seguro fuera del aula.<br>
 No cifres datos personales reales.</p>
 </div>
 </div>
 <blockquote class="blockquote">
 <p>Si el botón <strong>Run</strong> tarda, está cargando Python (Pyodide) en tu navegador.</p>
 </blockquote>
-<section id="setup-mínimo" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Setup mínimo</h1>
+<section id="setup-mínimo" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="setup-mínimo"><span class="header-section-number">1</span> Setup mínimo</h2>
 <div class="callout callout-style-default callout-note callout-titled" title="¿Qué hace este bloque?">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -269,8 +269,8 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOmZhbHNlLCJldmFsIjp0cnVlLCJsYWJlbCI6InNl
 </script>
 </div>
 </section>
-<section id="criba-de-eratóstenes-lista-de-primos-hasta-n" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Criba de Eratóstenes → lista de primos hasta <span class="math inline">\(n\)</span></h1>
+<section id="criba-de-eratóstenes-lista-de-primos-hasta-n" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="criba-de-eratóstenes-lista-de-primos-hasta-n"><span class="header-section-number">2</span> Criba de Eratóstenes → lista de primos hasta <span class="math inline">\(n\)</span></h2>
 <div class="callout callout-style-default callout-note callout-titled" title="Tu objetivo">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -293,8 +293,8 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBUT0RPOiBpbXBsZW1lbnRh
 </script>
 </div>
 </section>
-<section id="elige-p-y-q-y-construye-n-y-varphin" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Elige <span class="math inline">\(p\)</span> y <span class="math inline">\(q\)</span> y construye <span class="math inline">\(n\)</span> y <span class="math inline">\(\varphi(n)\)</span></h1>
+<section id="elige-p-y-q-y-construye-n-y-varphin" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="elige-p-y-q-y-construye-n-y-varphin"><span class="header-section-number">3</span> Elige <span class="math inline">\(p\)</span> y <span class="math inline">\(q\)</span> y construye <span class="math inline">\(n\)</span> y <span class="math inline">\(\varphi(n)\)</span></h2>
 <div class="callout callout-style-default callout-note callout-titled" title="Tu objetivo">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -331,8 +331,8 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBFbGlnZSBwIHkgcSAoZGlz
 </script>
 </div>
 </section>
-<section id="euclides-extendido-inverso-d-de-e-mód-varphin" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Euclides extendido → inverso <span class="math inline">\(d\)</span> de <span class="math inline">\(e\)</span> (mód <span class="math inline">\(\varphi(n)\)</span>)</h1>
+<section id="euclides-extendido" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="euclides-extendido"><span class="header-section-number">4</span> Euclides extendido</h2>
 <div class="callout callout-style-default callout-note callout-titled" title="Tu objetivo">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -379,8 +379,8 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBDb21wcm9iYWNpw7NuXG5h
 </script>
 </div>
 </section>
-<section id="cifrado-numérico-m-to-c-y-c-to-m" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Cifrado <strong>numérico</strong>: <span class="math inline">\(m \to c\)</span> y <span class="math inline">\(c \to m\)</span></h1>
+<section id="cifrado-numérico" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="cifrado-numérico"><span class="header-section-number">5</span> Cifrado <strong>numérico</strong></h2>
 <div class="callout callout-style-default callout-note callout-titled" title="Tu objetivo">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -403,8 +403,8 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBUT0RPOiBkZWZpbmUgZW5j
 </script>
 </div>
 </section>
-<section id="texto-por-caracteres-t2ii2t-y-enc_textdec_text" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Texto por caracteres: <code>t2i/i2t</code> y <code>enc_text/dec_text</code></h1>
+<section id="texto-por-caracteres" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="texto-por-caracteres"><span class="header-section-number">6</span> Texto por caracteres</h2>
 <div class="callout callout-style-default callout-note callout-titled" title="Tu objetivo">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -459,8 +459,8 @@ Si aparece el error “Algún carácter del mensaje es ≥ n”, eso significa q
 </div>
 </div>
 </section>
-<section id="firma-y-verificación-didácticas" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Firma y verificación (didácticas)</h1>
+<section id="firma-y-verificación-didácticas" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="firma-y-verificación-didácticas"><span class="header-section-number">7</span> Firma y verificación (didácticas)</h2>
 <div class="callout callout-style-default callout-note callout-titled" title="Tu objetivo">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -491,8 +491,8 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBIYXNoIGRpZMOhY3RpY286
 </script>
 </div>
 </section>
-<section id="retos-y-casos-límite" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Retos y casos límite</h1>
+<section id="retos-y-casos-límite" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="retos-y-casos-límite"><span class="header-section-number">8</span> Retos y casos límite</h2>
 <div class="callout callout-style-default callout-note callout-titled" title="Ideas para profundizar">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
