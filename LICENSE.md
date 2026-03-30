@@ -1,4 +1,4 @@
-Salvo indicación en contrario, los contenidos de este repositorio (textos, materiales didácticos, actividades, explicaciones, recursos elaborados para la WebQuest y documentación asociada) se distribuyen bajo la licencia:
+Salvo indicación de lo contrario, los contenidos de este repositorio (textos, materiales didácticos, actividades, explicaciones, recursos elaborados para la WebQuest y documentación asociada) se distribuyen bajo la licencia:
 
 Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional
 (CC BY-NC-SA 4.0)
