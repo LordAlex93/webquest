@@ -1,29 +1,56 @@
-# Archivos generados por Quarto
-.quarto/
-*_files/
 
-# Salidas compiladas
+# =========================
+# Quarto
+# =========================
+.quarto/
 _book/
 _site/
-docs/
+#docs/
+*_files/
 
-# PDFs y temporales LaTeX
-*.pdf
+# =========================
+# Salidas generadas
+# =========================
+*.html
+
+# =========================
+# LaTeX / XeLaTeX / compilación PDF
+# =========================
 *.aux
-*.log
-*.toc
-*.out
-*.fls
+*.bcf
+*.blg
+*.bbl
 *.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.out
+*.run.xml
 *.synctex.gz
+*.toc
+*.xdv
 
+# =========================
 # Jupyter
+# =========================
 .ipynb_checkpoints/
 
-# Sistema
+# =========================
+# Python
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+
+# =========================
+# Sistema operativo / editores
+# =========================
 .DS_Store
 Thumbs.db
-
-# Entornos
-.venv/
-env/
+.vscode/
+.idea/
