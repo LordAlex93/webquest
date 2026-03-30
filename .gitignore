@@ -5,10 +5,11 @@
 .quarto/
 _book/
 _site/
+webquest-rsa/
 #docs/
 assets/
 *_files/
-
+_quarto-book.yml
 # =========================
 # Salidas generadas
 # =========================
@@ -55,3 +56,5 @@ env/
 Thumbs.db
 .vscode/
 .idea/
+
+/.quarto/
