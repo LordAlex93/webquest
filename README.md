@@ -15,7 +15,6 @@ El proyecto ha sido desarrollado en **Quarto** y se encuentra publicado en **Git
 - **Web publicada:** [https://lordalex93.github.io/webquest/](https://lordalex93.github.io/webquest/)
 - **Autor:** Alejandro Muñoz Azaustre
 - **ORCID:** [https://orcid.org/0009-0004-1843-5958](https://orcid.org/0009-0004-1843-5958)
-- **Licencia:** CC BY-NC-SA 4.0
 
 ---
 
@@ -73,3 +72,14 @@ La WebQuest se publica mediante **GitHub Pages** a partir de la carpeta `docs/`,
 La WebQuest está disponible en el siguiente enlace:
 
 [Acceder a la WebQuest](https://lordalex93.github.io/webquest/)
+
+
+## Licencia
+
+Los **contenidos** de este repositorio (textos, actividades, materiales didácticos, documentación y recursos educativos originales) se distribuyen bajo la licencia
+**Creative Commons Atribución–NoComercial–CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)**.
+
+- Resumen legible: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es
+- Texto legal completo: https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.es
+
+Salvo indicación expresa en contrario, esta licencia **no se aplica automáticamente al código fuente** ni a materiales de terceros que puedan aparecer en el repositorio.
