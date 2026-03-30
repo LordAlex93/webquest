@@ -1,0 +1,248 @@
+---
+title: "Primalidad y Python"
+lang: es
+mathjax: true
+execute:
+  eval: false         # no ejecutar en build; se ejecuta en el navegador
+format:
+  live-html:
+    toc: true
+    toc-location: right
+    toc-title: "Contenidos"
+    toc-depth: 3
+    theme: cosmo
+    css: ../styles.css
+---
+
+```{pyodide}
+#| label: setup
+#| edit: false
+#| autorun: true
+# Carga inicial (puede tardar unos segundos la 1ª vez)
+import sympy as sp
+import math
+import random as rnd
+```
+
+## Primalidad
+
+En esta sesión vamos a trabajar con **números primos** y **Python** (ejecución en la propia página).
+
+### Criba de Eratóstenes (versión simple)
+
+- En primer lugar, construimos una lista de números hasta donde queremos cribar.
+
+```{pyodide}
+n = 100
+numeros = list(range(2, n+1))
+numeros[:10], numeros[-3:]
+```
+
+- Procedemos a cribar los números tomando el primero y tachando sus múltiplos, luego el siguiente que no hayamos tachado y así hasta concluir la lista.
+
+```{pyodide}
+def cribado_eratostenes(n):
+    """
+    Implementación básica de la criba de Eratóstenes.
+    Devuelve (total_primos, lista_primos)
+    """
+    total = 0
+    numeros = list(range(2, n+1))
+    for i, val in enumerate(numeros):
+        if val is None:
+            continue
+        p = val
+        total += 1
+        # marcamos múltiplos como None
+        for j in range(p*2, n+1, p):
+            numeros[j-2] = None
+    return total, [num for num in numeros if num is not None]
+```
+
+```{pyodide}
+total, primos = cribado_eratostenes(20)
+print(f"Total de números encontrados {total}, números primos {primos}")
+```
+
+::: {.callout-warning title="Atención"}
+Esta versión hace **demasiadas iteraciones**; podemos optimizarla.
+:::
+
+### Criba de Eratóstenes (optimizada)
+
+```{pyodide}
+# Criba de Eratóstenes optimizada para generar primos hasta n
+def criba_eratostenes(n):
+    if n < 2:
+        return []
+    primos = [True] * (n + 1)
+    primos[0] = primos[1] = False
+    # basta con llegar hasta sqrt(n)
+    for p in range(2, int(n**0.5) + 1):
+        if primos[p]:
+            for i in range(p * p, n + 1, p):
+                primos[i] = False
+    return [i for i, es_primo in enumerate(primos) if es_primo]
+```
+
+```{pyodide}
+# Ejemplo de uso
+print(criba_eratostenes(100))  # Genera primos hasta 100
+```
+
+::: {.callout-note icon=false}
+## **Ejercicio**
+Investiga por qué no es necesario cribar hasta el número $n$ y nos basta con quedarnos en $\lfloor\sqrt n \rfloor$.
+:::
+
+::: {.callout-tip icon=false collapse=true}
+## **Solución**
+Porque si un número es compuesto, **algún factor** es $\le \sqrt{n}$. Una vez descartados los múltiplos de los primos hasta $\sqrt{n}$, el resto ya son primos.
+:::
+
+## Comprobar si un número es primo
+
+Si una lista es “relativamente pequeña”, podemos usar la criba y **consultar**:
+
+```{pyodide}
+lprimos = criba_eratostenes(200000)  # ajusta el límite a tus pruebas
+
+def es_primo1(p):
+    if not lprimos:
+        return "Lista vacía"
+    if p > lprimos[-1]:
+        return "Crea una lista más grande"
+    return "Verdadero" if p in lprimos else "Falso"
+
+es_primo1(97), es_primo1(10060033)
+```
+
+Cuando el rango es grande o hacemos muchas consultas, conviene usar **SymPy**:
+
+```{pyodide}
+sp.isprime(312456789)
+```
+
+Podemos envolverlo:
+
+```{pyodide}
+def es_primo(p):
+    return f"El número {p} es primo." if sp.isprime(p) else f"El número {p} no es primo."
+
+es_primo(34), es_primo(97)
+```
+
+## Factorización
+
+La utilidad que requerimos de los números primos, en esta situación, es **descomponer números** en factores primos.
+
+### División y resto
+
+Para saber si un número es factor de otro, la definición dice: la división es exacta si el **resto es 0**.
+
+- Operador **resto**: `%`
+- Operador **cociente entero**: `//`
+
+::: {.callout-note icon=false title="Ejercicio"}
+Calcula el cociente y el resto de dividir 341 entre 7.
+:::
+
+```{pyodide}
+print(f'El cociente es {341 // 7}')
+print(f'El resto es {341 % 7}')
+```
+
+::: {.callout-note icon=false}
+## **Ejercicio**
+Comprueba ahora que los resultados son correctos.
+:::
+
+```{pyodide}
+341 == 48*7 + 5
+```
+
+### Factorización por búsqueda de divisores
+
+```{pyodide}
+def fact1(n):
+    factores = []
+    for i in range(1, n+1):
+        if n % i == 0:
+            factores.append(i)
+    return factores
+
+fact1(340)
+```
+
+::: {.callout-warning icon=false}
+## **Pregunta**
+¿Qué hemos obtenido en la celda anterior?
+:::
+
+::: {.callout-note icon=false}
+## **Ejercicio**
+Deduce por qué no necesitamos buscar más divisores viendo la lista obtenida en `fact1(n)`.
+:::
+
+Para quedarnos con **factores primos**, filtramos con `sp.isprime`:
+
+```{pyodide}
+n = 340
+[p for p in fact1(n) if sp.isprime(p)]
+```
+
+::: {.callout-important icon=false}
+## **Pregunta**
+A la vista de este resultado, ¿qué no estamos teniendo en cuenta?
+:::
+
+### Factorización con división por prueba (mejorada)
+
+```{pyodide}
+def factorizar(n):
+    factores = []
+    # probamos hasta sqrt(n)
+    for d in range(2, int(n**0.5) + 1):
+        while n % d == 0:
+            factores.append(d)
+            n //= d
+    if n > 1:  # si queda un primo grande
+        factores.append(n)
+    return factores
+
+factorizar(765)
+```
+
+Formateo bonito:
+
+```{pyodide}
+numero = 765
+factores = factorizar(numero)
+print(f"{numero} = {' * '.join(map(str, factores))}")
+```
+
+### Factorización con SymPy
+
+SymPy ofrece la función **`factorint(n)`**:
+
+```{pyodide}
+sp.factorint(348)             # diccionario {primo: exponente}
+sp.factorint(348, visual=True)  # 'visual' formateada
+```
+
+### Máximo Común Divisor (MCD) y Mínimo Común Múltiplo (MCM)
+
+Con **SymPy**:
+
+```{pyodide}
+sp.gcd(4, 31), sp.gcd(20, 30)
+```
+
+```{pyodide}
+sp.lcm(3, 5), sp.lcm(12, 18)
+```
+
+::: {.callout-note icon=false}
+## **Ejercicio**
+Calcula el MCD de varios pares y comenta patrones que observes.
+:::

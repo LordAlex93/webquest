@@ -1,0 +1,72 @@
+---
+title: "Misión: ¡Construid una caja fuerte digital!"
+---
+
+## Matemáticas, retos y seguridad digital en una WebQuest interactiva
+
+Cada día, internet protege mensajes, contraseñas y datos gracias a las **matemáticas**.  
+En esta WebQuest os convertiréis en un equipo de especialistas con una misión muy concreta:
+
+> **descubrir cómo se puede cifrar un mensaje, construir un mini-RSA y demostrar por qué funciona con ejemplos en la propia web.**
+
+No necesitaréis instalar nada.  
+Trabajaréis con retos, ejemplos guiados, pruebas interactivas y explicaciones paso a paso hasta conseguir abrir y cerrar vuestra propia **caja fuerte digital**.
+
+---
+
+## ¿Cuál es vuestra misión?
+
+A lo largo de esta WebQuest tendréis que:
+
+- investigar cómo pueden usarse las matemáticas para proteger información,
+- trabajar con **restos, patrones y relaciones numéricas**,
+- seguir un procedimiento de cifrado y descifrado paso a paso,
+- construir y probar un **mini-RSA** en la web,
+- y explicar con claridad **cómo funciona** y **por qué**.
+
+---
+
+## Reto final
+
+Al terminar, vuestro equipo deberá presentar un pequeño producto final en el que demuestre que ha sido capaz de:
+
+- **crear y probar un mini-RSA educativo**,
+- **cifrar y descifrar un mensaje sencillo**,
+- **explicar el proceso seguido**,
+- y **distinguir entre una simulación escolar y un sistema real de seguridad**.
+
+---
+
+## ¿Qué vais a aprender?
+
+- A trabajar con **congruencias** y **aritmética modular**.
+- A reconocer **patrones y relaciones numéricas**.
+- A seguir un procedimiento matemático **paso a paso**.
+- A experimentar con un **mini-RSA** de forma guiada.
+- A usar herramientas digitales para **comprobar resultados**.
+- A comunicar ideas matemáticas con **claridad y orden**.
+- A reflexionar sobre la **privacidad** y el **uso responsable de la tecnología**.
+
+---
+
+::: {.callout-warning title="Regla de oro"}
+Este mini-RSA tiene una finalidad **exclusivamente educativa**.  
+Sirve para aprender cómo las matemáticas ayudan a proteger mensajes, pero **no debe utilizarse para datos reales, contraseñas ni información personal**.
+:::
+
+---
+
+## Antes de empezar...
+
+Pensad en esta pregunta:
+
+> **Si internet protege la información con matemáticas, ¿qué tipo de ideas numéricas creéis que hacen falta para conseguirlo?**
+
+Esa será la primera pista para comenzar la misión.
+
+---
+
+## ¡Preparados para abrir la caja fuerte digital!
+
+Vuestra misión comienza ahora.  
+Observad, calculad, comprobad, explicad… y descubrid cómo las matemáticas pueden convertirse en una herramienta para proteger información.
