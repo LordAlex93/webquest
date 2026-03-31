@@ -44,3 +44,4 @@ env/
 Thumbs.db
 .vscode/
 .idea/
+/.quarto/
